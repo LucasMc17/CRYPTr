@@ -10,6 +10,7 @@ func enter(_previous_state : UIState, _ext : Dictionary):
 	pass
 
 func exit():
+	visible = false
 	pass
 
 func update(_delta: float):

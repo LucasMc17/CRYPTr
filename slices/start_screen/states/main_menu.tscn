@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://pd0enbnb307e"]
 
 [ext_resource type="Theme" uid="uid://bc2kucb31w6fg" path="res://assets/themes/menu_theme.tres" id="1_lwm1y"]
-[ext_resource type="Script" uid="uid://cstrydnq5jk3n" path="res://ui_states/ui_state.gd" id="2_6s8a2"]
+[ext_resource type="Script" uid="uid://dsp5jhcbmpap4" path="res://slices/start_screen/states/main_menu.gd" id="2_7hnvo"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_lwm1y")
-script = ExtResource("2_6s8a2")
+script = ExtResource("2_7hnvo")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -57,3 +57,5 @@ text = "CHANGE PROFILE"
 [node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "QUIT"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/NewRunButton" to="." method="_on_new_run_button_pressed"]
