@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CryptographRes" load_steps=3 format=3 uid="uid://cxp5w4iqgfw30"]
+
+[ext_resource type="Resource" uid="uid://c8drvqxuonfle" path="res://resources/letters/F.tres" id="1_4uy0j"]
+[ext_resource type="Script" uid="uid://dq85o4vi7fxqy" path="res://resources/cryptographs/cryptograph.gd" id="2_tio3y"]
+
+[resource]
+script = ExtResource("2_tio3y")
+letter = ExtResource("1_4uy0j")
+level = 1
+metadata/_custom_type_script = "uid://dq85o4vi7fxqy"

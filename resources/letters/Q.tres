@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LetterRes" load_steps=2 format=3 uid="uid://cp5n5w057tw07"]
+
+[ext_resource type="Script" uid="uid://bthhuvo60wqui" path="res://resources/letters/letter.gd" id="1_wdcna"]
+
+[resource]
+script = ExtResource("1_wdcna")
+character = "Q"
+points = 10
+metadata/_custom_type_script = "uid://bthhuvo60wqui"

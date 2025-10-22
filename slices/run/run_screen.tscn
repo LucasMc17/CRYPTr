@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3ennndecf56b"]
+
+[ext_resource type="Script" uid="uid://cstrydnq5jk3n" path="res://ui_states/ui_state.gd" id="1_cdeqi"]
+[ext_resource type="Script" uid="uid://bi2q8cnubx26o" path="res://ui_states/ui_state_machine.gd" id="2_q18or"]
+[ext_resource type="Script" uid="uid://b3pweholfre1u" path="res://slices/run/player_module.gd" id="3_q18or"]
+
+[node name="RunScreen" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cdeqi")
+metadata/_custom_type_script = "uid://cstrydnq5jk3n"
+
+[node name="RunStateMachine" type="Control" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_q18or")
+CURRENT_STATE = NodePath("UIState")
+metadata/_custom_type_script = "uid://bi2q8cnubx26o"
+
+[node name="UIState" type="Control" parent="RunStateMachine"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_cdeqi")
+metadata/_custom_type_script = "uid://cstrydnq5jk3n"
+
+[node name="PauseStateMachine" type="Control" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_q18or")
+CURRENT_STATE = NodePath("Unpaused")
+metadata/_custom_type_script = "uid://bi2q8cnubx26o"
+
+[node name="Unpaused" type="Control" parent="PauseStateMachine"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_cdeqi")
+metadata/_custom_type_script = "uid://cstrydnq5jk3n"
+
+[node name="Paused" type="Control" parent="PauseStateMachine"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_cdeqi")
+metadata/_custom_type_script = "uid://cstrydnq5jk3n"
+
+[node name="PlayerModule" type="Node" parent="."]
+script = ExtResource("3_q18or")
