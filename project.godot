@@ -18,3 +18,4 @@ config/icon="res://icon.svg"
 [autoload]
 
 Events="*res://globals/events.gd"
+Player="*res://globals/player.gd"

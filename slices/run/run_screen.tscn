@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cstrydnq5jk3n" path="res://ui_states/ui_state.gd" id="1_cdeqi"]
 [ext_resource type="Script" uid="uid://en1uhxivcuk7" path="res://slices/run/run_screen.gd" id="1_lcpi4"]
 [ext_resource type="Script" uid="uid://bi2q8cnubx26o" path="res://ui_states/ui_state_machine.gd" id="2_q18or"]
-[ext_resource type="Script" uid="uid://b3pweholfre1u" path="res://slices/run/player_module.gd" id="3_q18or"]
+[ext_resource type="PackedScene" uid="uid://hsul0q167iju" path="res://slices/run/states/encounter/encounter.tscn" id="4_lcpi4"]
 
 [node name="RunScreen" type="Control"]
 visible = false
@@ -17,19 +17,23 @@ script = ExtResource("1_lcpi4")
 metadata/_custom_type_script = "uid://cstrydnq5jk3n"
 
 [node name="RunStateMachine" type="Control" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
+unique_name_in_owner = true
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_q18or")
-CURRENT_STATE = NodePath("UIState")
+CURRENT_STATE = NodePath("NullState")
 metadata/_custom_type_script = "uid://bi2q8cnubx26o"
 
-[node name="UIState" type="Control" parent="RunStateMachine"]
+[node name="NullState" type="Control" parent="RunStateMachine"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_cdeqi")
 metadata/_custom_type_script = "uid://cstrydnq5jk3n"
+
+[node name="Encounter" parent="RunStateMachine" instance=ExtResource("4_lcpi4")]
+layout_mode = 1
 
 [node name="PauseStateMachine" type="Control" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
 anchors_preset = 0
@@ -52,7 +56,3 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_cdeqi")
 metadata/_custom_type_script = "uid://cstrydnq5jk3n"
-
-[node name="PlayerModule" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("3_q18or")

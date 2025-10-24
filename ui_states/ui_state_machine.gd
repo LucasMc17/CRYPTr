@@ -38,6 +38,9 @@ func on_child_transitioned(new_state_name: StringName, ext : Dictionary):
 			new_state.enter(CURRENT_STATE, ext)
 			CURRENT_STATE = new_state
 
+func transition(new_state_name : String):
+	CURRENT_STATE.transition(new_state_name)
+
 func lock():
 	DISABLED = true
 
