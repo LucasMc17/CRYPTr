@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg11ifkuvb6os"]
+[gd_scene load_steps=4 format=3 uid="uid://cw5c8nfyxr2s6"]
 
-[ext_resource type="Script" uid="uid://cstrydnq5jk3n" path="res://ui_states/ui_state.gd" id="1_upe75"]
-[ext_resource type="Script" uid="uid://bi2q8cnubx26o" path="res://ui_states/ui_state_machine.gd" id="2_kcv3r"]
+[ext_resource type="Script" uid="uid://di8k3ed6nq64j" path="res://ui_states/switchable.gd" id="1_tpk7p"]
+[ext_resource type="Script" uid="uid://dgjbmlg6wlice" path="res://ui_states/ui_switcher.gd" id="2_ykf3w"]
 [ext_resource type="PackedScene" uid="uid://pd0enbnb307e" path="res://slices/start_screen/states/main_menu.tscn" id="3_itsiy"]
 
 [node name="StartScreen" type="Control"]
@@ -11,19 +11,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_upe75")
-metadata/_custom_type_script = "uid://cstrydnq5jk3n"
+script = ExtResource("1_tpk7p")
+metadata/_custom_type_script = "uid://di8k3ed6nq64j"
 
-[node name="StateMachine" type="Control" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
+[node name="UISwitcher" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_kcv3r")
-CURRENT_STATE = NodePath("MainMenu")
-metadata/_custom_type_script = "uid://bi2q8cnubx26o"
-
-[node name="MainMenu" parent="StateMachine" instance=ExtResource("3_itsiy")]
-layout_mode = 1
+script = ExtResource("2_ykf3w")
+SCENES = Dictionary[String, PackedScene]({
+"MainMenu": ExtResource("3_itsiy")
+})
+CURRENT_SCENE = &"MainMenu"
+metadata/_custom_type_script = "uid://dgjbmlg6wlice"

@@ -1,12 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3ennndecf56b"]
+[gd_scene load_steps=4 format=3 uid="uid://b3ennndecf56b"]
 
-[ext_resource type="Script" uid="uid://cstrydnq5jk3n" path="res://ui_states/ui_state.gd" id="1_cdeqi"]
 [ext_resource type="Script" uid="uid://en1uhxivcuk7" path="res://slices/run/run_screen.gd" id="1_lcpi4"]
-[ext_resource type="Script" uid="uid://bi2q8cnubx26o" path="res://ui_states/ui_state_machine.gd" id="2_q18or"]
 [ext_resource type="PackedScene" uid="uid://hsul0q167iju" path="res://slices/run/states/encounter/encounter.tscn" id="4_lcpi4"]
+[ext_resource type="Script" uid="uid://dgjbmlg6wlice" path="res://ui_states/ui_switcher.gd" id="5_o8dxk"]
 
 [node name="RunScreen" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,43 +14,26 @@ grow_vertical = 2
 script = ExtResource("1_lcpi4")
 metadata/_custom_type_script = "uid://cstrydnq5jk3n"
 
-[node name="RunStateMachine" type="Control" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
-unique_name_in_owner = true
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("2_q18or")
-CURRENT_STATE = NodePath("NullState")
-metadata/_custom_type_script = "uid://bi2q8cnubx26o"
-
-[node name="NullState" type="Control" parent="RunStateMachine"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_cdeqi")
-metadata/_custom_type_script = "uid://cstrydnq5jk3n"
-
-[node name="Encounter" parent="RunStateMachine" instance=ExtResource("4_lcpi4")]
+[node name="RunSwitcher" type="Control" parent="."]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_o8dxk")
+SCENES = Dictionary[String, PackedScene]({
+"Encounter": ExtResource("4_lcpi4")
+})
+CURRENT_SCENE = &"Encounter"
+metadata/_custom_type_script = "uid://dgjbmlg6wlice"
 
-[node name="PauseStateMachine" type="Control" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("2_q18or")
-CURRENT_STATE = NodePath("Unpaused")
-metadata/_custom_type_script = "uid://bi2q8cnubx26o"
-
-[node name="Unpaused" type="Control" parent="PauseStateMachine"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_cdeqi")
-metadata/_custom_type_script = "uid://cstrydnq5jk3n"
-
-[node name="Paused" type="Control" parent="PauseStateMachine"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_cdeqi")
-metadata/_custom_type_script = "uid://cstrydnq5jk3n"
+[node name="PauseSwitcher" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_o8dxk")
+metadata/_custom_type_script = "uid://dgjbmlg6wlice"
