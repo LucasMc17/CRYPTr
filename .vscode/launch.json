@@ -12,6 +12,13 @@
       "additional_options": "-f"
     },
     {
+      "name": "Debug Encounter",
+      "type": "godot",
+      "request": "launch",
+      "scene": "res://slices/run/states/encounter/encounter.tscn",
+      "additional_options": "-f --initialize-deck"
+    },
+    {
       "name": "Debug Current",
       "type": "godot",
       "request": "launch",

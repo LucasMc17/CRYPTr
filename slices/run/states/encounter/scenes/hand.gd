@@ -25,14 +25,17 @@ func add_to_hand(cryptographs_to_add : Array[CryptographRes]) -> void:
 		cryptographs.append(new_scene)
 		add_child(new_scene)
 
-func discard_by_letters(word : String) -> int:
-	var discard_count = 0
-	for cryptograph in cryptographs:
+func discard_by_letters(word : String) -> void:
+	var to_discard := []
+	for i in range(cryptographs.size()):
+		var cryptograph = cryptographs[i]
 		var character = cryptograph.RESOURCE.letter.character
 		if word.contains(character):
-			discard_count += 1
+			to_discard.push_front(i)
+			# discard_count += 1
 			cryptograph.queue_free()
-	return discard_count
+	for index in to_discard:
+		cryptographs.remove_at(index)
 
 func discard_all() -> void:
 	for cryptograph in cryptographs:

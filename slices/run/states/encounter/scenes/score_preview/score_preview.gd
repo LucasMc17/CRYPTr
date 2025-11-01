@@ -43,3 +43,6 @@ var SCORE_OBJECT : ScoringModule.ScoringObject:
 func clear():
 	for child in MULT_LIST.get_children():
 		child.queue_free()
+
+func check_win() -> bool: 
+	return CURRENT_SCORE >= TARGET_SCORE
