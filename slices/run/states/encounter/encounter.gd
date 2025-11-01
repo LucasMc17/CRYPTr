@@ -23,8 +23,10 @@ func _ready():
 	DECK.init_and_shuffle()
 	HAND.add_to_hand(DECK.draw())
 
-	SCORE_PREVIEW.CURRENT_SCORE = 0
-	SCORE_PREVIEW.TARGET_SCORE = (100 + (20 * SECURITY_LEVEL)) * DEPTH
+	SCORING.CURRENT_SCORE = 0
+	SCORING.TARGET_SCORE = (100 + (20 * SECURITY_LEVEL)) * DEPTH
+
+	SCORE_PREVIEW.update_score(SCORING.CURRENT_SCORE, SCORING.TARGET_SCORE)
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("enter"):
@@ -32,7 +34,8 @@ func _unhandled_input(event):
 	
 	if Input.is_action_just_pressed("backspace"):
 		WORD.backspace()
-		SCORE_PREVIEW.SCORE_OBJECT = SCORING.create_scoring_object(WORD.text, HAND)
+		SCORING.update_score_object(WORD.text, HAND)
+		SCORE_PREVIEW.update_potential_score(SCORING.SCORE_OBJECT)
 
 	if event is InputEventKey and event.pressed == true:
 		input_character(event)
@@ -44,15 +47,16 @@ func lose() -> void:
 	print("YOU LOSE")
 
 func enter_word() -> void:
-	# SCORING.enter(WORD.text)
-	if SCORE_PREVIEW.SCORE_OBJECT.valid:
-		SCORE_PREVIEW.CURRENT_SCORE += SCORE_PREVIEW.SCORE_OBJECT.total_score
+	if SCORING.SCORE_OBJECT.valid:
+		SCORING.CURRENT_SCORE += SCORING.SCORE_OBJECT.total_score
+		SCORE_PREVIEW.update_score(SCORING.CURRENT_SCORE, SCORING.TARGET_SCORE)
 		HAND.discard_by_letters(WORD.text)
 		HAND.add_to_hand(DECK.draw(6 - HAND.count))
 		WORD.clear()
-		SCORE_PREVIEW.SCORE_OBJECT = SCORING.create_scoring_object("", HAND)
+		SCORING.update_score_object(WORD.text, HAND)
+		SCORE_PREVIEW.update_potential_score(SCORING.SCORE_OBJECT)
 		ATTEMPTS -= 1
-		if SCORE_PREVIEW.check_win():
+		if SCORING.check_win():
 			win()
 			return
 		if ATTEMPTS < 1:
@@ -65,5 +69,5 @@ func input_character(event) -> void:
 		var character = OS.get_keycode_string(event.key_label)
 		if DebugNode.ACCEPT_ALL_LETTERS or HAND.letters.has(character):
 			WORD.add_character(character)
-			var new_score = SCORING.create_scoring_object(WORD.text, HAND)
-			SCORE_PREVIEW.SCORE_OBJECT = new_score
+			SCORING.update_score_object(WORD.text, HAND)
+			SCORE_PREVIEW.update_potential_score(SCORING.SCORE_OBJECT)
