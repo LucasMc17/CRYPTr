@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr8n6ng13apt2"]
+
+[ext_resource type="Script" uid="uid://8utxeemfesmd" path="res://globals/debug_node.gd" id="1_pgr0f"]
+
+[node name="DebugNode" type="Node"]
+script = ExtResource("1_pgr0f")

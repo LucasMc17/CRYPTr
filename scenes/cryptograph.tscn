@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf8evueqk3snv"]
+
+[ext_resource type="Script" uid="uid://c545occ7pp24a" path="res://scenes/cryptograph.gd" id="1_6pmoc"]
+
+[node name="Cryptograph" type="ColorRect"]
+custom_minimum_size = Vector2(50, 70)
+anchors_preset = -1
+anchor_right = 0.043
+anchor_bottom = 0.108
+offset_right = 0.463997
+offset_bottom = 0.0159988
+color = Color(0.787759, 0.787759, 0.787759, 1)
+script = ExtResource("1_6pmoc")
+
+[node name="Letter" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 42
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Points" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "1"
+horizontal_alignment = 2
