@@ -16,7 +16,14 @@
       "type": "godot",
       "request": "launch",
       "scene": "res://slices/run/states/encounter/encounter.tscn",
-      "additional_options": "-f --initialize-deck"
+      "additional_options": "-f --debug-encounter"
+    },
+    {
+      "name": "Debug Map",
+      "type": "godot",
+      "request": "launch",
+      "scene": "res://slices/run/states/map/map.tscn",
+      "additional_options": "-f --debug-map"
     },
     {
       "name": "Debug Current",

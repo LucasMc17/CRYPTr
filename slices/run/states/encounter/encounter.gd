@@ -3,9 +3,6 @@ extends Switchable
 @export var DEPTH := 1
 @export var SECURITY_LEVEL := 1
 
-# @export var SCORE := 0.0
-# @export var TARGET_SCORE := 0
-
 @onready var HAND := %Hand
 @onready var WORD := %Word
 @onready var SCORE_PREVIEW := %ScorePreview
@@ -15,8 +12,13 @@ var DECK = DeckModule.new()
 @onready var SCORING = ScoringModule.new()
 @onready var ATTEMPTS := 4
 
+## Emited when the target score is reached and the encounter is won
+signal won()
+## Emited when the player runs out of attempts and the encounter is lost
+signal lost()
+
 func _ready():
-	if "--initialize-deck" in OS.get_cmdline_args():
+	if "--debug-encounter" in OS.get_cmdline_args():
 		print('ENCOUNTER accessed directly, initializing CLASSIC stack')
 		var CLASSIC_STACK = load("res://resources/starter_decks/the_classic.tres")
 		Player.initialize_stack(CLASSIC_STACK)
@@ -25,6 +27,10 @@ func _ready():
 
 	SCORING.CURRENT_SCORE = 0
 	SCORING.TARGET_SCORE = (100 + (20 * SECURITY_LEVEL)) * DEPTH
+
+
+	SCORING.update_score_object(WORD.text, HAND)
+	SCORE_PREVIEW.update_potential_score(SCORING.SCORE_OBJECT)
 
 	SCORE_PREVIEW.update_score(SCORING.CURRENT_SCORE, SCORING.TARGET_SCORE)
 
@@ -42,9 +48,17 @@ func _unhandled_input(event):
 
 func win() -> void:
 	print("YOU WON")
+	if "--debug-encounter" in OS.get_cmdline_args():
+		get_tree().quit(0)
+	else:
+		won.emit()
 
 func lose() -> void:
 	print("YOU LOSE")
+	if "--debug-encounter" in OS.get_cmdline_args():
+		get_tree().quit(0)
+	else:
+		lost.emit()
 
 func enter_word() -> void:
 	if SCORING.SCORE_OBJECT.valid:
