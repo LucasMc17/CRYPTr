@@ -1,6 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg0nic7lnu7ry"]
+[gd_scene load_steps=10 format=3 uid="uid://dg0nic7lnu7ry"]
 
 [ext_resource type="Script" uid="uid://chovq1ex3kco7" path="res://slices/run/states/map/map.gd" id="1_42v20"]
+[ext_resource type="Script" uid="uid://c1cegw7atujov" path="res://resources/encounters/encounter.gd" id="2_pbblo"]
+[ext_resource type="PackedScene" uid="uid://df3t3dwnccctd" path="res://slices/run/states/map/scenes/map_node.tscn" id="2_r5hic"]
+
+[sub_resource type="Resource" id="Resource_pbblo"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 3
+parent = null
+
+[sub_resource type="Resource" id="Resource_3c7rg"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 2
+parent = null
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_pbblo")])
+
+[sub_resource type="Resource" id="Resource_sqrm5"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 3
+parent = null
+
+[sub_resource type="Resource" id="Resource_ps186"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 2
+parent = null
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_sqrm5")])
+
+[sub_resource type="Resource" id="Resource_owdst"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 1
+parent = null
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_3c7rg"), SubResource("Resource_ps186")])
+
+[sub_resource type="Resource" id="Resource_oulnt"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_owdst")])
 
 [node name="Map" type="Control"]
 layout_mode = 3
@@ -10,4 +50,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_42v20")
+ENCOUNTER_MAP = SubResource("Resource_oulnt")
+CURRENT_ENCOUNTER = SubResource("Resource_oulnt")
 metadata/_custom_type_script = "uid://di8k3ed6nq64j"
+
+[node name="RootNode" parent="." instance=ExtResource("2_r5hic")]
+unique_name_in_owner = true
+layout_mode = 0
+ENCOUNTER = SubResource("Resource_oulnt")
