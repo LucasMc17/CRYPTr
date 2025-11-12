@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dg0nic7lnu7ry"]
+[gd_scene load_steps=23 format=3 uid="uid://dg0nic7lnu7ry"]
 
 [ext_resource type="Script" uid="uid://chovq1ex3kco7" path="res://slices/run/states/map/map.gd" id="1_42v20"]
 [ext_resource type="Script" uid="uid://c1cegw7atujov" path="res://resources/encounters/encounter.gd" id="2_pbblo"]
@@ -7,40 +7,123 @@
 [sub_resource type="Resource" id="Resource_pbblo"]
 script = ExtResource("2_pbblo")
 type = "MATCH"
-security_level = 3
+security_level = 5
 parent = null
 
 [sub_resource type="Resource" id="Resource_3c7rg"]
 script = ExtResource("2_pbblo")
 type = "MATCH"
-security_level = 2
+security_level = 5
 parent = null
-branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_pbblo")])
 
 [sub_resource type="Resource" id="Resource_sqrm5"]
 script = ExtResource("2_pbblo")
 type = "MATCH"
-security_level = 3
+security_level = 5
 parent = null
 
 [sub_resource type="Resource" id="Resource_ps186"]
 script = ExtResource("2_pbblo")
 type = "MATCH"
-security_level = 2
+security_level = 4
 parent = null
-branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_sqrm5")])
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_pbblo"), SubResource("Resource_3c7rg"), SubResource("Resource_sqrm5")])
 
 [sub_resource type="Resource" id="Resource_owdst"]
 script = ExtResource("2_pbblo")
 type = "MATCH"
-security_level = 1
+security_level = 5
 parent = null
-branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_3c7rg"), SubResource("Resource_ps186")])
 
 [sub_resource type="Resource" id="Resource_oulnt"]
 script = ExtResource("2_pbblo")
 type = "MATCH"
-branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_owdst")])
+security_level = 5
+parent = null
+
+[sub_resource type="Resource" id="Resource_huhkd"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+parent = null
+
+[sub_resource type="Resource" id="Resource_aib5h"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+parent = null
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_owdst"), SubResource("Resource_oulnt"), SubResource("Resource_huhkd")])
+
+[sub_resource type="Resource" id="Resource_1fxhj"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 3
+parent = null
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_ps186"), SubResource("Resource_aib5h")])
+
+[sub_resource type="Resource" id="Resource_v5vu4"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+parent = null
+
+[sub_resource type="Resource" id="Resource_esudf"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+parent = null
+
+[sub_resource type="Resource" id="Resource_o8dlt"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+parent = null
+
+[sub_resource type="Resource" id="Resource_dlg0a"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+parent = null
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_v5vu4"), SubResource("Resource_esudf"), SubResource("Resource_o8dlt")])
+
+[sub_resource type="Resource" id="Resource_wyife"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+parent = null
+
+[sub_resource type="Resource" id="Resource_rxk8x"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+parent = null
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_wyife")])
+
+[sub_resource type="Resource" id="Resource_xpv4k"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 3
+parent = null
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_dlg0a"), SubResource("Resource_rxk8x")])
+
+[sub_resource type="Resource" id="Resource_r53t8"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 2
+parent = null
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_1fxhj"), SubResource("Resource_xpv4k")])
+
+[sub_resource type="Resource" id="Resource_rj8i6"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 1
+parent = null
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_r53t8")])
+
+[sub_resource type="Resource" id="Resource_mdhlv"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_rj8i6")])
 
 [node name="Map" type="Control"]
 layout_mode = 3
@@ -50,11 +133,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_42v20")
-ENCOUNTER_MAP = SubResource("Resource_oulnt")
-CURRENT_ENCOUNTER = SubResource("Resource_oulnt")
+ENCOUNTER_MAP = SubResource("Resource_mdhlv")
+CURRENT_ENCOUNTER = SubResource("Resource_mdhlv")
+DEPTH_LIMIT = 2.0
 metadata/_custom_type_script = "uid://di8k3ed6nq64j"
 
 [node name="RootNode" parent="." instance=ExtResource("2_r5hic")]
 unique_name_in_owner = true
 layout_mode = 0
-ENCOUNTER = SubResource("Resource_oulnt")
+ENCOUNTER = SubResource("Resource_mdhlv")
