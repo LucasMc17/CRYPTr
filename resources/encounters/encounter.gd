@@ -12,13 +12,16 @@ class_name EncounterRes extends Resource
 # @export var boss_branch : BossEncounterResource
 @export var branches : Array[EncounterRes] = []
 
+var relative_y : int
+
 func to_object() -> Dictionary:
 	return {
 		"type": type,
 		"security_level": security_level,
 		# "parent": parent,
 		"branches": branches.map(func (enc : EncounterRes): return enc.to_object()),
-		"distance_from_end": DISTANCE_FROM_END
+		"distance_from_end": DISTANCE_FROM_END,
+		"relative_y": relative_y
 	}
 
 # TODO: These two can almost certainly be joined later to save processing time.
@@ -28,24 +31,19 @@ func recursive_depth_trace() -> int:
 		count += branch.recursive_depth_trace()
 	return count
 
-func recursively_get_coords(coord_array := [], x := 0, y:= 0):
-	coord_array.append({
-		"encounter": self,
-		"coords": Vector2(x, y)
-	})
-	x += 1
-	y += 1
-	for i in range(branches.size()):
-		var branch = branches[i]
-		if i > 0:
-			y += branches[i - 1].recursive_depth_trace()
-		branch.recursively_get_coords(coord_array, x, y)
-	return coord_array
-
 func _init(encounter_type: String, max_branches: int, parent_node : EncounterRes, sec_level : int, distance_from_end: int):
 	self.type = encounter_type
 	self.DISTANCE_FROM_END = distance_from_end
 	self.parent = parent_node
+	if !parent_node:
+		self.relative_y = 0
+	else:
+		self.relative_y = 1
+		for sibling in parent_node.branches:
+			if sibling == self:
+				break
+			else:
+				self.relative_y += sibling.recursive_depth_trace()
 	self.security_level = sec_level
 	if distance_from_end > 0:
 		for i in range(randi_range(1, max_branches)):
