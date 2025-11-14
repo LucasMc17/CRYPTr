@@ -1,5 +1,8 @@
-@tool
-extends Switchable
+# @tool
+# TODO: There is a lot to do here in regards to making this pretty. I want it to be dynamically sized and centered in a panel
+# This issue is that the the map structure is a tree of nodes, not one single node that fits neatly within a parent container
+# Much more to come
+extends Container
 
 @export_category("DEBUG")
 @export var RESET_BUTTON := true:

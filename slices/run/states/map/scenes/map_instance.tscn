@@ -1,0 +1,355 @@
+[gd_scene load_steps=64 format=3 uid="uid://dg0nic7lnu7ry"]
+
+[ext_resource type="Script" uid="uid://chovq1ex3kco7" path="res://slices/run/states/map/scenes/map_instance.gd" id="1_42v20"]
+[ext_resource type="Script" uid="uid://c1cegw7atujov" path="res://resources/encounters/encounter.gd" id="2_pbblo"]
+[ext_resource type="PackedScene" uid="uid://df3t3dwnccctd" path="res://slices/run/states/map/scenes/map_node.tscn" id="2_r5hic"]
+
+[sub_resource type="Resource" id="Resource_cnfx0"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_y2vg6"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_cnfx0")])
+
+[sub_resource type="Resource" id="Resource_tojck"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_llxah"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_3anvn"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_tojck"), SubResource("Resource_llxah")])
+
+[sub_resource type="Resource" id="Resource_ch4y7"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_bu8tr"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_ryvkg"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_ch4y7"), SubResource("Resource_bu8tr")])
+
+[sub_resource type="Resource" id="Resource_pcclg"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 3
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_y2vg6"), SubResource("Resource_3anvn"), SubResource("Resource_ryvkg")])
+
+[sub_resource type="Resource" id="Resource_uwm4b"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_jmedb"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_ie6n3"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_uwm4b"), SubResource("Resource_jmedb")])
+
+[sub_resource type="Resource" id="Resource_f6kd1"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 3
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_ie6n3")])
+
+[sub_resource type="Resource" id="Resource_t60b6"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_r1kiq"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_t60b6")])
+
+[sub_resource type="Resource" id="Resource_baamo"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 3
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_r1kiq")])
+
+[sub_resource type="Resource" id="Resource_ryku6"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 2
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_pcclg"), SubResource("Resource_f6kd1"), SubResource("Resource_baamo")])
+
+[sub_resource type="Resource" id="Resource_5tvlc"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_5342o"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_dcgpy"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_5tvlc"), SubResource("Resource_5342o")])
+
+[sub_resource type="Resource" id="Resource_t10bc"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 3
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_dcgpy")])
+
+[sub_resource type="Resource" id="Resource_jejsc"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_6uaa7"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_jejsc")])
+
+[sub_resource type="Resource" id="Resource_l5e6e"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_dtu43"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_3xgut"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_r6j0a"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_l5e6e"), SubResource("Resource_dtu43"), SubResource("Resource_3xgut")])
+
+[sub_resource type="Resource" id="Resource_ub3nw"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 3
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_6uaa7"), SubResource("Resource_r6j0a")])
+
+[sub_resource type="Resource" id="Resource_xe323"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 2
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_t10bc"), SubResource("Resource_ub3nw")])
+
+[sub_resource type="Resource" id="Resource_htbj8"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_cqryk"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_htbj8")])
+
+[sub_resource type="Resource" id="Resource_o3k5k"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_nvjx2"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_d37gt"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_o3k5k"), SubResource("Resource_nvjx2")])
+
+[sub_resource type="Resource" id="Resource_sx2n4"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_bpw4f"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_ur1vr"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_sx2n4"), SubResource("Resource_bpw4f")])
+
+[sub_resource type="Resource" id="Resource_ucfyh"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 3
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_cqryk"), SubResource("Resource_d37gt"), SubResource("Resource_ur1vr")])
+
+[sub_resource type="Resource" id="Resource_mbsdk"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 2
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_ucfyh")])
+
+[sub_resource type="Resource" id="Resource_mcijl"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 1
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_ryku6"), SubResource("Resource_xe323"), SubResource("Resource_mbsdk")])
+
+[sub_resource type="Resource" id="Resource_f7wmb"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_tftwi"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_f7wmb")])
+
+[sub_resource type="Resource" id="Resource_5o2sh"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_ejj8e"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_5o2sh")])
+
+[sub_resource type="Resource" id="Resource_gy64m"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 3
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_tftwi"), SubResource("Resource_ejj8e")])
+
+[sub_resource type="Resource" id="Resource_hii7s"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 2
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_gy64m")])
+
+[sub_resource type="Resource" id="Resource_rgu3b"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_qm74j"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_hu54l"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_lbybd"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_rgu3b"), SubResource("Resource_qm74j"), SubResource("Resource_hu54l")])
+
+[sub_resource type="Resource" id="Resource_wden4"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_c56av"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_wden4")])
+
+[sub_resource type="Resource" id="Resource_wos60"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 3
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_lbybd"), SubResource("Resource_c56av")])
+
+[sub_resource type="Resource" id="Resource_xe37a"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_p6de8"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 5
+
+[sub_resource type="Resource" id="Resource_aglgh"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 4
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_xe37a"), SubResource("Resource_p6de8")])
+
+[sub_resource type="Resource" id="Resource_fvbx8"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 3
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_aglgh")])
+
+[sub_resource type="Resource" id="Resource_0i1f2"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 2
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_wos60"), SubResource("Resource_fvbx8")])
+
+[sub_resource type="Resource" id="Resource_aqh3w"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+security_level = 1
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_hii7s"), SubResource("Resource_0i1f2")])
+
+[sub_resource type="Resource" id="Resource_0xm0e"]
+script = ExtResource("2_pbblo")
+type = "MATCH"
+branches = Array[ExtResource("2_pbblo")]([SubResource("Resource_mcijl"), SubResource("Resource_aqh3w")])
+
+[node name="MapInstance" type="Container"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_42v20")
+ENCOUNTER_MAP = SubResource("Resource_0xm0e")
+CURRENT_ENCOUNTER = SubResource("Resource_0xm0e")
+DEPTH_LIMIT = 2.0
+
+[node name="RootNode" parent="." instance=ExtResource("2_r5hic")]
+unique_name_in_owner = true
+layout_mode = 2
+ENCOUNTER = SubResource("Resource_0xm0e")
