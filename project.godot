@@ -21,6 +21,11 @@ Events="*res://globals/events.gd"
 Player="*res://globals/player.gd"
 DebugNode="*res://globals/debug_node.tscn"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [input]
 
 backspace={
