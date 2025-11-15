@@ -1,4 +1,4 @@
-@tool
+# @tool
 class_name MapNode extends ColorRect
 
 var map_node_scene = preload('./map_node.tscn')
@@ -29,4 +29,3 @@ func _ready():
 		line.add_point(Vector2.ZERO)
 		line.add_point(Vector2(0, branch.relative_y * y_cell_size - 20))
 		line.add_point(Vector2(x_cell_size, branch.relative_y * y_cell_size - 20))
-		print(line)

@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://lpldnhg0wrl8"]
-
-[ext_resource type="Script" uid="uid://dnri77j0dgum0" path="res://slices/run/states/map/scenes/map_line.gd" id="1_c6uqf"]
-
-[node name="MapLine" type="Line2D"]
-position = Vector2(1, 0)
-points = PackedVector2Array(0, 0, 0, 0, 0, 0)
-script = ExtResource("1_c6uqf")

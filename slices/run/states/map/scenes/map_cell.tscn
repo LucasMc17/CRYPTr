@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://8til8r64ye6c"]
 
-[node name="TestMapCell" type="Control"]
+[node name="MapCell" type="Control"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 3
 anchors_preset = 15

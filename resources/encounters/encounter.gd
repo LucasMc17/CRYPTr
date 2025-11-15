@@ -24,7 +24,6 @@ func to_object() -> Dictionary:
 		"relative_y": relative_y
 	}
 
-# TODO: These two can almost certainly be joined later to save processing time.
 func recursive_depth_trace() -> int:
 	var count = 1
 	for branch in branches:
