@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3ennndecf56b"]
+[gd_scene load_steps=5 format=3 uid="uid://b3ennndecf56b"]
 
 [ext_resource type="Script" uid="uid://en1uhxivcuk7" path="res://slices/run/run_screen.gd" id="1_lcpi4"]
-[ext_resource type="PackedScene" uid="uid://d3dvjcwrjq0u0" path="res://scenes/debug_ui/debug_ui.tscn" id="2_o8dxk"]
 [ext_resource type="PackedScene" uid="uid://hsul0q167iju" path="res://slices/run/states/encounter/encounter.tscn" id="4_lcpi4"]
 [ext_resource type="PackedScene" uid="uid://d3pg22dsctbb0" path="res://slices/run/states/map/map.tscn" id="4_o8dxk"]
 [ext_resource type="Script" uid="uid://dgjbmlg6wlice" path="res://ui_states/ui_switcher.gd" id="5_o8dxk"]
@@ -14,9 +13,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lcpi4")
-
-[node name="DebugUi" parent="." instance=ExtResource("2_o8dxk")]
-layout_mode = 1
 
 [node name="RunSwitcher" type="Control" parent="."]
 layout_mode = 1

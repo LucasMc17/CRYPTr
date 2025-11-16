@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds8wxdro0xwht"]
+
+[ext_resource type="Theme" uid="uid://b5d6wfr1eoxtk" path="res://assets/themes/debug_theme/debug_theme.tres" id="1_lekl0"]
+[ext_resource type="Script" uid="uid://b72ckrpcnhoyh" path="res://scenes/debug_ui/debug_blocks/debug_stats.gd" id="2_lrqtp"]
+
+[node name="DebugStats" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lekl0")
+script = ExtResource("2_lrqtp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="FPSLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "FPS"
+horizontal_alignment = 1
+
+[node name="FPSValue" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1

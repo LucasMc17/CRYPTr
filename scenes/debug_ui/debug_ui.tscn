@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3dvjcwrjq0u0"]
+[gd_scene load_steps=4 format=3 uid="uid://d3dvjcwrjq0u0"]
 
+[ext_resource type="PackedScene" uid="uid://ds8wxdro0xwht" path="res://scenes/debug_ui/debug_blocks/debug_stats.tscn" id="1_2m3es"]
 [ext_resource type="PackedScene" uid="uid://cjsi70w5ucfif" path="res://scenes/debug_ui/debug_blocks/debug_console.tscn" id="1_qk6j6"]
+[ext_resource type="PackedScene" uid="uid://dw2oqlv6djjwt" path="res://scenes/debug_ui/debug_blocks/debug_controls.tscn" id="2_pl34o"]
 
 [node name="DebugUi" type="VBoxContainer"]
 anchors_preset = -1
@@ -10,6 +12,16 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="DebugStats" parent="HBoxContainer" instance=ExtResource("1_2m3es")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DebugControls" parent="HBoxContainer" instance=ExtResource("2_pl34o")]
+layout_mode = 2
 
 [node name="DebugConsole" parent="." instance=ExtResource("1_qk6j6")]
 layout_mode = 2

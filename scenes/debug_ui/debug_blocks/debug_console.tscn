@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjsi70w5ucfif"]
 
-[ext_resource type="Theme" uid="uid://b5d6wfr1eoxtk" path="res://themes/debug_theme/debug_theme.tres" id="1_ql2lk"]
+[ext_resource type="Theme" uid="uid://b5d6wfr1eoxtk" path="res://assets/themes/debug_theme/debug_theme.tres" id="1_ql2lk"]
 [ext_resource type="Script" uid="uid://oc11a05x7jmn" path="res://scenes/debug_ui/debug_blocks/debug_console.gd" id="2_rf8l3"]
 
 [node name="DebugConsole" type="PanelContainer"]

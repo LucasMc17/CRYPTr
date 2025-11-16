@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw2oqlv6djjwt"]
+
+[ext_resource type="Theme" uid="uid://b5d6wfr1eoxtk" path="res://assets/themes/debug_theme/debug_theme.tres" id="1_uhrhv"]
+[ext_resource type="Script" uid="uid://lo1us8r4iqp7" path="res://scenes/debug_ui/debug_blocks/debug_controls.gd" id="2_8u5om"]
+
+[node name="DebugControls" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uhrhv")
+script = ExtResource("2_8u5om")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GodModeToggle" type="CheckButton" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+text = "God Mode"
+alignment = 1
+
+[node name="AcceptAllLettersToggle" type="CheckButton" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+text = "Accept All Letters"
+alignment = 1
+
+[node name="AcceptAllWordsToggle" type="CheckButton" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+text = "Accept All Words"
+alignment = 1
+
+[node name="InstawinToggle" type="CheckButton" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+text = "Instant Win"
+alignment = 1
+
+[connection signal="toggled" from="VBoxContainer/GodModeToggle" to="." method="_on_god_mode_toggle_toggled"]
+[connection signal="toggled" from="VBoxContainer/AcceptAllLettersToggle" to="." method="_on_accept_all_letters_toggle_toggled"]
+[connection signal="toggled" from="VBoxContainer/AcceptAllWordsToggle" to="." method="_on_accept_all_words_toggle_toggled"]
+[connection signal="toggled" from="VBoxContainer/InstawinToggle" to="." method="_on_instawin_toggle_toggled"]
