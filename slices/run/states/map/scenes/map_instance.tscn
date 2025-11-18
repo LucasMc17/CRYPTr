@@ -1,79 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://xlr84cr7mapo"]
+[gd_scene load_steps=4 format=3 uid="uid://xlr84cr7mapo"]
 
 [ext_resource type="Script" uid="uid://cryfdx5caen55" path="res://slices/run/states/map/scenes/map_instance.gd" id="1_u6mjq"]
 [ext_resource type="Script" uid="uid://c1cegw7atujov" path="res://resources/encounters/encounter.gd" id="2_fq3hg"]
 
-[sub_resource type="Resource" id="Resource_nv4ed"]
-script = ExtResource("2_fq3hg")
-type = "MATCH"
-security_level = 2
-parent = null
-
-[sub_resource type="Resource" id="Resource_h6ep6"]
-script = ExtResource("2_fq3hg")
-type = "MATCH"
-security_level = 1
-DISTANCE_FROM_END = 1
-parent = null
-branches = Array[ExtResource("2_fq3hg")]([SubResource("Resource_nv4ed")])
-
-[sub_resource type="Resource" id="Resource_n8rb0"]
-script = ExtResource("2_fq3hg")
-type = "MATCH"
-security_level = 2
-parent = null
-
-[sub_resource type="Resource" id="Resource_83bhp"]
-script = ExtResource("2_fq3hg")
-type = "MATCH"
-security_level = 2
-parent = null
-
-[sub_resource type="Resource" id="Resource_jyy1e"]
-script = ExtResource("2_fq3hg")
-type = "MATCH"
-security_level = 2
-parent = null
-
-[sub_resource type="Resource" id="Resource_8w3oj"]
-script = ExtResource("2_fq3hg")
-type = "MATCH"
-security_level = 1
-DISTANCE_FROM_END = 1
-parent = null
-branches = Array[ExtResource("2_fq3hg")]([SubResource("Resource_n8rb0"), SubResource("Resource_83bhp"), SubResource("Resource_jyy1e")])
-
-[sub_resource type="Resource" id="Resource_habbf"]
-script = ExtResource("2_fq3hg")
-type = "MATCH"
-security_level = 2
-parent = null
-
-[sub_resource type="Resource" id="Resource_klavc"]
-script = ExtResource("2_fq3hg")
-type = "MATCH"
-security_level = 2
-parent = null
-
-[sub_resource type="Resource" id="Resource_yos1s"]
-script = ExtResource("2_fq3hg")
-type = "MATCH"
-security_level = 2
-parent = null
-
-[sub_resource type="Resource" id="Resource_v1ru6"]
-script = ExtResource("2_fq3hg")
-type = "MATCH"
-security_level = 1
-DISTANCE_FROM_END = 1
-parent = null
-branches = Array[ExtResource("2_fq3hg")]([SubResource("Resource_habbf"), SubResource("Resource_klavc"), SubResource("Resource_yos1s")])
-
 [sub_resource type="Resource" id="Resource_enmdw"]
 script = ExtResource("2_fq3hg")
-type = "MATCH"
 DISTANCE_FROM_END = 2
-branches = Array[ExtResource("2_fq3hg")]([SubResource("Resource_h6ep6"), SubResource("Resource_8w3oj"), SubResource("Resource_v1ru6")])
 
 [node name="MapInstance" type="GridContainer"]
 anchors_preset = 15

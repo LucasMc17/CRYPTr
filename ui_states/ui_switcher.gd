@@ -2,6 +2,7 @@ class_name UISwitcher extends Control
 
 @export var SCENES : Dictionary[String, PackedScene]
 
+
 @export var CURRENT_SCENE : StringName
 
 func _ready():
@@ -10,6 +11,7 @@ func _ready():
 		scene.setup()
 		add_child(scene)
 
+## This function swaps from the currently displayed scene to the scene specified by the new_scene_name parameter.
 func transition(new_scene_name: StringName, ext := {}) -> void:
 	if SCENES.has(new_scene_name):
 		CURRENT_SCENE = new_scene_name

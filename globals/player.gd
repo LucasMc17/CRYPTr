@@ -23,6 +23,9 @@ var STACK : Array[CryptographRes] = []
 ## Run memory
 var anagrams := {}
 
+var ENCOUNTER_MAP : EncounterRes
+var CURRENT_ENCOUNTER : EncounterRes
+
 func initialize_stack(starter_stack: StarterDeckRes) -> void:
 	var result : Array[CryptographRes] = []
 	for cryptograph in starter_stack.cryptographs:

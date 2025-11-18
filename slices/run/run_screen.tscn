@@ -15,6 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_lcpi4")
 
 [node name="RunSwitcher" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,15 +27,17 @@ SCENES = Dictionary[String, PackedScene]({
 "Encounter": ExtResource("4_lcpi4"),
 "Map": ExtResource("4_o8dxk")
 })
-CURRENT_SCENE = &"Encounter"
+CURRENT_SCENE = &"Map"
 metadata/_custom_type_script = "uid://dgjbmlg6wlice"
 
 [node name="PauseSwitcher" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("5_o8dxk")
 metadata/_custom_type_script = "uid://dgjbmlg6wlice"

@@ -1,5 +1,6 @@
 extends Switchable
 
+# TODO: These two to be initted via encounter resource during setup function
 @export var DEPTH := 1
 @export var SECURITY_LEVEL := 1
 
