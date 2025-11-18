@@ -17,6 +17,7 @@ func _ready():
 		INSTAWIN_TOGGLE.disabled = true
 
 func _on_god_mode_toggle_toggled(is_on : bool) -> void:
+	DebugNode.print('God Mode On')
 	DebugNode.GOD_MODE = is_on
 	if is_on:
 		ACCEPT_ALL_LETTERS_TOGGLE.disabled = true

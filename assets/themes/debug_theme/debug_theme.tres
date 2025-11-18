@@ -1,7 +1,9 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b5d6wfr1eoxtk"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b5d6wfr1eoxtk"]
 
 [ext_resource type="StyleBox" uid="uid://dk7omd53mdrkt" path="res://assets/themes/debug_theme/debug_style_box_01.tres" id="1_ibtuu"]
+[ext_resource type="FontFile" uid="uid://do185of0nycet" path="res://assets/fonts/Space_Mono/SpaceMono-Regular.ttf" id="2_xnxgk"]
 
 [resource]
+default_font = ExtResource("2_xnxgk")
 default_font_size = 30
 PanelContainer/styles/panel = ExtResource("1_ibtuu")

@@ -19,7 +19,7 @@ signal lost()
 
 func _ready():
 	if "--debug-encounter" in OS.get_cmdline_args():
-		print('ENCOUNTER accessed directly, initializing CLASSIC stack')
+		DebugNode.print('ENCOUNTER accessed directly, initializing CLASSIC stack')
 		var CLASSIC_STACK = load("res://resources/starter_decks/the_classic.tres")
 		Player.initialize_stack(CLASSIC_STACK)
 	DECK.init_and_shuffle()
@@ -47,14 +47,14 @@ func _unhandled_input(event):
 		input_character(event)
 
 func win() -> void:
-	print("YOU WON")
+	DebugNode.print("YOU WON")
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
 	else:
 		won.emit()
 
 func lose() -> void:
-	print("YOU LOSE")
+	DebugNode.print("YOU LOSE")
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
 	else:

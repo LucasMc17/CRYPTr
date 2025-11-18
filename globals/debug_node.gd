@@ -6,6 +6,10 @@ func check_overrides(value):
 	else:
 		return value
 
+func print(message):
+	if DEBUG_CONSOLE:
+		DEBUG_CONSOLE.log(message)
+
 @export_category("Master Override")
 @export var GOD_MODE := false
 
@@ -19,3 +23,5 @@ func check_overrides(value):
 @export var INSTAWIN := false:
 	get():
 		return check_overrides(INSTAWIN)
+
+var DEBUG_CONSOLE : DebugConsole
