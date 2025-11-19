@@ -12,34 +12,25 @@ var x_cell_size := 50.0
 
 @export var next_file_offset := Vector2(50, 150)
 
-@onready var PARENT_LINE_HOLDER := %ParentLineHolder
 @onready var CHILDREN_LINE_HOLDER := %ChildrenLineHolder
-
-func clear_children():
-	for child in CHILDREN_LINE_HOLDER.get_children():
-		child.free()
+@onready var PARENT_LINE := %ParentLine
 
 func resize_lines(x : float):
-	for line in CHILDREN_LINE_HOLDER.get_children():
-		line.points[2].x = x
+	if PARENT_LINE.points:
+		PARENT_LINE.points[1].x = -x + 20
+		PARENT_LINE.points[2].x = -x + 20
 
 func update_colors():
 	if ENCOUNTER.VISITED:
-		self_modulate = "#0000FF"
-	for child in CHILDREN_LINE_HOLDER.get_children():
-		if child.ENCOUNTER.VISITED:
-			child.self_modulate = '#0000FF'
+		modulate = "#0000FF"
+		PARENT_LINE.z_index = 10
 
 func _ready():
-	for branch in ENCOUNTER.BRANCHES:
-		var line = MapLine.new()
-		line.ENCOUNTER = branch
-		CHILDREN_LINE_HOLDER.add_child(line)
-		line.width = 5
-		line.add_point(Vector2.ZERO)
-		line.add_point(Vector2(0, branch.relative_y * y_cell_size - 20))
-		line.add_point(Vector2(x_cell_size, branch.relative_y * y_cell_size - 20))
-		update_colors()
+	if ENCOUNTER.PARENT:
+		PARENT_LINE.width = 5
+		PARENT_LINE.add_point(Vector2.ZERO)
+		PARENT_LINE.add_point(Vector2(-x_cell_size + 20, 0))
+		PARENT_LINE.add_point(Vector2(-x_cell_size + 20, -ENCOUNTER.relative_y * y_cell_size))
 
 func _gui_input(event):
 	if Player.CURRENT_ENCOUNTER:

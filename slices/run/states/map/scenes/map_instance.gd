@@ -54,6 +54,7 @@ func build_grid_map():
 				map_resized.connect(file.resize_lines)
 				file.x_cell_size = size.x / columns
 				file.encounter_clicked.connect(_on_encounter_clicked)
+				file.z_index = obj.encounter.DISTANCE_FROM_END
 				cell.add_child(file)
 			add_child(cell)
 
