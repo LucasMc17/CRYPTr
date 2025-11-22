@@ -26,8 +26,18 @@ var anagrams := {}
 var ENCOUNTER_MAP : EncounterRes
 var CURRENT_ENCOUNTER : EncounterRes
 
-func initialize_stack(starter_stack: StarterDeckRes) -> void:
+# func initialize_stack(starter_stack: StarterDeckRes) -> void:
+# 	var result : Array[CryptographRes] = []
+# 	for cryptograph in starter_stack.cryptographs:
+# 		result.append(cryptograph.duplicate())
+# 	STACK = result
+
+func initialize_stack(starter_stack : StarterStack):
+	var alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 	var result : Array[CryptographRes] = []
-	for cryptograph in starter_stack.cryptographs:
-		result.append(cryptograph.duplicate())
+	for char in alpha:
+		if starter_stack[char] > 0:
+			var cryptograph = load('res://resources/cryptographs/' + char + '_cryptograph.tres')
+			for i in range(starter_stack[char]):
+				result.append(cryptograph.duplicate())
 	STACK = result

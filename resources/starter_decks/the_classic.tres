@@ -1,34 +1,33 @@
-[gd_resource type="Resource" script_class="StarterDeckRes" load_steps=28 format=3 uid="uid://dg0homh8nbtdf"]
+[gd_resource type="Resource" script_class="StarterStack" load_steps=2 format=3 uid="uid://u0k54n8jdg8h"]
 
-[ext_resource type="Script" uid="uid://3lshgupf546a" path="res://resources/starter_decks/starter_deck.gd" id="1_8ilur"]
-[ext_resource type="Script" uid="uid://dq85o4vi7fxqy" path="res://resources/cryptographs/cryptograph.gd" id="2_a2uaj"]
-[ext_resource type="Resource" uid="uid://1coi1n200qx5" path="res://resources/cryptographs/a_cryptograph.tres" id="2_yv6uq"]
-[ext_resource type="Resource" uid="uid://dxcchj4quskko" path="res://resources/cryptographs/e_cryptograph.tres" id="3_7kw70"]
-[ext_resource type="Resource" uid="uid://bpt027gfjbhm6" path="res://resources/cryptographs/i_cryptograph.tres" id="4_l1tji"]
-[ext_resource type="Resource" uid="uid://bqsdxquvyy62l" path="res://resources/cryptographs/o_cryptograph.tres" id="5_mtno5"]
-[ext_resource type="Resource" uid="uid://dyh7oy8gjpq8o" path="res://resources/cryptographs/u_cryptograph.tres" id="6_c6yed"]
-[ext_resource type="Resource" uid="uid://2vaptfgv32oq" path="res://resources/cryptographs/l_cryptograph.tres" id="7_x1qsy"]
-[ext_resource type="Resource" uid="uid://bhu1cms4i1qqr" path="res://resources/cryptographs/n_cryptograph.tres" id="8_2i6rq"]
-[ext_resource type="Resource" uid="uid://ool5037venvw" path="res://resources/cryptographs/r_cryptograph.tres" id="9_hubem"]
-[ext_resource type="Resource" uid="uid://cgq5vtamiscfu" path="res://resources/cryptographs/t_cryptograph.tres" id="10_b0wcx"]
-[ext_resource type="Resource" uid="uid://cdg7k6t2nsdx8" path="res://resources/cryptographs/d_cryptograph.tres" id="11_iyvrm"]
-[ext_resource type="Resource" uid="uid://dxsxrxjyv3w7g" path="res://resources/cryptographs/g_cryptograph.tres" id="12_fq7hv"]
-[ext_resource type="Resource" uid="uid://333ora2lubw1" path="res://resources/cryptographs/b_cryptograph.tres" id="13_l81a6"]
-[ext_resource type="Resource" uid="uid://cqqsanmr3ajwo" path="res://resources/cryptographs/c_cryptograph.tres" id="14_aw0u4"]
-[ext_resource type="Resource" uid="uid://bg0wuiddvh0b1" path="res://resources/cryptographs/m_cryptograph.tres" id="15_ge20v"]
-[ext_resource type="Resource" uid="uid://bp3rwydj3fybb" path="res://resources/cryptographs/p_cryptograph.tres" id="16_x7qpj"]
-[ext_resource type="Resource" uid="uid://cxp5w4iqgfw30" path="res://resources/cryptographs/f_cryptograph.tres" id="17_be0od"]
-[ext_resource type="Resource" uid="uid://bfs3k2eexxve8" path="res://resources/cryptographs/h_cryptograph.tres" id="18_ogxku"]
-[ext_resource type="Resource" uid="uid://b0t8jrjefjytd" path="res://resources/cryptographs/v_cryptograph.tres" id="19_85xmk"]
-[ext_resource type="Resource" uid="uid://d0v1ktahackro" path="res://resources/cryptographs/w_cryptograph.tres" id="20_2x208"]
-[ext_resource type="Resource" uid="uid://dw00ymlpri5xt" path="res://resources/cryptographs/y_cryptograph.tres" id="21_85xmk"]
-[ext_resource type="Resource" uid="uid://dc2xv0121pkrl" path="res://resources/cryptographs/k_cryptograph.tres" id="22_2x208"]
-[ext_resource type="Resource" uid="uid://bwu75mko23ui2" path="res://resources/cryptographs/j_cryptograph.tres" id="23_hhrug"]
-[ext_resource type="Resource" uid="uid://du8iflfa2lqu5" path="res://resources/cryptographs/x_cryptograph.tres" id="24_uun8a"]
-[ext_resource type="Resource" uid="uid://cp7bieg10ljt" path="res://resources/cryptographs/q_cryptograph.tres" id="25_7c55q"]
-[ext_resource type="Resource" uid="uid://c2e3gxy4sllub" path="res://resources/cryptographs/z_cryptograph.tres" id="26_4ptoh"]
+[ext_resource type="Script" uid="uid://bvr1ce5aqw0k5" path="res://resources/starter_decks/starter_stack.gd" id="1_mkx65"]
 
 [resource]
-script = ExtResource("1_8ilur")
-cryptographs = Array[ExtResource("2_a2uaj")]([ExtResource("2_yv6uq"), ExtResource("2_yv6uq"), ExtResource("2_yv6uq"), ExtResource("2_yv6uq"), ExtResource("2_yv6uq"), ExtResource("3_7kw70"), ExtResource("3_7kw70"), ExtResource("3_7kw70"), ExtResource("3_7kw70"), ExtResource("3_7kw70"), ExtResource("4_l1tji"), ExtResource("4_l1tji"), ExtResource("4_l1tji"), ExtResource("4_l1tji"), ExtResource("4_l1tji"), ExtResource("5_mtno5"), ExtResource("5_mtno5"), ExtResource("5_mtno5"), ExtResource("5_mtno5"), ExtResource("5_mtno5"), ExtResource("6_c6yed"), ExtResource("6_c6yed"), ExtResource("6_c6yed"), ExtResource("6_c6yed"), ExtResource("6_c6yed"), ExtResource("7_x1qsy"), ExtResource("7_x1qsy"), ExtResource("7_x1qsy"), ExtResource("7_x1qsy"), ExtResource("8_2i6rq"), ExtResource("8_2i6rq"), ExtResource("8_2i6rq"), ExtResource("8_2i6rq"), ExtResource("9_hubem"), ExtResource("9_hubem"), ExtResource("9_hubem"), ExtResource("9_hubem"), ExtResource("10_b0wcx"), ExtResource("10_b0wcx"), ExtResource("10_b0wcx"), ExtResource("10_b0wcx"), ExtResource("11_iyvrm"), ExtResource("11_iyvrm"), ExtResource("11_iyvrm"), ExtResource("11_iyvrm"), ExtResource("12_fq7hv"), ExtResource("12_fq7hv"), ExtResource("12_fq7hv"), ExtResource("12_fq7hv"), ExtResource("13_l81a6"), ExtResource("14_aw0u4"), ExtResource("15_ge20v"), ExtResource("16_x7qpj"), ExtResource("17_be0od"), ExtResource("18_ogxku"), ExtResource("19_85xmk"), ExtResource("20_2x208"), ExtResource("21_85xmk"), ExtResource("22_2x208"), ExtResource("23_hhrug"), ExtResource("24_uun8a"), ExtResource("25_7c55q"), ExtResource("26_4ptoh")])
-metadata/_custom_type_script = "uid://3lshgupf546a"
+script = ExtResource("1_mkx65")
+total = 52
+a = 4
+e = 4
+i = 3
+o = 3
+u = 2
+l = 2
+n = 2
+r = 2
+t = 2
+d = 2
+g = 2
+b = 2
+c = 2
+m = 2
+p = 2
+f = 2
+h = 2
+v = 2
+w = 2
+y = 2
+k = 2
+j = 1
+x = 1
+q = 1
+z = 1
+metadata/_custom_type_script = "uid://bvr1ce5aqw0k5"

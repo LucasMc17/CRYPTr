@@ -87,5 +87,5 @@ func _on_encounter_clicked(map_node : MapNode):
 				branch.bypass()
 				# branch.SCENE.update_colors()
 	Player.CURRENT_ENCOUNTER = map_node.ENCOUNTER
-	# Events.match_started.emit(encounter)
+	Events.match_started.emit(map_node.ENCOUNTER)
 	MAP_TREE.update_colors()

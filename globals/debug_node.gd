@@ -24,4 +24,6 @@ func print(message):
 	get():
 		return check_overrides(INSTAWIN)
 
+@export var FORCE_STACK : StarterStack
+
 var DEBUG_CONSOLE : DebugConsole

@@ -21,8 +21,11 @@ signal lost()
 func _ready():
 	if "--debug-encounter" in OS.get_cmdline_args():
 		DebugNode.print('ENCOUNTER accessed directly, initializing CLASSIC stack')
-		var CLASSIC_STACK = load("res://resources/starter_decks/the_classic.tres")
-		Player.initialize_stack(CLASSIC_STACK)
+		if DebugNode.FORCE_STACK:
+			Player.initialize_stack(DebugNode.FORCE_STACK)
+		else:
+			var CLASSIC_STACK = load("res://resources/starter_decks/the_classic.tres")
+			Player.initialize_stack(CLASSIC_STACK)
 	DECK.init_and_shuffle()
 	HAND.add_to_hand(DECK.draw())
 
@@ -74,7 +77,7 @@ func enter_word() -> void:
 		if SCORING.check_win():
 			win()
 			return
-		if ATTEMPTS < 1:
+		if ATTEMPTS < 1 || DECK.all.is_empty():
 			lose()
 			return
 

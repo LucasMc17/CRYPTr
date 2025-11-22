@@ -19,7 +19,7 @@ func init_and_shuffle() -> void:
 
 func draw(count := 6) -> Array[CryptographRes]:
 	var cryptographs : Array[CryptographRes] = []
-	while count > 0:
+	while count > 0 && !_ENCOUNTER_STACK.is_empty():
 		cryptographs.append(_ENCOUNTER_STACK.pop_front())
 		count -= 1
 	return cryptographs
