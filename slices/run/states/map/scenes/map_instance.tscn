@@ -1,11 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://xlr84cr7mapo"]
+[gd_scene load_steps=2 format=3 uid="uid://xlr84cr7mapo"]
 
 [ext_resource type="Script" uid="uid://cryfdx5caen55" path="res://slices/run/states/map/scenes/map_instance.gd" id="1_u6mjq"]
-[ext_resource type="Script" uid="uid://c1cegw7atujov" path="res://resources/encounters/encounter.gd" id="2_fq3hg"]
-
-[sub_resource type="Resource" id="Resource_enmdw"]
-script = ExtResource("2_fq3hg")
-DISTANCE_FROM_END = 2
 
 [node name="MapInstance" type="GridContainer"]
 anchors_preset = 15
@@ -19,7 +14,5 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 3
 script = ExtResource("1_u6mjq")
-ENCOUNTER_MAP = SubResource("Resource_enmdw")
-CURRENT_ENCOUNTER = SubResource("Resource_enmdw")
 
 [connection signal="resized" from="." to="." method="_on_resized"]

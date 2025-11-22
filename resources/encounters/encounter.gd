@@ -8,6 +8,7 @@ class_name EncounterRes extends Resource
 @export var SECURITY_LEVEL := 0
 @export var DISTANCE_FROM_END := 0
 @export var VISITED := false
+@export var BYPASSED := false
 # @export var current_position := false
 
 @export_group("Branches")
@@ -17,6 +18,8 @@ class_name EncounterRes extends Resource
 
 var relative_y : int
 var alphabet := "abcdefghijklmnopqrstuvwxyz0123456789"
+
+var SCENE : MapNode
 
 func to_object() -> Dictionary:
 	return {
@@ -35,6 +38,11 @@ func recursive_depth_trace() -> int:
 	for branch in BRANCHES:
 		count += branch.recursive_depth_trace()
 	return count
+
+func bypass():
+	BYPASSED = true
+	for branch in BRANCHES:
+		branch.bypass()
 
 func _init(encounter_type: String, max_branches: int, parent_node : EncounterRes, session_depth : int, sec_level : int, distance_from_end: int, sibling_index := 0):
 	var name = str(sec_level) + '_' + str(sibling_index) + '_'

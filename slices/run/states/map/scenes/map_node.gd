@@ -3,7 +3,7 @@ class_name MapNode extends ColorRect
 
 var map_node_scene = preload('./map_node.tscn')
 
-signal encounter_clicked(encounter : EncounterRes, scene : MapNode)
+signal encounter_clicked(scene : MapNode)
 
 var y_cell_size := 50
 var x_cell_size := 50.0
@@ -24,6 +24,8 @@ func update_colors():
 	if ENCOUNTER.VISITED:
 		modulate = "#0000FF"
 		PARENT_LINE.z_index = 10
+	elif ENCOUNTER.BYPASSED:
+		modulate = "#999999"
 
 func _ready():
 	if ENCOUNTER.PARENT:
@@ -35,6 +37,6 @@ func _ready():
 func _gui_input(event):
 	if Player.CURRENT_ENCOUNTER:
 		if Player.CURRENT_ENCOUNTER.BRANCHES.has(ENCOUNTER) and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			encounter_clicked.emit(ENCOUNTER, self)
+			encounter_clicked.emit(self)
 	elif Player.ENCOUNTER_MAP == self.ENCOUNTER and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		encounter_clicked.emit(ENCOUNTER, self)
+		encounter_clicked.emit(self)
