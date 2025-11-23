@@ -7,6 +7,7 @@ class_name DebugConsole extends PanelContainer
 # GLOBALS
 var command_history := []
 var _history_pointer
+var COMMANDS = CommandModule.new()
 
 # FUNCS
 func get_from_history(pointer : int):
@@ -19,6 +20,10 @@ func clear():
 
 func _ready():
 	DebugNode.DEBUG_CONSOLE = self
+	Events.command_help.connect(func (_params): COMMANDS.help())
+	Events.command_clear.connect(func (_params): clear())
+	Events.command_echo.connect(func (params): DebugNode.print(' '.join(params)))
+	Events.command_exit.connect(func (_params): get_tree().quit(0))
 
 func _on_history_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -47,9 +52,7 @@ func _input(_event):
 func _on_command_line_text_submitted(new_text):
 	command_history.append(new_text)
 	_history_pointer = null
-	var inputs = Array(new_text.split(' '))
-	var command_name = inputs.pop_front()
-	# DebugNode.command(command_name, inputs, 'Query: ' + new_text)
+	COMMANDS.run(new_text)
 	CommandLine.text = ''
 
 func log(message : Variant):
