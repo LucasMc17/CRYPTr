@@ -20,11 +20,13 @@ signal lost()
 
 func _ready():
 	if "--debug-encounter" in OS.get_cmdline_args():
-		DebugNode.print('ENCOUNTER accessed directly, initializing CLASSIC stack')
+		DebugNode.print('ENCOUNTER accessed directly')
 		if DebugNode.FORCE_STACK:
 			Player.initialize_stack(DebugNode.FORCE_STACK)
+			DebugNode.print('Initializing FORCED stack from Debug Node')
 		else:
 			var CLASSIC_STACK = load("res://resources/starter_decks/the_classic.tres")
+			DebugNode.print('Initializing CLASSIC stack')
 			Player.initialize_stack(CLASSIC_STACK)
 	DECK.init_and_shuffle()
 	HAND.add_to_hand(DECK.draw())
@@ -39,7 +41,11 @@ func _ready():
 	SCORE_PREVIEW.update_score(SCORING.CURRENT_SCORE, SCORING.TARGET_SCORE)
 
 func _unhandled_input(event):
+	if Input.is_action_just_pressed("escape"):
+		DebugNode.print('PAUSED')
+	
 	if Input.is_action_just_pressed("enter"):
+		DebugNode.print('ENTERED')
 		enter_word()
 	
 	if Input.is_action_just_pressed("backspace"):

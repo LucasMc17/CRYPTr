@@ -10,6 +10,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 1
+focus_behavior_recursive = 2
 theme = ExtResource("1_ql2lk")
 script = ExtResource("2_rf8l3")
 
@@ -25,3 +27,7 @@ scroll_following = true
 [node name="CommandLine" type="LineEdit" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+keep_editing_on_text_submit = true
+
+[connection signal="gui_input" from="VBoxContainer/History" to="." method="_on_history_gui_input"]
+[connection signal="text_submitted" from="VBoxContainer/CommandLine" to="." method="_on_command_line_text_submitted"]

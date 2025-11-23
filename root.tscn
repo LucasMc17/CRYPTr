@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://bldhcxsdirdwj"]
+[gd_scene load_steps=4 format=3 uid="uid://bldhcxsdirdwj"]
 
-[ext_resource type="PackedScene" uid="uid://d3dvjcwrjq0u0" path="res://scenes/debug_ui/debug_ui.tscn" id="1_28aoi"]
 [ext_resource type="Script" uid="uid://c88ftet70dpet" path="res://root.gd" id="1_vvh5c"]
 [ext_resource type="PackedScene" uid="uid://cw5c8nfyxr2s6" path="res://slices/start_screen/start_screen.tscn" id="2_vvh5c"]
 [ext_resource type="PackedScene" uid="uid://b3ennndecf56b" path="res://slices/run/run_screen.tscn" id="3_vvh5c"]
@@ -27,6 +26,3 @@ SCENES = Dictionary[String, PackedScene]({
 })
 CURRENT_SCENE = &"StartScreen"
 metadata/_custom_type_script = "uid://dgjbmlg6wlice"
-
-[node name="DebugUi" parent="." instance=ExtResource("1_28aoi")]
-layout_mode = 1
