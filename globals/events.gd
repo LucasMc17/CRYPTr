@@ -10,8 +10,14 @@ signal new_run_started()
 ## Emitted when the player clicks into a new match from the map screen
 signal match_started(encounter : EncounterRes)
 
-## Emitted when the player wins a match and returns to the map screen
+## Emitted when the player wins a match, typically combined with return_to_map
 signal match_won()
+
+## Emitted when the player leaves an encounter and returns to the map
+signal return_to_map(new_map : bool)
+
+## Emitted when a match is lost, forfeiting the run
+signal run_lost()
 
 # DEBUG COMMANDS
 

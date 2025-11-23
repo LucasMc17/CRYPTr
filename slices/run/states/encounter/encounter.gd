@@ -13,12 +13,6 @@ var DECK = DeckModule.new()
 @onready var SCORING = ScoringModule.new()
 @onready var ATTEMPTS := 4
 
-# TODO: do we need these?
-## Emited when the target score is reached and the encounter is won
-signal won()
-## Emited when the player runs out of attempts and the encounter is lost
-signal lost()
-
 func _ready():
 	Events.command_win.connect(func (_params): win())
 	Events.command_lose.connect(func (_params): lose())
@@ -64,14 +58,15 @@ func win() -> void:
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
 	else:
-		won.emit()
+		Events.match_won.emit()
+		Events.return_to_map.emit(false)
 
 func lose() -> void:
 	DebugNode.print("YOU LOSE")
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
 	else:
-		lost.emit()
+		Events.run_lost.emit()
 
 func enter_word() -> void:
 	if SCORING.SCORE_OBJECT.valid:

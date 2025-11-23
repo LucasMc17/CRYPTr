@@ -16,5 +16,9 @@ func setup(init_obj := {}) -> void:
 func _on_match_started(_encounter):
 	RUN_SWITCHER.transition('Encounter')
 
+func _on_map_returned(new_map := false):
+	RUN_SWITCHER.transition('Map', { "new_map": new_map })
+
 func _ready():
 	Events.match_started.connect(_on_match_started)
+	Events.return_to_map.connect(_on_map_returned)

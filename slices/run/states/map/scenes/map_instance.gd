@@ -55,8 +55,8 @@ func init_map(session_depth : int, length_limit : int):
 	# Fourth, place the scenes from the tree in their correct spots throughout the grid
 	populate_scenes(MAP_TREE)
 
-func _ready():
-	init_map(0, 2)
+# func _ready():
+# 	init_map(0, 2)
 
 func convert_coords(coords : Vector2) -> int:
 	return coords.y * columns + coords.x

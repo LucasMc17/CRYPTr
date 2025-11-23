@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3pg22dsctbb0"]
 
-[ext_resource type="Script" uid="uid://di8k3ed6nq64j" path="res://ui_states/switchable.gd" id="1_42v20"]
+[ext_resource type="Script" uid="uid://chovq1ex3kco7" path="res://slices/run/states/map/map.gd" id="1_r5hic"]
 [ext_resource type="PackedScene" uid="uid://xlr84cr7mapo" path="res://slices/run/states/map/scenes/map_instance.tscn" id="2_r5hic"]
 
 [node name="Map" type="Control"]
@@ -10,10 +10,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_42v20")
+script = ExtResource("1_r5hic")
 metadata/_custom_type_script = "uid://di8k3ed6nq64j"
 
-[node name="TestMap" parent="." instance=ExtResource("2_r5hic")]
+[node name="MapInstance" parent="." instance=ExtResource("2_r5hic")]
+unique_name_in_owner = true
 layout_mode = 1
 offset_left = 0.0
 offset_right = 0.0
