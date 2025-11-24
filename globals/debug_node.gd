@@ -32,7 +32,4 @@ var DEBUG_CONSOLE : DebugConsole
 
 func _ready():
 	var root = get_tree().current_scene
-	print('hello world', root)
-	# if root is Control:
-	print('creating debug_ui')
 	root.add_child(DEBUG_UI.instantiate())

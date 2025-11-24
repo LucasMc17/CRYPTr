@@ -38,11 +38,10 @@ func _ready():
 	SCORE_PREVIEW.update_score(SCORING.CURRENT_SCORE, SCORING.TARGET_SCORE)
 
 func _unhandled_input(event):
-	if Input.is_action_just_pressed("escape"):
-		DebugNode.print('PAUSED')
+	# if Input.is_action_just_pressed("escape"):
+	# 	DebugNode.print('PAUSED')
 	
 	if Input.is_action_just_pressed("enter"):
-		DebugNode.print('ENTERED')
 		enter_word()
 	
 	if Input.is_action_just_pressed("backspace"):
@@ -70,6 +69,9 @@ func lose() -> void:
 
 func enter_word() -> void:
 	if SCORING.SCORE_OBJECT.valid:
+		if DebugNode.INSTAWIN:
+			win()
+			return
 		SCORING.CURRENT_SCORE += SCORING.SCORE_OBJECT.total_score
 		SCORE_PREVIEW.update_score(SCORING.CURRENT_SCORE, SCORING.TARGET_SCORE)
 		HAND.discard_by_letters(WORD.text)
