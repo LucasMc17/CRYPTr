@@ -12,4 +12,6 @@ func setup(init_obj := { "new_map": false }):
 
 func _ready():
 	if SHOULD_CREATE_NEW_MAP:
-		MAP_INSTANCE.init_map(0, 2)
+		MAP_INSTANCE.init_map(0, 4)
+	else:
+		MAP_INSTANCE.resume_map()
