@@ -53,6 +53,7 @@ func _init(encounter_type: String, max_branches: int, parent_node : EncounterRes
 	self.TYPE = encounter_type
 	self.DISTANCE_FROM_END = distance_from_end
 	self.PARENT = parent_node
+	self.SESSION_DEPTH = session_depth
 	if !parent_node:
 		self.relative_y = 0
 	else:

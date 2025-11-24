@@ -35,7 +35,7 @@ class TreeNode:
 var MAP_TREE : TreeNode
 
 func populate_scenes(tree : TreeNode):
-	var index = convert_coords(Vector2(tree.x, tree.y))
+	var index = convert_coords(Vector2i(tree.x, tree.y))
 	var cell = get_child(index)
 	map_resized.connect(tree.scene.resize_lines)
 	tree.scene.x_cell_size = size.x / columns
@@ -61,14 +61,14 @@ func resume_map():
 	populate_scenes(MAP_TREE)
 	MAP_TREE.update_colors()
 
-func convert_coords(coords : Vector2) -> int:
+func convert_coords(coords : Vector2i) -> int:
 	return coords.y * columns + coords.x
 
-func recursively_build_files(cell_list: Array, encounter: EncounterRes, coords: Vector2):
+func recursively_build_files(cell_list: Array, encounter: EncounterRes, coords: Vector2i):
 	var index = convert_coords(coords)
 	cell_list[index].encounter = encounter
 	for branch in encounter.BRANCHES:
-		recursively_build_files(cell_list, branch, Vector2(coords.x + 1, coords.y + branch.relative_y))
+		recursively_build_files(cell_list, branch, Vector2i(coords.x + 1, coords.y + branch.relative_y))
 
 func build_grid_map():
 	if Player.ENCOUNTER_MAP:

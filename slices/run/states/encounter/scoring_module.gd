@@ -126,6 +126,7 @@ class ScoringObject:
 			return false
 
 	func is_redupligram(word : String) -> bool:
+		@warning_ignore_start("integer_division")
 		# Word consists of two or three identical segments, e.g. CANCAN, TUTU
 		var length = word.length()
 		if length % 2 == 0:
@@ -139,6 +140,7 @@ class ScoringObject:
 			var three = word.right(-1 * (length / 3 * 2))
 			if one == two and two == three:
 				return true
+		@warning_ignore_restore("integer_division")
 		return false
 
 	# SCORING
