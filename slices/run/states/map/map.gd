@@ -4,7 +4,10 @@ extends Switchable
 
 var SHOULD_CREATE_NEW_MAP := true
 
-func setup(init_obj := { "new_map": true }):
+func _init():
+	DEFAULT_PARAMS = { "new_map": true }
+
+func setup(init_obj := { "new_map": false }):
 	SHOULD_CREATE_NEW_MAP = init_obj.new_map
 
 func _ready():

@@ -8,7 +8,7 @@ class_name UISwitcher extends Control
 func _ready():
 	if CURRENT_SCENE and SCENES.has(CURRENT_SCENE):
 		var scene = SCENES[CURRENT_SCENE].instantiate()
-		scene.setup()
+		scene.setup(scene.DEFAULT_PARAMS)
 		add_child(scene)
 
 ## This function swaps from the currently displayed scene to the scene specified by the new_scene_name parameter.
