@@ -37,6 +37,10 @@ func discard_by_letters(word : String) -> void:
 	for index in to_discard:
 		cryptographs.remove_at(index)
 
+func discard(cryptograph : Cryptograph) -> void:
+	cryptograph.queue_free()
+	cryptographs = cryptographs.filter(func (crypt): return crypt != cryptograph)
+
 func discard_all() -> void:
 	for cryptograph in cryptographs:
 		cryptograph.queue_free()

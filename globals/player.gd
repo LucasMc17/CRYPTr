@@ -20,11 +20,13 @@ var STACK : Array[CryptographRes] = []
 @export var ambigram_mult := 4.0
 @export var gyrogram_mult := 5.0
 
-## Run memory
+# Run memory
+
 var anagrams := {}
 
 var ENCOUNTER_MAP : EncounterRes
 var CURRENT_ENCOUNTER : EncounterRes
+var DISCARDS := 10
 
 # func initialize_stack(starter_stack: StarterDeckRes) -> void:
 # 	var result : Array[CryptographRes] = []

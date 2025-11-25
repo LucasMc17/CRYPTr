@@ -10,12 +10,17 @@ extends Switchable
 
 
 var DECK = DeckModule.new()
+var DISCARDS : int
+
 @onready var SCORING = ScoringModule.new()
 @onready var ATTEMPTS := 4
 
 func _ready():
+	Events.cryptograph_right_clicked.connect(_on_cryptograph_right_clicked)
 	Events.command_win.connect(func (_params): win())
 	Events.command_lose.connect(func (_params): lose())
+
+	DISCARDS = Player.DISCARDS
 	if "--debug-encounter" in OS.get_cmdline_args():
 		DebugNode.print('ENCOUNTER accessed directly')
 		if DebugNode.FORCE_STACK:
@@ -95,3 +100,14 @@ func input_character(event) -> void:
 			WORD.add_character(character)
 			SCORING.update_score_object(WORD.text, HAND)
 			SCORE_PREVIEW.update_potential_score(SCORING.SCORE_OBJECT)
+
+func _on_cryptograph_right_clicked(cryptograph : Cryptograph):
+	if DISCARDS > 0:
+		HAND.discard(cryptograph)
+		WORD.clear()
+		SCORING.update_score_object(WORD.text, HAND)
+		SCORE_PREVIEW.update_potential_score(SCORING.SCORE_OBJECT)
+		if HAND.count == 0 && DECK.all.is_empty():
+			lose()
+		HAND.add_to_hand(DECK.draw(1))
+		DISCARDS -= 1
