@@ -21,14 +21,14 @@ func resize_lines(x : float):
 		PARENT_LINE.points[2].x = -x + 20
 
 func update_colors():
-	if ENCOUNTER.VISITED:
+	if ENCOUNTER.visited:
 		modulate = "#0000FF"
 		PARENT_LINE.z_index = 10
-	elif ENCOUNTER.BYPASSED:
+	elif ENCOUNTER.bypassed:
 		modulate = "#999999"
 
 func _ready():
-	if ENCOUNTER.PARENT:
+	if ENCOUNTER.parent:
 		PARENT_LINE.width = 5
 		PARENT_LINE.add_point(Vector2.ZERO)
 		PARENT_LINE.add_point(Vector2(-x_cell_size + 20, 0))
@@ -36,7 +36,7 @@ func _ready():
 
 func _gui_input(event):
 	if Player.CURRENT_ENCOUNTER:
-		if Player.CURRENT_ENCOUNTER.BRANCHES.has(ENCOUNTER) and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if Player.CURRENT_ENCOUNTER.branches.has(ENCOUNTER) and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			encounter_clicked.emit(self)
 	elif Player.ENCOUNTER_MAP == self.ENCOUNTER and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		encounter_clicked.emit(self)

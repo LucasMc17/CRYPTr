@@ -19,7 +19,7 @@ class TreeNode:
 		if parent is TreeNode:
 			x = parent.x + 1
 			y = parent.y + encounter.relative_y
-		branches = encounter.BRANCHES.map(func (enc): return TreeNode.new(enc, self))
+		branches = encounter.branches.map(func (enc): return TreeNode.new(enc, self))
 
 	func to_object():
 		return {
@@ -40,7 +40,7 @@ func populate_scenes(tree : TreeNode):
 	map_resized.connect(tree.scene.resize_lines)
 	tree.scene.x_cell_size = size.x / columns
 	tree.scene.encounter_clicked.connect(_on_encounter_clicked)
-	tree.scene.z_index = tree.scene.ENCOUNTER.DISTANCE_FROM_END
+	tree.scene.z_index = tree.scene.ENCOUNTER.distance_from_end
 	cell.add_child(tree.scene)
 	for branch in tree.branches:
 		populate_scenes(branch)
@@ -67,12 +67,12 @@ func convert_coords(coords : Vector2i) -> int:
 func recursively_build_files(cell_list: Array, encounter: EncounterRes, coords: Vector2i):
 	var index = convert_coords(coords)
 	cell_list[index].encounter = encounter
-	for branch in encounter.BRANCHES:
+	for branch in encounter.branches:
 		recursively_build_files(cell_list, branch, Vector2i(coords.x + 1, coords.y + branch.relative_y))
 
 func build_grid_map():
 	if Player.ENCOUNTER_MAP:
-		columns = Player.ENCOUNTER_MAP.DISTANCE_FROM_END + 1
+		columns = Player.ENCOUNTER_MAP.distance_from_end + 1
 		var cell_count = columns * Player.ENCOUNTER_MAP.recursive_depth_trace()
 		for i in range(cell_count):
 			var cell = map_cell_scene.instantiate()
@@ -82,9 +82,9 @@ func _on_resized():
 	map_resized.emit(size.x / columns)
 
 func _on_encounter_clicked(map_node : MapNode):
-	map_node.ENCOUNTER.VISITED = true
+	map_node.ENCOUNTER.visited = true
 	if Player.CURRENT_ENCOUNTER:
-		for branch in Player.CURRENT_ENCOUNTER.BRANCHES:
+		for branch in Player.CURRENT_ENCOUNTER.branches:
 			if branch != map_node.ENCOUNTER:
 				# branch.BYPASSED = true
 				branch.bypass()
