@@ -1,13 +1,20 @@
 @tool
-class_name StarterStack extends Resource
+class_name StarterStack
+extends Resource
+## Custom resource representing a starter stack at the beginning of a run.
+##
+## Represents it's count of each type of cryptograph as a number rather than including a single long array of all cryptographs.
+## e.g. `{ "A": 3, "B": 2 }` as opposed to `["A", "A", "A", "B", "B"]`.
 
+## Read-only variable for displaying the total count of cryptographs in the starter stack in the editor.
+## Best practice is to keep total count under 55-60.
 @export var total : int:
 	get():
 		return a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z # + wildcard
 	set(val):
 		return
 
-## Vowels, all worth 1 point
+# Vowels, all worth 1 point
 @export_group("Vowels")
 
 ## Count of A Cryptographs worth 1 point
@@ -25,7 +32,7 @@ class_name StarterStack extends Resource
 ## Count of U Cryptographs worth 1 point
 @export var u := 0
 
-## Easy consonants, worth 1-2 points
+# Easy consonants, worth 1-2 points
 @export_group("Easy Letters")
 
 ## Count of L Cryptographs worth 1 point
@@ -46,7 +53,7 @@ class_name StarterStack extends Resource
 ## Count of G Cryptographs worth 2 points
 @export var g := 0
 
-## Medium consonants, worth 3-5 points
+# Medium consonants, worth 3-5 points
 @export_group("Medium Letters")
 
 ## Count of B Cryptographs worth 3 points
@@ -79,7 +86,7 @@ class_name StarterStack extends Resource
 ## Count of K Cryptographs worth 5 points
 @export var k := 0
 
-## Hard consonants, worth 8-10 points
+# Hard consonants, worth 8-10 points
 @export_group("Hard Letters")
 
 ## Count of J Cryptographs worth 8 points
