@@ -147,8 +147,8 @@ class ScoringObject:
 	func get_base_score(word : String, hand : Array[Cryptograph]) -> float:
 		var score = 0.0
 		for character in word:
-			var applicable = hand.filter(func(cryptograph): return cryptograph.RESOURCE.letter.character == character)
-			score += applicable.reduce(func(accum, cryptograph): return accum + cryptograph.RESOURCE.letter.points, 0.0)
+			var applicable = hand.filter(func(cryptograph): return cryptograph.resource.letter.character == character)
+			score += applicable.reduce(func(accum, cryptograph): return accum + cryptograph.resource.letter.points, 0.0)
 		return score
 
 	func get_length_mult(word : String) -> float:

@@ -1,26 +1,30 @@
-class_name Cryptograph extends ColorRect
-
-@onready var LETTER_LABEL := %Letter
-
-@onready var POINTS_LABEL := %Points
+class_name Cryptograph
+extends ColorRect
+## Scene representing a cryptograph in the player's stack.
 
 # signal clicked(cryptograph_scene : Cryptograph)
-
 # signal right_clicked(cryptograph_scene : Cryptograph)
 
-@export var RESOURCE : CryptographRes:
+## The resource representing the cryptograph's information.
+@export var resource : CryptographRes:
 	set(val):
 		if val:
-			if LETTER_LABEL:
-				LETTER_LABEL.text = val.letter.character
-			if POINTS_LABEL:
-				POINTS_LABEL.text = str(val.letter.points)
-		RESOURCE = val
+			if letter_label:
+				letter_label.text = val.letter.character
+			if points_label:
+				points_label.text = str(val.letter.points)
+		resource = val
+
+## The label comprising the cryptograph's letter for use in potential words.
+@onready var letter_label := %Letter
+## The label comprising the cryptograph's point value for scoring valid words.
+@onready var points_label := %Points
 
 func _ready():
-	if RESOURCE:
-		LETTER_LABEL.text = RESOURCE.letter.character
-		POINTS_LABEL.text = str(RESOURCE.letter.points)
+	if resource:
+		letter_label.text = resource.letter.character
+		points_label.text = str(resource.letter.points)
+
 
 func _gui_input(event):
 	if event is InputEventMouseButton:

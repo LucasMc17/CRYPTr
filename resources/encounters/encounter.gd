@@ -81,7 +81,7 @@ func recursive_depth_trace() -> int:
 
 
 # Marks the encounter and it's branches as bypassed, recursively.
-func bypass():
+func bypass() -> void:
 	bypassed = true
 	for branch in branches:
 		branch.bypass()

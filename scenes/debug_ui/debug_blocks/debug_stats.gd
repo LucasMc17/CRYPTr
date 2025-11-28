@@ -1,15 +1,15 @@
-class_name DebugStats extends PanelContainer
+class_name DebugStats
+extends PanelContainer
+## Debug scene to display key performance data and status indicators to the user (as a developer, rather than a player)
 
-@onready var FPS = %FPSValue
+## The game's current frames per second.
 var fps : String:
 	set(val):
-		FPS.text = val
+		fps_label.text = val
 		fps = val
 
-# func _ready():
-# 	Global.Debug.PLAYER_STATUS = self
-# 	if Global.Debug.debug_override == "DEFER":
-# 		visible = Global.Debug.show_player_status
+## Label scene for visually indicating the game's current frames per second.
+@onready var fps_label = %FPSValue
 
 func _process(delta):
 	fps = "%.2f" % (1.0 / delta)
