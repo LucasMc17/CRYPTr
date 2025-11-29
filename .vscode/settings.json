@@ -4,5 +4,10 @@
   "editor.insertSpaces": false,
   "search.exclude": {
     "**/words": true
+  },
+  "files.exclude": {
+    "**/*.gd.uid": true,
+    "**/*.tres": true,
+    "**/*.tscn": true
   }
 }
