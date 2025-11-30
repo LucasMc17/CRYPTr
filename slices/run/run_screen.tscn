@@ -23,11 +23,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_o8dxk")
-SCENES = Dictionary[String, PackedScene]({
+_scenes = Dictionary[String, PackedScene]({
 "Encounter": ExtResource("4_lcpi4"),
 "Map": ExtResource("4_o8dxk")
 })
-CURRENT_SCENE = &"Map"
+current_scene = &"Map"
 metadata/_custom_type_script = "uid://dgjbmlg6wlice"
 
 [node name="PauseSwitcher" type="Control" parent="."]

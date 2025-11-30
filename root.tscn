@@ -20,9 +20,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vvh5c")
-SCENES = Dictionary[String, PackedScene]({
+_scenes = Dictionary[String, PackedScene]({
 "RunScreen": ExtResource("3_vvh5c"),
 "StartScreen": ExtResource("2_vvh5c")
 })
-CURRENT_SCENE = &"StartScreen"
+current_scene = &"StartScreen"
 metadata/_custom_type_script = "uid://dgjbmlg6wlice"

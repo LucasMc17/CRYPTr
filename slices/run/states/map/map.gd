@@ -8,7 +8,7 @@ var _should_create_new_map := true
 
 # TODO: This is so ugly, way too many places default params are initiated. Gotta think of a more elegant solution
 func _init():
-	DEFAULT_PARAMS = { "new_map": true }
+	default_params = { "new_map": true }
 
 
 func _ready():

@@ -22,8 +22,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_ykf3w")
-SCENES = Dictionary[String, PackedScene]({
+_scenes = Dictionary[String, PackedScene]({
 "MainMenu": ExtResource("3_itsiy")
 })
-CURRENT_SCENE = &"MainMenu"
+current_scene = &"MainMenu"
 metadata/_custom_type_script = "uid://dgjbmlg6wlice"
