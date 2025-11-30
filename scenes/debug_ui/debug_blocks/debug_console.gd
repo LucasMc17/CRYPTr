@@ -14,7 +14,7 @@ var commands = CommandModule.new()
 @onready var command_line := %CommandLine
 
 func _ready():
-	DebugNode.DEBUG_CONSOLE = self
+	DebugNode.debug_console = self
 	Events.command_help.connect(func (_params): commands.help())
 	Events.command_clear.connect(func (_params): clear())
 	Events.command_echo.connect(func (params): DebugNode.print(' '.join(params)))

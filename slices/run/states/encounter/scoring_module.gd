@@ -113,7 +113,7 @@ class ScoringObject:
 	## Creates the word name.
 	static func get_word_name(word : String):
 		var length = word.length()
-		if length < 3:
+		if length < Player.MINIMUM_WORD_LENGTH:
 			return
 		if length < 21:
 			var prefix = PREFIX_MAP[length]
@@ -134,9 +134,9 @@ class ScoringObject:
 	## Checks a word's validity.
 	static func is_valid(word : String) -> bool:
 		# Word is in dictionary
-		if word.length() < 3:
+		if word.length() < Player.MINIMUM_WORD_LENGTH:
 			return false
-		if DebugNode.ACCEPT_ALL_WORDS:
+		if DebugNode.accept_all_words:
 			return true
 		var first_letter = word[0]
 		var words = FileAccess.open('res://words/' + first_letter + '.txt', FileAccess.READ).get_as_text().split('\n')
@@ -169,7 +169,7 @@ class ScoringObject:
 
 	## Checks for a pangram by first checking the word's length, then checking if all cryptographs are represented within it.
 	static func is_pangram(word : String, letters : Array) -> bool:
-		if word.length() < 6:
+		if word.length() < Player.HAND_SIZE:
 			return false
 		for character in letters:
 			if !word.contains(character):
@@ -179,7 +179,7 @@ class ScoringObject:
 
 	## Checks for a perfect pangram by confirming that the length of the word is the player's hand size (assumes word has already passed pangram check).
 	static func is_perfectigram(word : String) -> bool:
-		return word.length() == 6
+		return word.length() == Player.HAND_SIZE
 
 
 	## Checks if the word uses each of its letters exactly once.
@@ -236,7 +236,7 @@ class ScoringObject:
 
 	## Calculates length multiplier based on word length.
 	static func get_length_mult(word : String) -> float:
-		return 1 + 0.2 * word.length()
+		return 1 + Player.LENGTH_MULTIPLIER * word.length()
 
 
 	## Utility function yadda yadda

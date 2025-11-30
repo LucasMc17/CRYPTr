@@ -7,19 +7,19 @@ extends PanelContainer
 @onready var instawin_toggle := %InstawinToggle
 
 func _ready():
-	god_mode_toggle.button_pressed = DebugNode.GOD_MODE
-	accept_all_letters_toggle.button_pressed = DebugNode.ACCEPT_ALL_LETTERS
-	accept_all_words_toggle.button_pressed = DebugNode.ACCEPT_ALL_WORDS
-	instawin_toggle.button_pressed = DebugNode.INSTAWIN
+	god_mode_toggle.button_pressed = DebugNode.god_mode
+	accept_all_letters_toggle.button_pressed = DebugNode.accept_all_letters
+	accept_all_words_toggle.button_pressed = DebugNode.accept_all_words
+	instawin_toggle.button_pressed = DebugNode.instawin
 
-	if DebugNode.GOD_MODE:
+	if DebugNode.god_mode:
 		accept_all_letters_toggle.disabled = true
 		accept_all_words_toggle.disabled = true
 		instawin_toggle.disabled = true
 
 
 func _on_god_mode_toggle_toggled(is_on : bool) -> void:
-	DebugNode.GOD_MODE = is_on
+	DebugNode.god_mode = is_on
 	if is_on:
 		accept_all_letters_toggle.disabled = true
 		accept_all_words_toggle.disabled = true
@@ -31,12 +31,12 @@ func _on_god_mode_toggle_toggled(is_on : bool) -> void:
 
 
 func _on_accept_all_letters_toggle_toggled(is_on : bool) -> void:
-	DebugNode.ACCEPT_ALL_LETTERS = is_on
+	DebugNode.accept_all_letters = is_on
 
 
 func _on_accept_all_words_toggle_toggled(is_on : bool) -> void:
-	DebugNode.ACCEPT_ALL_WORDS = is_on
+	DebugNode.accept_all_words = is_on
 
 
 func _on_instawin_toggle_toggled(is_on : bool) -> void:
-	DebugNode.INSTAWIN = is_on
+	DebugNode.instawin = is_on

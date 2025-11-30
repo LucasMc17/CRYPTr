@@ -25,10 +25,10 @@ func _ready():
 
 
 func _gui_input(event):
-	if Player.CURRENT_ENCOUNTER:
-		if Player.CURRENT_ENCOUNTER.branches.has(encounter_resource) and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	if Player.current_encounter:
+		if Player.current_encounter.branches.has(encounter_resource) and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			encounter_clicked.emit(self)
-	elif Player.ENCOUNTER_MAP == self.encounter_resource and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	elif Player.encounter_map == self.encounter_resource and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		encounter_clicked.emit(self)
 
 

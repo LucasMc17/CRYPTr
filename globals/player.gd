@@ -1,39 +1,71 @@
-## Run-level information
 extends Node
+## Run-level information.
 
-## The Deck/Stack for the current run
-var STACK : Array[CryptographRes] = []
+# RUN CONSTANTS
 
-# @export_group("Scoring Constants")
-# @export var length_multiplier := 0.2
-# @export var minimum_word_length := 3
+## How much to add to the length multiplier for each character of the word being scored.
+const LENGTH_MULTIPLIER := 0.2
+## Minimum length to consider a word valid.
+const MINIMUM_WORD_LENGTH := 3
+## Size of the player's hand at maximum.
+const HAND_SIZE := 6
 
-## The multipliers for various word types
-@export_group("Word Type Multipliers")
-@export var palindrogram_mult := 3.0
-@export var semordnigram_mult := 2.0
-@export var equigram_mult := 1.5
-@export var isogram_mult := 2.0
-@export var pangram_mult := 3.0
-@export var perfectigram_mult := 5.0
-@export var redupligram_mult := 3.0
-@export var ambigram_mult := 4.0
-@export var gyrogram_mult := 5.0
+const BASE_DISCARDS := 10
 
-# Run memory
+const BASE_PALINDROGRAM_MULT := 3.0
+const BASE_SEMORDNIGRAM_MULT := 2.0
+const BASE_EQUIGRAM_MULT := 1.5
+const BASE_ISOGRAM_MULT := 2.0
+const BASE_PANGRAM_MULT := 3.0
+const BASE_PERFECTIGRAM_MULT := 5.0
+const BASE_REDUPLIGRAM_MULT := 3.0
+const BASE_AMBIGRAM_MULT := 4.0
+const BASE_GYROGRAM_MULT := 5.0
 
+# RUN MEMORY
+
+var discards := BASE_DISCARDS
+
+var palindrogram_mult := BASE_PALINDROGRAM_MULT
+var semordnigram_mult := BASE_SEMORDNIGRAM_MULT
+var equigram_mult := BASE_EQUIGRAM_MULT
+var isogram_mult := BASE_ISOGRAM_MULT
+var pangram_mult := BASE_PANGRAM_MULT
+var perfectigram_mult := BASE_PERFECTIGRAM_MULT
+var redupligram_mult := BASE_REDUPLIGRAM_MULT
+var ambigram_mult := BASE_AMBIGRAM_MULT
+var gyrogram_mult := BASE_GYROGRAM_MULT
+
+## The Deck/Stack for the current run.
+var stack : Array[CryptographRes] = []
+## Memory of played words, alphabetized to easily check for anagrams.
 var anagrams := {}
+## The current map, from the root encounter node.
+var encounter_map : EncounterRes = null
+## The current encounter from the encounter map.
+var current_encounter : EncounterRes = null
 
-var ENCOUNTER_MAP : EncounterRes
-var CURRENT_ENCOUNTER : EncounterRes
-var DISCARDS := 10
+## Resets all the run variables to their default value so that a new run can begin from a clean slate.
+func reset_run() -> void:
+	palindrogram_mult = BASE_PALINDROGRAM_MULT
+	semordnigram_mult = BASE_SEMORDNIGRAM_MULT
+	equigram_mult = BASE_EQUIGRAM_MULT
+	isogram_mult = BASE_ISOGRAM_MULT
+	pangram_mult = BASE_PANGRAM_MULT
+	perfectigram_mult = BASE_PERFECTIGRAM_MULT
+	redupligram_mult = BASE_REDUPLIGRAM_MULT
+	ambigram_mult = BASE_AMBIGRAM_MULT
+	gyrogram_mult = BASE_GYROGRAM_MULT
 
-# func initialize_stack(starter_stack: StarterDeckRes) -> void:
-# 	var result : Array[CryptographRes] = []
-# 	for cryptograph in starter_stack.cryptographs:
-# 		result.append(cryptograph.duplicate())
-# 	STACK = result
+	discards = BASE_DISCARDS
 
+	stack.clear()
+	anagrams.clear()
+	encounter_map = null
+	current_encounter = null
+
+
+## Initializes the stack from a StarterStack resource. Effectively converts it to an array of cryptograph resources.
 func initialize_stack(starter_stack : StarterStack):
 	var alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 	var result : Array[CryptographRes] = []
@@ -42,4 +74,4 @@ func initialize_stack(starter_stack : StarterStack):
 			var cryptograph = load('res://resources/cryptographs/' + character + '_cryptograph.tres')
 			for i in range(starter_stack[character]):
 				result.append(cryptograph.duplicate())
-	STACK = result
+	stack = result

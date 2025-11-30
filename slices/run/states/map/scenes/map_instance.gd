@@ -16,9 +16,9 @@ var _map_tree : TreeNode
 ## Main function to create a NEW encounter map and populate it onto the grid.
 func init_map(session_depth : int, length_limit : int) -> void:
 	# First, create the encounter resources
-	Player.ENCOUNTER_MAP = EncounterRes.new("MATCH", 3, null, session_depth, 0, length_limit)
+	Player.encounter_map = EncounterRes.new("MATCH", 3, null, session_depth, 0, length_limit)
 	# Second, create a tree of actual 2D scenes, mirroring the structure of the resrouce itself
-	_map_tree = TreeNode.new(Player.ENCOUNTER_MAP, null)
+	_map_tree = TreeNode.new(Player.encounter_map, null)
 	# Third, create the grid of nodes
 	_build_grid_map()
 	# Fourth, place the scenes from the tree in their correct spots throughout the grid
@@ -27,7 +27,7 @@ func init_map(session_depth : int, length_limit : int) -> void:
 
 ## Main function to RESUME an existing encounter map and populate it onto the grid.
 func resume_map() -> void:
-	_map_tree = TreeNode.new(Player.ENCOUNTER_MAP, null)
+	_map_tree = TreeNode.new(Player.encounter_map, null)
 	_build_grid_map()
 	_populate_scenes(_map_tree)
 	_map_tree.update_colors()
@@ -37,12 +37,12 @@ func resume_map() -> void:
 func _on_encounter_clicked(map_node : MapNode) -> void:
 	map_node.encounter_resource.visited = true
 
-	if Player.CURRENT_ENCOUNTER:
-		for branch in Player.CURRENT_ENCOUNTER.branches:
+	if Player.current_encounter:
+		for branch in Player.current_encounter.branches:
 			if branch != map_node.encounter_resource:
 				branch.bypass()
 	
-	Player.CURRENT_ENCOUNTER = map_node.encounter_resource
+	Player.current_encounter = map_node.encounter_resource
 	Events.match_started.emit(map_node.encounter_resource)
 	_map_tree.update_colors()
 
@@ -68,9 +68,9 @@ func _convert_coords(coords : Vector2i) -> int:
 
 ## Builds out the grid to the correct size by populating empty controls.
 func _build_grid_map():
-	if Player.ENCOUNTER_MAP:
-		columns = Player.ENCOUNTER_MAP.distance_from_end + 1
-		var cell_count = columns * Player.ENCOUNTER_MAP.recursive_depth_trace()
+	if Player.encounter_map:
+		columns = Player.encounter_map.distance_from_end + 1
+		var cell_count = columns * Player.encounter_map.recursive_depth_trace()
 		for i in range(cell_count):
 			var cell = _map_cell_scene.instantiate()
 			add_child(cell)

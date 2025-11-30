@@ -30,11 +30,11 @@ func _ready():
 	Events.command_win.connect(func (_params): _win())
 	Events.command_lose.connect(func (_params): _lose())
 
-	_discards = Player.DISCARDS
+	_discards = Player.discards
 	if "--debug-encounter" in OS.get_cmdline_args():
 		DebugNode.print('ENCOUNTER accessed directly')
-		if DebugNode.FORCE_STACK:
-			Player.initialize_stack(DebugNode.FORCE_STACK)
+		if DebugNode.force_stack:
+			Player.initialize_stack(DebugNode.force_stack)
 			DebugNode.print('Initializing FORCED stack from Debug Node')
 		else:
 			var CLASSIC_STACK = load("res://resources/starter_decks/the_classic.tres")
@@ -91,7 +91,7 @@ func _lose() -> void:
 ## Enters the currently inputted word, assuming it is valid.
 func _enter_word() -> void:
 	if _scoring.score_object.valid:
-		if DebugNode.INSTAWIN:
+		if DebugNode.instawin:
 			_win()
 			return
 		
@@ -99,7 +99,7 @@ func _enter_word() -> void:
 		_score_preview.update_score(_scoring.current_score, _scoring.target_score)
 
 		_hand.discard_by_letters(_word.text)
-		_hand.add_to_hand(_deck.draw(6 - _hand.count))
+		_hand.add_to_hand(_deck.draw(Player.HAND_SIZE - _hand.count))
 
 		_word.clear()
 
@@ -121,7 +121,7 @@ func _input_character(event) -> void:
 	var keycode = event.keycode
 	if keycode >= KEY_A && keycode <= KEY_Z:
 		var character = OS.get_keycode_string(event.key_label)
-		if DebugNode.ACCEPT_ALL_LETTERS or _hand.letters.has(character):
+		if DebugNode.accept_all_letters or _hand.letters.has(character):
 			_word.add_character(character)
 			_scoring.update_score_object(_word.text, _hand)
 			_score_preview.update_potential_score(_scoring.score_object)

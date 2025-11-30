@@ -15,13 +15,13 @@ var all : Array[CryptographRes]:
 
 func _init(should_shuffle := false):
 	_encounter_stack.clear()
-	_encounter_stack.append_array(Player.STACK.duplicate())
+	_encounter_stack.append_array(Player.stack.duplicate())
 	if should_shuffle:
 		_encounter_stack.shuffle()
 
 
 ## Draws the inputted number of cryptographs from the stack, if it still contains enough cryptographs to draw. Mutates the stack.
-func draw(count := 6) -> Array[CryptographRes]:
+func draw(count := Player.HAND_SIZE) -> Array[CryptographRes]:
 	var cryptographs : Array[CryptographRes] = []
 	while count > 0 && !_encounter_stack.is_empty():
 		cryptographs.append(_encounter_stack.pop_front())

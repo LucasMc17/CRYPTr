@@ -4,15 +4,15 @@ extends Switchable
 # NOTE: directly loading the classic stack this way is a temporary solution until choosing a deck is integrated into the UI
 var _classic_stack = preload("res://resources/starter_decks/the_classic.tres")
 
-@onready var PAUSE_SWITCHER := %PauseSwitcher
-@onready var RUN_SWITCHER := %RunSwitcher
+# @onready var _pause_switcher := %PauseSwitcher
+@onready var _run_switcher := %RunSwitcher
 
 func _on_match_started(_encounter) -> void:
-	RUN_SWITCHER.transition('Encounter')
+	_run_switcher.transition('Encounter')
 
 
 func _on_map_returned(new_map := false) -> void:
-	RUN_SWITCHER.transition('Map', { "new_map": new_map })
+	_run_switcher.transition('Map', { "new_map": new_map })
 
 
 func _ready():
@@ -22,7 +22,7 @@ func _ready():
 
 func setup(init_obj := {}) -> void:
 	super(init_obj)
-	if DebugNode.FORCE_STACK:
-		Player.initialize_stack(DebugNode.FORCE_STACK)
+	if DebugNode.force_stack:
+		Player.initialize_stack(DebugNode.force_stack)
 	else:
 		Player.initialize_stack(_classic_stack)
