@@ -14,7 +14,7 @@ extends Control
 func _ready():
 	if current_scene and _scenes.has(current_scene):
 		var scene = _scenes[current_scene].instantiate()
-		scene.setup(scene.default_params)
+		scene.setup()
 		add_child(scene)
 
 

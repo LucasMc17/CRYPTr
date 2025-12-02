@@ -4,19 +4,15 @@ extends Switchable
 @onready var map_instance := %MapInstance
 
 ## Boolean represengint whether the map should generate a new map or recreate the existing on on rendering.
-var _should_create_new_map := true
+# var _should_create_new_map := true
 
-# TODO: This is so ugly, way too many places default params are initiated. Gotta think of a more elegant solution
 func _init():
-	default_params = { "new_map": true }
+	params = { "new_map": true }
 
 
 func _ready():
-	if _should_create_new_map:
+	if params.new_map:
+	# if _should_create_new_map:
 		map_instance.init_map(0, 3)
 	else:
 		map_instance.resume_map()
-
-		
-func setup(init_obj := { "new_map": false }):
-	_should_create_new_map = init_obj.new_map
