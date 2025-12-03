@@ -7,8 +7,8 @@ var _classic_stack = preload("res://resources/starter_decks/the_classic.tres")
 # @onready var _pause_switcher := %PauseSwitcher
 @onready var _run_switcher := %RunSwitcher
 
-func _on_match_started(_encounter) -> void:
-	_run_switcher.transition('Encounter')
+func _on_match_started(encounter) -> void:
+	_run_switcher.transition('Encounter', {"encounter": encounter})
 
 
 func _on_map_returned(new_map := false) -> void:

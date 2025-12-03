@@ -4,13 +4,10 @@ extends Switchable
 ## All variables and functions are private, this scene is not meant to be interacted with from a higher level, but handle all of its inputs
 ## itself. Instantiates a `DeckModule` and a `ScoringModule` to handle the finer points of deck management and scoring.
 
-# TODO: These two to be initted via encounter resource during setup function
-@export var _depth := 1
-@export var _security_level := 1
-
+## The encounter resource which this encounter instance. Typically instantiated within the `setup` function.
+var encounter : EncounterRes
 ## The `DeckModule` representing the player's full, shuffled deck. Responsible for all logic regarding drawing from deck and shuffling.
-# var _deck = DeckModule.new(true)
-var _deck : DeckModule
+var _deck = DeckModule.new(true)
 ## The `ScoringModule` responsible for validating and scoring potential words, as well as managing the player's current score.
 var _scoring = ScoringModule.new()
 ## The player's remaining discards, instantiated in the `_ready` function.
@@ -40,11 +37,10 @@ func _ready():
 			var CLASSIC_STACK = load("res://resources/starter_decks/the_classic.tres")
 			DebugNode.print('Initializing CLASSIC stack')
 			Player.initialize_stack(CLASSIC_STACK)
-	_deck = DeckModule.new(true)
 	_hand.add_to_hand(_deck.draw())
 
 	_scoring.current_score = 0
-	_scoring.target_score = (100 + (20 * _security_level)) * _depth
+	_scoring.target_score = (50 + (20 * (encounter.security_level + 1))) * (encounter.session_depth + 1)
 
 	_scoring.update_score_object(_word.text, _hand)
 	_score_preview.update_potential_score(_scoring.score_object)
