@@ -49,10 +49,6 @@ func _ready():
 
 
 func _unhandled_input(event):
-	# TODO: the code below was for testing purposes but should be moved to a higher level so that pausing can happen from any screen in the run.
-	# if Input.is_action_just_pressed("escape"):
-	# 	DebugNode.print('PAUSED')
-	
 	if Input.is_action_just_pressed("enter"):
 		_enter_word()
 	

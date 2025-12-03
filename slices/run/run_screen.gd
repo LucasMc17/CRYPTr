@@ -7,17 +7,22 @@ var _classic_stack = preload("res://resources/starter_decks/the_classic.tres")
 # @onready var _pause_switcher := %PauseSwitcher
 @onready var _run_switcher := %RunSwitcher
 
+func _ready():
+	Events.match_started.connect(_on_match_started)
+	Events.return_to_map.connect(_on_map_returned)
+
+
+func _unhandled_input(_event):
+	if Input.is_action_just_pressed("escape"):
+		DebugNode.print('PAUSED')
+
+
 func _on_match_started(encounter) -> void:
 	_run_switcher.transition('Encounter', {"encounter": encounter})
 
 
 func _on_map_returned(new_map := false) -> void:
 	_run_switcher.transition('Map', { "new_map": new_map })
-
-
-func _ready():
-	Events.match_started.connect(_on_match_started)
-	Events.return_to_map.connect(_on_map_returned)
 
 
 func setup(init_obj := {}) -> void:
