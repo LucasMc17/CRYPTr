@@ -203,7 +203,6 @@ class ScoringObject:
 		alpha = "".join(alpha)
 		
 		if Player.anagrams.has(alpha):
-			# TODO: need to add to the dictionary at time of word submission
 			return true
 		else:
 			return false
