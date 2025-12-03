@@ -17,6 +17,7 @@ const BASE_SEMORDNIGRAM_MULT := 2.0
 const BASE_EQUIGRAM_MULT := 1.5
 const BASE_ISOGRAM_MULT := 2.0
 const BASE_PANGRAM_MULT := 3.0
+const BASE_ANAGRAM_MULT := 2.0
 const BASE_PERFECTIGRAM_MULT := 5.0
 const BASE_REDUPLIGRAM_MULT := 3.0
 const BASE_AMBIGRAM_MULT := 4.0
@@ -31,6 +32,7 @@ var semordnigram_mult := BASE_SEMORDNIGRAM_MULT
 var equigram_mult := BASE_EQUIGRAM_MULT
 var isogram_mult := BASE_ISOGRAM_MULT
 var pangram_mult := BASE_PANGRAM_MULT
+var anagram_mult := BASE_ANAGRAM_MULT
 var perfectigram_mult := BASE_PERFECTIGRAM_MULT
 var redupligram_mult := BASE_REDUPLIGRAM_MULT
 var ambigram_mult := BASE_AMBIGRAM_MULT
@@ -39,7 +41,7 @@ var gyrogram_mult := BASE_GYROGRAM_MULT
 ## The Deck/Stack for the current run.
 var stack : Array[CryptographRes] = []
 ## Memory of played words, alphabetized to easily check for anagrams.
-var anagrams := {}
+var anagrams : Dictionary[String, Dictionary] = {}
 ## The current map, from the root encounter node.
 var encounter_map : EncounterRes = null
 ## The current encounter from the encounter map.
@@ -52,6 +54,7 @@ func reset_run() -> void:
 	equigram_mult = BASE_EQUIGRAM_MULT
 	isogram_mult = BASE_ISOGRAM_MULT
 	pangram_mult = BASE_PANGRAM_MULT
+	anagram_mult = BASE_ANAGRAM_MULT
 	perfectigram_mult = BASE_PERFECTIGRAM_MULT
 	redupligram_mult = BASE_REDUPLIGRAM_MULT
 	ambigram_mult = BASE_AMBIGRAM_MULT
@@ -63,6 +66,18 @@ func reset_run() -> void:
 	anagrams.clear()
 	encounter_map = null
 	current_encounter = null
+
+
+## Adds the characters of the inputted word as a key in the anagrams dict.
+func add_anagram(word : String) -> void:
+	var alpha = word.split()
+	alpha.sort()
+	var key = "".join(alpha)
+
+	if anagrams.has(key):
+		anagrams[key][word] = true
+	else:
+		anagrams[key] = {word: true}
 
 
 ## Initializes the stack from a StarterStack resource. Effectively converts it to an array of cryptograph resources.

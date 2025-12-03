@@ -83,6 +83,8 @@ func _lose() -> void:
 ## Enters the currently inputted word, assuming it is valid.
 func _enter_word() -> void:
 	if _scoring.score_object.valid:
+		Player.add_anagram(_word.text)
+		DebugNode.print(Player.anagrams)
 		if DebugNode.instawin:
 			_win()
 			return

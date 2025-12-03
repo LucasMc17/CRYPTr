@@ -46,3 +46,6 @@ signal command_clear(params : Array[String])
 
 ## Emitted when the exit command is issued
 signal command_exit(params : Array[String])
+
+## Emitted when the restart command is issued
+signal command_restart(params : Array[String])

@@ -19,6 +19,10 @@ func _ready():
 	Events.command_clear.connect(func (_params): clear())
 	Events.command_echo.connect(func (params): DebugNode.print(' '.join(params)))
 	Events.command_exit.connect(func (_params): get_tree().quit(0))
+	Events.command_restart.connect(func (_params):
+		get_tree().reload_current_scene()
+		Player.reset_run()
+	)
 
 
 func _input(_event):

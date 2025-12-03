@@ -95,6 +95,9 @@ class ScoringObject:
 		elif is_isogram(word):
 			additional_mults.isogram = Player.isogram_mult
 		
+		if is_anagram(word):
+			additional_mults.anagram = Player.anagram_mult
+		
 		if is_redupligram(word):
 			additional_mults.redupligram = Player.redupligram_mult
 		
