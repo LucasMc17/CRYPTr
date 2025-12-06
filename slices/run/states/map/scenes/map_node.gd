@@ -8,16 +8,36 @@ signal encounter_clicked(scene : MapNode)
 ## The encounter resource used to populate information about this node in the map.
 @export var encounter_resource: EncounterRes
 
+## Preloaded map node scene
+const _MAP_NODE = preload('res://slices/run/states/map/scenes/map_node.tscn')
 # NOTE: no reason these couldn't be a vector2i. Probably a lot of improvements to be made here.
 ## Current y dimension of the parent control, used to calculate height of the parent line.
 const y_cell_size := 50
 ## Current x dimension of the parent control, used to calculate width of parent line.
 var x_cell_size := 50.0
+## X position of the scene within the map grid.
+var x := 0
+## Y position of the scene within the map grid.
+var y := 0
+## Child nodes of the one this object represents.
+var branches : Array
+## Utility Callable to convert the entity to a Dictionary for printing purposes.
+var to_dictionary : Callable = DebugNode.make_to_printable_method(self, [
+		"x",
+		"y",
+		"branches"
+])
 
 @onready var parent_line := %ParentLine
 
 func _ready():
-	DebugNode.print(encounter_resource.to_dictionary.call())
+	branches = encounter_resource.branches.map(func (enc):
+		var new_map_node = _MAP_NODE.instantiate()
+		new_map_node.encounter_resource = enc
+		new_map_node.x = x + 1
+		new_map_node.y = y + enc.relative_y
+		return new_map_node
+	)
 	if encounter_resource.parent:
 		parent_line.width = 5
 		parent_line.add_point(Vector2.ZERO)
@@ -47,3 +67,5 @@ func update_colors() -> void:
 		parent_line.z_index = 10
 	elif encounter_resource.bypassed:
 		modulate = "#999999"
+	for branch in branches:
+		branch.update_colors()
