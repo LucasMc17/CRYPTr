@@ -17,6 +17,7 @@ var x_cell_size := 50.0
 @onready var parent_line := %ParentLine
 
 func _ready():
+	DebugNode.print(encounter_resource.to_dictionary.call())
 	if encounter_resource.parent:
 		parent_line.width = 5
 		parent_line.add_point(Vector2.ZERO)

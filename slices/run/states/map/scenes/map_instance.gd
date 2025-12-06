@@ -91,6 +91,11 @@ class TreeNode:
 	var x := 0
 	## Y position of the scene within the map grid.
 	var y := 0
+	## Utility Callable to convert the entity to a Dictionary for printing purposes.
+	var to_dictionary : Callable = DebugNode.make_to_printable_method(self, [
+			"scene",
+			"branches"
+	])
 
 	func _init(encounter : EncounterRes, parent : Variant):
 		var file_scene = load('res://slices/run/states/map/scenes/map_node.tscn')
@@ -101,13 +106,6 @@ class TreeNode:
 			y = parent.y + encounter.relative_y
 		branches = encounter.branches.map(func (enc): return TreeNode.new(enc, self))
 
-	# TODO: Gotta make a utility function for this so I don't have to rewrite it on every custom class.
-	## Utility function to convert this object to a dictionary for printing purposes.
-	func to_object() -> Dictionary:
-		return {
-			"scene": scene,
-			"branches": branches.map(func (obj): return obj.to_object())
-		}
 	
 	## Recurively colors scenes and all scenes inheriting from this one.
 	func update_colors() -> void:

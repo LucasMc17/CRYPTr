@@ -37,7 +37,7 @@ var commands : Dictionary[StringName, CommandConfig] = {
 			"None",
 			["exit"]
 	),
-	"restart": CommandConfig.new( ## NOTE: this kills the debug controls for now, will figure out why later
+	"restart": CommandConfig.new( # NOTE: this kills the debug controls for now, will figure out why later
 			"Restarts the game and clears all global variables",
 			"None",
 			["restart"]
