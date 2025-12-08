@@ -28,3 +28,9 @@ func transition(new_scene_name: StringName, ext := {}) -> void:
 			child.queue_free()
 		add_child(scene)
 
+
+## Removes the current switchable scene entirely, leaving no children under the ui switcher.
+func clear() -> void:
+	current_scene = ''
+	for child in get_children():
+		child.queue_free()

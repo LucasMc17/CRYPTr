@@ -3,8 +3,10 @@ extends Switchable
 
 # NOTE: directly loading the classic stack this way is a temporary solution until choosing a deck is integrated into the UI
 var _classic_stack = preload("res://resources/starter_decks/the_classic.tres")
+## Boolean tracking whether or not the game is currently paused. Probably not going to stay here.
+var paused := false
 
-# @onready var _pause_switcher := %PauseSwitcher
+@onready var _pause_switcher := %PauseSwitcher
 @onready var _run_switcher := %RunSwitcher
 
 func _ready():
@@ -14,7 +16,12 @@ func _ready():
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("escape"):
-		DebugNode.print('PAUSED')
+		if paused:
+			_pause_switcher.clear()
+			paused = false
+		else:
+			_pause_switcher.transition('Pause')
+			paused = true
 
 
 func _on_match_started(encounter) -> void:
