@@ -16,7 +16,7 @@ var count : int:
 ## Read only property for fetching the letters in the player's hand as an array of single character strings.
 var letters : Array:
 	get():
-		# NOTE: this is a good example of a typed array I can't seem to fully indicate the type of without breaking the func
+		# NOTE: this is a good example of a typed array I can't seem to fully indicate the type of without breaking the func. Exclusively because of the map method which returns an untyped array
 		var result : Array = cryptographs.map(func (crypt) -> String : return crypt.resource.letter.character)
 		return result
 	set(val):
