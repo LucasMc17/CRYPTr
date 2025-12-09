@@ -19,6 +19,12 @@ signal return_to_map(new_map : bool)
 ## Emitted when a match is lost, forfeiting the run
 signal run_lost()
 
+## Emitted when a run is paused
+signal paused(menu_screen : StringName)
+
+## Emitted when a run is unpaused
+signal unpaused()
+
 # ENCOUNTER LIFECYCLE
 
 ## Emitted when the user left clicks on a cryptograph
