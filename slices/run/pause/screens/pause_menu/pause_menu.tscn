@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bbijp713lja3a"]
 
-[ext_resource type="Script" uid="uid://q7xwxo0bmb0w" path="res://slices/run/pause/screens/pause_menu.gd" id="1_34sy4"]
+[ext_resource type="Script" uid="uid://q7xwxo0bmb0w" path="res://slices/run/pause/screens/pause_menu/pause_menu.gd" id="1_34sy4"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -58,3 +58,4 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/StackButton" to="." method="_on_stack_button_pressed"]

@@ -1,0 +1,186 @@
+[gd_scene load_steps=3 format=3 uid="uid://ht6y2dr3y6ki"]
+
+[ext_resource type="Script" uid="uid://di8k3ed6nq64j" path="res://ui_states/switchable.gd" id="1_5d7mn"]
+[ext_resource type="PackedScene" uid="uid://ddkgxju5coiu3" path="res://slices/run/pause/screens/stack_menu/letter_odds.tscn" id="2_47ekj"]
+
+[node name="StackMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5d7mn")
+metadata/_custom_type_script = "uid://di8k3ed6nq64j"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="GridHeader" type="HBoxContainer" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/GridHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Letter"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/GridHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Count"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/GridHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Draw Chance"
+horizontal_alignment = 1
+
+[node name="LetterOddsHolder" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="A" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+_is_vowel = true
+
+[node name="B" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "B"
+
+[node name="C" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "C"
+
+[node name="D" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "D"
+
+[node name="E" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+_letter = "E"
+_is_vowel = true
+
+[node name="F" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "F"
+
+[node name="G" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "G"
+
+[node name="H" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "H"
+
+[node name="I" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+_letter = "I"
+_is_vowel = true
+
+[node name="J" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "J"
+
+[node name="K" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "K"
+
+[node name="L" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "L"
+
+[node name="M" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "M"
+
+[node name="N" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "N"
+
+[node name="O" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+_letter = "O"
+_is_vowel = true
+
+[node name="P" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "P"
+
+[node name="Q" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "Q"
+
+[node name="R" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "R"
+
+[node name="T" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "T"
+
+[node name="U" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+_letter = "U"
+_is_vowel = true
+
+[node name="V" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "V"
+
+[node name="W" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "W"
+
+[node name="X" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "X"
+
+[node name="Y" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "Y"
+
+[node name="Z" parent="PanelContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer/LetterOddsHolder" instance=ExtResource("2_47ekj")]
+layout_mode = 2
+_letter = "Z"
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2

@@ -14,6 +14,7 @@ extends Control
 func _ready():
 	if current_scene and _scenes.has(current_scene):
 		var scene = _scenes[current_scene].instantiate()
+		scene.parent_switcher = self
 		scene.setup()
 		add_child(scene)
 
@@ -23,6 +24,7 @@ func transition(new_scene_name: StringName, ext := {}) -> void:
 	if _scenes.has(new_scene_name):
 		current_scene = new_scene_name
 		var scene = _scenes[new_scene_name].instantiate()
+		scene.parent_switcher = self
 		scene.setup(ext)
 		for child in get_children():
 			child.queue_free()

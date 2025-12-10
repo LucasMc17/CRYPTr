@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dqgsbm0cflt0i" path="res://slices/run/pause/pause_screen.gd" id="1_vfrww"]
 [ext_resource type="Script" uid="uid://dgjbmlg6wlice" path="res://ui_states/ui_switcher.gd" id="2_di67i"]
-[ext_resource type="PackedScene" uid="uid://bbijp713lja3a" path="res://slices/run/pause/screens/pause_menu.tscn" id="3_vfrww"]
-[ext_resource type="PackedScene" uid="uid://ht6y2dr3y6ki" path="res://slices/run/pause/screens/stack_menu.tscn" id="4_egxy4"]
+[ext_resource type="PackedScene" uid="uid://bbijp713lja3a" path="res://slices/run/pause/screens/pause_menu/pause_menu.tscn" id="3_vfrww"]
+[ext_resource type="PackedScene" uid="uid://ht6y2dr3y6ki" path="res://slices/run/pause/screens/stack_menu/stack_menu.tscn" id="4_egxy4"]
 
 [node name="PauseScreen" type="Control"]
 z_index = 100

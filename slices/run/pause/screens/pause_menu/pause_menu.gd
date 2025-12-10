@@ -8,3 +8,7 @@ extends Switchable
 
 func _on_resume_button_pressed():
 	Events.unpaused.emit()
+
+
+func _on_stack_button_pressed():
+	parent_switcher.transition("Stack")
