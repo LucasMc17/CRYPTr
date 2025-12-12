@@ -1,0 +1,152 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqe8r1yosav2h"]
+
+[ext_resource type="PackedScene" uid="uid://ddkgxju5coiu3" path="res://slices/run/pause/screens/stack_menu/letter_odds.tscn" id="1_4u481"]
+[ext_resource type="Script" uid="uid://vj5uldgt18r4" path="res://slices/run/pause/screens/stack_menu/letter_odds_panel.gd" id="1_87r5k"]
+
+[node name="LetterOddsPanel" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_87r5k")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Odds to draw by Letter"
+horizontal_alignment = 1
+
+[node name="GridHeader" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GridHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Letter"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="GridHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Count"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="GridHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Draw Chance"
+horizontal_alignment = 1
+
+[node name="LetterOddsHolder" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="A" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+_is_vowel = true
+
+[node name="B" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "B"
+
+[node name="C" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "C"
+
+[node name="D" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "D"
+
+[node name="E" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+letter = "E"
+_is_vowel = true
+
+[node name="F" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "F"
+
+[node name="G" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "G"
+
+[node name="H" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "H"
+
+[node name="I" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+letter = "I"
+_is_vowel = true
+
+[node name="J" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "J"
+
+[node name="K" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "K"
+
+[node name="L" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "L"
+
+[node name="M" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "M"
+
+[node name="N" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "N"
+
+[node name="O" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+letter = "O"
+_is_vowel = true
+
+[node name="P" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "P"
+
+[node name="Q" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "Q"
+
+[node name="R" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "R"
+
+[node name="T" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "T"
+
+[node name="U" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+letter = "U"
+_is_vowel = true
+
+[node name="V" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "V"
+
+[node name="W" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "W"
+
+[node name="X" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "X"
+
+[node name="Y" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "Y"
+
+[node name="Z" parent="LetterOddsHolder" instance=ExtResource("1_4u481")]
+layout_mode = 2
+letter = "Z"

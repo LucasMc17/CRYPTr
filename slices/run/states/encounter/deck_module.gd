@@ -16,6 +16,7 @@ var all : Array[CryptographRes]:
 func _init(should_shuffle := false):
 	_encounter_stack.clear()
 	_encounter_stack.append_array(Player.stack.duplicate())
+	Player.current_stack = _encounter_stack
 	if should_shuffle:
 		_encounter_stack.shuffle()
 

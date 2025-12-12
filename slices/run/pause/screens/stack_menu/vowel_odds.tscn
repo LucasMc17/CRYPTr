@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://3wkhbtsctcdk"]
+
+[ext_resource type="Script" uid="uid://biq4cya6br3s0" path="res://slices/run/pause/screens/stack_menu/vowel_odds.gd" id="1_g288y"]
+
+[node name="VowelOdds" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g288y")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Odds to draw a Vowel"
+horizontal_alignment = 1
+
+[node name="Odds" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "10%"
+horizontal_alignment = 1
