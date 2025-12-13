@@ -7,7 +7,7 @@ extends Switchable
 ## The encounter resource which this encounter instance. Typically instantiated within the `setup` function.
 var encounter : EncounterRes
 ## The `DeckModule` representing the player's full, shuffled deck. Responsible for all logic regarding drawing from deck and shuffling.
-var _deck = DeckModule.new(true)
+var _deck : DeckModule
 ## The `ScoringModule` responsible for validating and scoring potential words, as well as managing the player's current score.
 var _scoring = ScoringModule.new()
 ## The player's remaining discards, instantiated in the `_ready` function.
@@ -30,6 +30,8 @@ func _ready():
 	_discards = Player.discards
 	if "--debug-encounter" in OS.get_cmdline_args():
 		DebugNode.print('ENCOUNTER accessed directly')
+		var debug_encounter = EncounterRes.new("MATCH", 0, null, 0, 0, 0)
+		encounter = debug_encounter
 		if DebugNode.force_stack:
 			Player.initialize_stack(DebugNode.force_stack)
 			DebugNode.print('Initializing FORCED stack from Debug Node')
@@ -37,6 +39,7 @@ func _ready():
 			var CLASSIC_STACK = load("res://resources/starter_decks/the_classic.tres")
 			DebugNode.print('Initializing CLASSIC stack')
 			Player.initialize_stack(CLASSIC_STACK)
+	_deck = DeckModule.new(true)
 	_hand.add_to_hand(_deck.draw())
 
 	_scoring.current_score = 0
@@ -64,8 +67,7 @@ func _unhandled_input(event):
 ## Signals that the encounter was won to trigger the run UISwitcher back to the map.
 func _win() -> void:
 	DebugNode.print("YOU WON")
-	Player.current_stack.clear()
-	Player.current_stack = []
+	Player.current_stack = Player.stack
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
 	else:
@@ -76,7 +78,7 @@ func _win() -> void:
 ## Signals that the encounter was lost, and ends the run.
 func _lose() -> void:
 	DebugNode.print("YOU LOSE")
-	Player.current_stack.clear()
+	Player.current_stack = Player.stack
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
 	else:

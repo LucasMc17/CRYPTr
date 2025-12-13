@@ -46,7 +46,15 @@ var to_dictionary : Callable = DebugNode.make_to_printable_method(self, [
 		"relative_y"
 ])
 
-func _init(enc_type: String, enc_max_branches: int, enc_parent_node : EncounterRes, enc_session_depth : int, enc_security_level : int, enc_distance_from_end: int, enc_sibling_index := 0):
+func _init(
+		enc_type: String,
+		enc_max_branches: int,
+		enc_parent_node : EncounterRes,
+		enc_session_depth : int,
+		enc_security_level : int,
+		enc_distance_from_end: int, 
+		enc_sibling_index := 0
+	):
 	var enc_name = str(enc_security_level) + '_' + str(enc_sibling_index) + '_'
 	for i in range(5):
 		var letter = _alphabet[randi_range(0, _alphabet.length() -1)]

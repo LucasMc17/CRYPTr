@@ -41,7 +41,7 @@ var gyrogram_mult := BASE_GYROGRAM_MULT
 ## The Deck/Stack for the current run.
 var stack : Array[CryptographRes] = []
 ## The stack as currently initted, shuffled and drawn from in the current encounter.
-var current_stack : Array[CryptographRes] = []
+var current_stack : Array[CryptographRes] = stack
 ## Memory of played words, alphabetized to easily check for anagrams.
 var anagrams : Dictionary[String, Dictionary] = {}
 ## The current map, from the root encounter node.
@@ -65,7 +65,7 @@ func reset_run() -> void:
 	discards = BASE_DISCARDS
 
 	stack.clear()
-	current_stack.clear()
+	current_stack = stack
 	anagrams.clear()
 	encounter_map = null
 	current_encounter = null
@@ -93,3 +93,4 @@ func initialize_stack(starter_stack : StarterStack):
 			for i in range(starter_stack[character]):
 				result.append(cryptograph.duplicate())
 	stack = result
+	current_stack = stack

@@ -17,8 +17,7 @@ func _build_menu_from_stack(stack : Array[CryptographRes]) -> void:
 
 
 func _ready():
-	## TODO: Size is a bad way to track this. Need a boolean somewhere.
-	if Player.current_stack.size():
+	if Player.current_stack != Player.stack:
 		_build_menu_from_stack(Player.current_stack)
 	else:
 		stack_switcher.visible = false
