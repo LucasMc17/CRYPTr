@@ -28,10 +28,7 @@ signal unpaused()
 # ENCOUNTER LIFECYCLE
 
 ## Emitted when the user left clicks on a cryptograph
-signal cryptograph_left_clicked(cryptograph_scene : Cryptograph)
-
-## Emitted when the user right clicks on a cryptograph, typically in order to discard it
-signal cryptograph_right_clicked(cryptograph_scene : Cryptograph)
+signal cryptograph_discarded(cryptograph_scene : Cryptograph)
 
 # DEBUG COMMANDS
 

@@ -23,7 +23,7 @@ var _attempts := 4
 @onready var _score_preview := %ScorePreview
 
 func _ready():
-	Events.cryptograph_right_clicked.connect(_on_cryptograph_right_clicked)
+	# Events.cryptograph_right_clicked.connect(_on_cryptograph_right_clicked)
 	Events.command_win.connect(func (_params): _win())
 	Events.command_lose.connect(func (_params): _lose())
 
@@ -126,9 +126,9 @@ func _input_character(event) -> void:
 			_score_preview.update_potential_score(_scoring.score_object)
 
 
-## Discards a cryptograph when it is right clicked.
-func _on_cryptograph_right_clicked(cryptograph : Cryptograph) -> void:
+func _on_hand_discarded(cryptograph : Cryptograph):
 	if _discards > 0:
+		Events.cryptograph_discarded.emit(cryptograph)
 		_hand.discard(cryptograph)
 		_word.clear()
 		_scoring.update_score_object(_word.text, _hand)
