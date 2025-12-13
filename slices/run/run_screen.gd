@@ -20,7 +20,6 @@ func _unhandled_input(_event):
 	if Input.is_action_just_pressed("escape"):
 		if paused:
 			Events.unpaused.emit()
-			# _pause_switcher.clear()
 		else:
 			Events.paused.emit("Menu")
 
@@ -36,11 +35,13 @@ func _on_map_returned(new_map := false) -> void:
 func _on_run_paused(menu_screen : StringName) -> void:
 	_pause_switcher.transition("Pause", {"starting_menu": menu_screen})
 	paused = true
+	get_tree().paused = true
 
 
 func _on_run_unpaused() -> void:
 	_pause_switcher.clear()
 	paused = false
+	get_tree().paused = false
 
 
 func setup(init_obj := {}) -> void:

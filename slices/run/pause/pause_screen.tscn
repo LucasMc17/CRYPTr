@@ -5,24 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://bbijp713lja3a" path="res://slices/run/pause/screens/pause_menu/pause_menu.tscn" id="3_vfrww"]
 [ext_resource type="PackedScene" uid="uid://ht6y2dr3y6ki" path="res://slices/run/pause/screens/stack_menu/stack_menu.tscn" id="4_egxy4"]
 
-[node name="PauseScreen" type="Control"]
+[node name="PauseScreen" type="PanelContainer"]
 z_index = 100
-layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vfrww")
-metadata/_custom_type_script = "uid://di8k3ed6nq64j"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 50

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dgjbmlg6wlice" path="res://ui_states/ui_switcher.gd" id="5_o8dxk"]
 
 [node name="RunScreen" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +18,7 @@ script = ExtResource("1_lcpi4")
 
 [node name="RunSwitcher" type="Control" parent="."]
 unique_name_in_owner = true
+process_mode = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,6 +35,7 @@ metadata/_custom_type_script = "uid://dgjbmlg6wlice"
 
 [node name="PauseSwitcher" type="Control" parent="."]
 unique_name_in_owner = true
+process_mode = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
