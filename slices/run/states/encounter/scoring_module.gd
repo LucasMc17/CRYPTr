@@ -191,6 +191,7 @@ class ScoringObject:
 
 	## Checks for a perfect pangram by confirming that the length of the word is the player's hand size (assumes word has already passed pangram check).
 	static func is_perfectigram(word : String) -> bool:
+		# NOTE: logic here might be too simplistic. Just scored a perfectigram with "DROLLY" because by current hand was D L R O Y L.
 		return word.length() == Player.HAND_SIZE
 
 
