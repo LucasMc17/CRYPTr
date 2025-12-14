@@ -45,3 +45,17 @@ func _check_overrides(value):
 func print(message):
 	if debug_console:
 		debug_console.log(message)
+
+
+## 
+func make_to_printable_method(entity, params := []) -> Callable:
+	return func(expand_children := false) -> Dictionary:
+		var result := {}
+		for param in params:
+			if param in entity:
+				if expand_children and entity[param] is Object and "to_dictionary" in entity[param]:
+					result[param] = entity[param].to_dictionary.call()
+				else:
+					result[param] = entity[param]
+		
+		return result

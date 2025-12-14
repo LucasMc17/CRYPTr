@@ -2,8 +2,8 @@ class_name Cryptograph
 extends ColorRect
 ## Scene representing a cryptograph in the player's stack.
 
-# signal clicked(cryptograph_scene : Cryptograph)
-# signal right_clicked(cryptograph_scene : Cryptograph)
+signal clicked(cryptograph_scene : Cryptograph)
+signal right_clicked(cryptograph_scene : Cryptograph)
 
 ## The resource representing the cryptograph's information.
 @export var resource : CryptographRes:
@@ -29,6 +29,6 @@ func _ready():
 func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			Events.cryptograph_left_clicked.emit(self)
+			clicked.emit(self)
 		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			Events.cryptograph_right_clicked.emit(self)
+			right_clicked.emit(self)

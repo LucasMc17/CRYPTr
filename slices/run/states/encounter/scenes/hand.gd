@@ -2,6 +2,9 @@ class_name Hand
 extends HBoxContainer
 ## Scene representing the player's hand during an encounter.
 
+## Signal for passing discards up to the encounter level.
+signal discarded(cryptograph : Cryptograph)
+
 ## Preloaded cryptograph scene for instantiating new cryptographs.
 var _cryptograph_scene = preload('res://scenes/cryptograph.tscn')
 ## All Cryptograph scenes in hand.
@@ -16,7 +19,7 @@ var count : int:
 ## Read only property for fetching the letters in the player's hand as an array of single character strings.
 var letters : Array:
 	get():
-		# NOTE: this is a good example of a typed array I can't seem to fully indicate the type of without breaking the func
+		# NOTE: this is a good example of a typed array I can't seem to fully indicate the type of without breaking the func. Exclusively because of the map method which returns an untyped array
 		var result : Array = cryptographs.map(func (crypt) -> String : return crypt.resource.letter.character)
 		return result
 	set(val):
@@ -29,6 +32,7 @@ func add_to_hand(cryptographs_to_add : Array[CryptographRes]) -> void:
 		var new_scene = _cryptograph_scene.instantiate()
 		new_scene.resource = resource
 		cryptographs.append(new_scene)
+		new_scene.right_clicked.connect(_on_cryptograph_right_clicked)
 		add_child(new_scene)
 
 
@@ -56,3 +60,7 @@ func discard_all() -> void:
 	for cryptograph in cryptographs:
 		cryptograph.queue_free()
 	cryptographs.clear()
+
+
+func _on_cryptograph_right_clicked(cryptograph : Cryptograph):
+	discarded.emit(cryptograph)

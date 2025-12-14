@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://ht6y2dr3y6ki"]
+
+[ext_resource type="Script" uid="uid://cyh6oedefqujc" path="res://slices/run/pause/screens/stack_menu/stack_menu.gd" id="1_47ekj"]
+[ext_resource type="PackedScene" uid="uid://bqe8r1yosav2h" path="res://slices/run/pause/screens/stack_menu/letter_odds_panel.tscn" id="2_47ekj"]
+[ext_resource type="PackedScene" uid="uid://3wkhbtsctcdk" path="res://slices/run/pause/screens/stack_menu/vowel_odds.tscn" id="3_agjh1"]
+[ext_resource type="PackedScene" uid="uid://dvmax6w2gqmnr" path="res://slices/run/pause/screens/stack_menu/cryptograph_grid.tscn" id="4_5n5cd"]
+
+[node name="StackMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_47ekj")
+metadata/_custom_type_script = "uid://di8k3ed6nq64j"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="StackSwitcher" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+
+[node name="CurrentStackButton" type="Button" parent="PanelContainer/VBoxContainer/StackSwitcher"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Current Stack"
+
+[node name="FullStackButton" type="Button" parent="PanelContainer/VBoxContainer/StackSwitcher"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Full Stack"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="LetterOddsPanel" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_47ekj")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VowelOdds" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("3_agjh1")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="CryptographGrid" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer" instance=ExtResource("4_5n5cd")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/StackSwitcher/CurrentStackButton" to="." method="_on_current_stack_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/StackSwitcher/FullStackButton" to="." method="_on_full_stack_button_pressed"]

@@ -53,3 +53,5 @@ size_flags_horizontal = 3
 [node name="ScorePreview" parent="HBoxContainer/ScoreArea" instance=ExtResource("4_rcu84")]
 unique_name_in_owner = true
 layout_mode = 1
+
+[connection signal="discarded" from="HBoxContainer/PlayArea/VBoxContainer/Hand" to="." method="_on_hand_discarded"]

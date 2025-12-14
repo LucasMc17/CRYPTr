@@ -19,13 +19,19 @@ signal return_to_map(new_map : bool)
 ## Emitted when a match is lost, forfeiting the run
 signal run_lost()
 
+## Emitted when a run is paused
+signal paused(menu_screen : StringName)
+
+## Emitted when a run is unpaused
+signal unpaused()
+
+## Emitted when the user elects to quit to the main menu of the game.
+signal quit_to_menu()
+
 # ENCOUNTER LIFECYCLE
 
 ## Emitted when the user left clicks on a cryptograph
-signal cryptograph_left_clicked(cryptograph_scene : Cryptograph)
-
-## Emitted when the user right clicks on a cryptograph, typically in order to discard it
-signal cryptograph_right_clicked(cryptograph_scene : Cryptograph)
+signal cryptograph_discarded(cryptograph_scene : Cryptograph)
 
 # DEBUG COMMANDS
 

@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcrnr05jvfxc7"]
+
+[ext_resource type="Script" uid="uid://dqgsbm0cflt0i" path="res://slices/run/pause/pause_screen.gd" id="1_vfrww"]
+[ext_resource type="Script" uid="uid://dgjbmlg6wlice" path="res://ui_states/ui_switcher.gd" id="2_di67i"]
+[ext_resource type="PackedScene" uid="uid://bbijp713lja3a" path="res://slices/run/pause/screens/pause_menu/pause_menu.tscn" id="3_vfrww"]
+[ext_resource type="PackedScene" uid="uid://ht6y2dr3y6ki" path="res://slices/run/pause/screens/stack_menu/stack_menu.tscn" id="4_egxy4"]
+
+[node name="PauseScreen" type="PanelContainer"]
+z_index = 100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vfrww")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CryptrLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "CRYPTr"
+horizontal_alignment = 1
+
+[node name="RunPausedLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "RUN_PAUSED"
+horizontal_alignment = 1
+
+[node name="PauseMenuSwitcher" type="Control" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_di67i")
+_scenes = Dictionary[String, PackedScene]({
+"Menu": ExtResource("3_vfrww"),
+"Stack": ExtResource("4_egxy4")
+})
+current_scene = &"Menu"
+metadata/_custom_type_script = "uid://dgjbmlg6wlice"

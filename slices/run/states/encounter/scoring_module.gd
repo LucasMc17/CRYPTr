@@ -68,6 +68,15 @@ class ScoringObject:
 	var additional_mults : Dictionary[String, float] = {}
 	## Final score after all multipliers are applied.
 	var total_score : float
+	## Utility Callable to convert the entity to a Dictionary for printing purposes.
+	var to_dictionary : Callable = DebugNode.make_to_printable_method(self, [
+			"valid",
+			"base_score",
+			"length_mult",
+			"word_name",
+			"additional_mults",
+			"total_score"
+	])
 
 	func _init(word : String, hand : Hand):
 		valid = is_valid(word)
@@ -182,6 +191,7 @@ class ScoringObject:
 
 	## Checks for a perfect pangram by confirming that the length of the word is the player's hand size (assumes word has already passed pangram check).
 	static func is_perfectigram(word : String) -> bool:
+		# NOTE: logic here might be too simplistic. Just scored a perfectigram with "DROLLY" because by current hand was D L R O Y L.
 		return word.length() == Player.HAND_SIZE
 
 
@@ -239,15 +249,3 @@ class ScoringObject:
 	## Calculates length multiplier based on word length.
 	static func get_length_mult(word : String) -> float:
 		return 1 + Player.LENGTH_MULTIPLIER * word.length()
-
-
-	## Utility function yadda yadda
-	func to_object() -> Dictionary:
-		return {
-			"valid" : valid,
-			"base_score": base_score,
-			"length_mult": length_mult,
-			"word_name": word_name,
-			"additional_mults": additional_mults,
-			"total_score": total_score
-		}

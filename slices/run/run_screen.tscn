@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3ennndecf56b"]
+[gd_scene load_steps=6 format=3 uid="uid://b3ennndecf56b"]
 
 [ext_resource type="Script" uid="uid://en1uhxivcuk7" path="res://slices/run/run_screen.gd" id="1_lcpi4"]
 [ext_resource type="PackedScene" uid="uid://hsul0q167iju" path="res://slices/run/states/encounter/encounter.tscn" id="4_lcpi4"]
 [ext_resource type="PackedScene" uid="uid://d3pg22dsctbb0" path="res://slices/run/states/map/map.tscn" id="4_o8dxk"]
+[ext_resource type="PackedScene" uid="uid://dcrnr05jvfxc7" path="res://slices/run/pause/pause_screen.tscn" id="5_jpi1y"]
 [ext_resource type="Script" uid="uid://dgjbmlg6wlice" path="res://ui_states/ui_switcher.gd" id="5_o8dxk"]
 
 [node name="RunScreen" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +18,7 @@ script = ExtResource("1_lcpi4")
 
 [node name="RunSwitcher" type="Control" parent="."]
 unique_name_in_owner = true
+process_mode = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,6 +35,7 @@ metadata/_custom_type_script = "uid://dgjbmlg6wlice"
 
 [node name="PauseSwitcher" type="Control" parent="."]
 unique_name_in_owner = true
+process_mode = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,4 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("5_o8dxk")
+_scenes = Dictionary[String, PackedScene]({
+"Pause": ExtResource("5_jpi1y")
+})
 metadata/_custom_type_script = "uid://dgjbmlg6wlice"

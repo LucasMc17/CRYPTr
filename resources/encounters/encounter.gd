@@ -34,8 +34,27 @@ var distance_from_end := 0
 var visited := false
 ## A boolean representing whether the player has bypassed this encounter (and by extension it's branches recursively) without visiting it.
 var bypassed := false
+## Utility Callable to convert the resource to a Dictionary for printing purposes.
+var to_dictionary : Callable = DebugNode.make_to_printable_method(self, [
+		"name",
+		"type",
+		"security_level",
+		"session_depth",
+		"parent",
+		"branches",
+		"distance_from_end",
+		"relative_y"
+])
 
-func _init(enc_type: String, enc_max_branches: int, enc_parent_node : EncounterRes, enc_session_depth : int, enc_security_level : int, enc_distance_from_end: int, enc_sibling_index := 0):
+func _init(
+		enc_type: String,
+		enc_max_branches: int,
+		enc_parent_node : EncounterRes,
+		enc_session_depth : int,
+		enc_security_level : int,
+		enc_distance_from_end: int, 
+		enc_sibling_index := 0
+	):
 	var enc_name = str(enc_security_level) + '_' + str(enc_sibling_index) + '_'
 	for i in range(5):
 		var letter = _alphabet[randi_range(0, _alphabet.length() -1)]
@@ -58,18 +77,6 @@ func _init(enc_type: String, enc_max_branches: int, enc_parent_node : EncounterR
 	if enc_distance_from_end > 0:
 		for i in range(randi_range(1, enc_max_branches)):
 			branches.append(EncounterRes.new("MATCH", enc_max_branches, self, self.session_depth, enc_security_level + 1, enc_distance_from_end - 1, i))
-
-## Utility function to convert the resource to a Dictionary for printing purposes.
-func to_object() -> Dictionary:
-	return {
-		"name": name,
-		"type": type,
-		"security_level": security_level,
-		"session_depth": session_depth,
-		"branches": branches.map(func (enc : EncounterRes): return enc.to_object()),
-		"distance_from_end": distance_from_end,
-		"relative_y": relative_y
-	}
 
 
 ## Recursively calculates the total number of nodes in the encounter tree from this point downwards, including the current encounter. 
