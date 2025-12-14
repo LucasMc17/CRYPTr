@@ -59,3 +59,4 @@ size_flags_horizontal = 3
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/StackButton" to="." method="_on_stack_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

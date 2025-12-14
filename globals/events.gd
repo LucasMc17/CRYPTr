@@ -25,6 +25,9 @@ signal paused(menu_screen : StringName)
 ## Emitted when a run is unpaused
 signal unpaused()
 
+## Emitted when the user elects to quit to the main menu of the game.
+signal quit_to_menu()
+
 # ENCOUNTER LIFECYCLE
 
 ## Emitted when the user left clicks on a cryptograph
