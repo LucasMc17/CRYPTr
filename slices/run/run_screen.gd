@@ -21,19 +21,20 @@ func _unhandled_input(_event):
 		if paused:
 			Events.unpaused.emit()
 		else:
-			Events.paused.emit("Menu")
+			Events.paused.emit({"menu_screen": "Menu"})
 
 
-func _on_match_started(encounter) -> void:
+func _on_match_started(params : Dictionary) -> void:
+	var encounter = params.encounter
 	_run_switcher.transition('Encounter', {"encounter": encounter})
 
 
-func _on_map_returned(new_map := false) -> void:
-	_run_switcher.transition('Map', { "new_map": new_map })
+func _on_map_returned(params : Dictionary) -> void:
+	_run_switcher.transition('Map', params)
 
 
-func _on_run_paused(menu_screen : StringName) -> void:
-	_pause_switcher.transition("Pause", {"starting_menu": menu_screen})
+func _on_run_paused(params : Dictionary) -> void:
+	_pause_switcher.transition("Pause", params)
 	paused = true
 	get_tree().paused = true
 

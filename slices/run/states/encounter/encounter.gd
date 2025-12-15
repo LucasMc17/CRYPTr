@@ -23,6 +23,8 @@ var _attempts := 4
 @onready var _score_preview := %ScorePreview
 
 func _ready():
+	var on_e_trigger = OnLetterTrigger.new("E")
+
 	# Events.cryptograph_right_clicked.connect(_on_cryptograph_right_clicked)
 	Events.command_win.connect(func (_params): _win())
 	Events.command_lose.connect(func (_params): _lose())
@@ -72,7 +74,7 @@ func _win() -> void:
 		get_tree().quit(0)
 	else:
 		Events.match_won.emit()
-		Events.return_to_map.emit(false)
+		Events.return_to_map.emit({"new_map": false})
 
 
 ## Signals that the encounter was lost, and ends the run.
@@ -85,11 +87,14 @@ func _lose() -> void:
 		Events.run_lost.emit()
 
 
+# TODO: A lot of this is going to change so we can iterate through a scored word with animations and sound effects. The score preview too.
 ## Enters the currently inputted word, assuming it is valid.
 func _enter_word() -> void:
 	if _scoring.score_object.valid:
 		Player.add_anagram(_word.text)
-		DebugNode.print(Player.anagrams)
+		for letter in _word.text:
+			DebugNode.print(letter)
+			Events.letter_scored.emit({ "letter": letter })
 		if DebugNode.instawin:
 			_win()
 			return
@@ -128,7 +133,7 @@ func _input_character(event) -> void:
 
 func _on_hand_discarded(cryptograph : Cryptograph):
 	if _discards > 0:
-		Events.cryptograph_discarded.emit(cryptograph)
+		Events.cryptograph_discarded.emit({ "cryptograph_scene": cryptograph })
 		_hand.discard(cryptograph)
 		_word.clear()
 		_scoring.update_score_object(_word.text, _hand)

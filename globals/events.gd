@@ -7,20 +7,23 @@ extends Node
 ## Emitted when the player clicks the new run button
 signal new_run_started()
 
-## Emitted when the player clicks into a new match from the map screen
-signal match_started(encounter : EncounterRes)
+## Emitted when the player clicks into a new match from the map screen.
+## Pass with an object matching this signature: { "encounter": EncounterRes }
+signal match_started(params : Dictionary[StringName, EncounterRes])
 
 ## Emitted when the player wins a match, typically combined with return_to_map
 signal match_won()
 
-## Emitted when the player leaves an encounter and returns to the map
-signal return_to_map(new_map : bool)
+## Emitted when the player leaves an encounter and returns to the map.
+## Pass with an object matching this signature: { "new_map": bool }
+signal return_to_map(params : Dictionary[StringName, bool])
 
 ## Emitted when a match is lost, forfeiting the run
 signal run_lost()
 
-## Emitted when a run is paused
-signal paused(menu_screen : StringName)
+## Emitted when a run is paused.
+## Pass with an object matching this signature: { "menu_screen": StringName }
+signal paused(params : Dictionary[StringName, StringName])
 
 ## Emitted when a run is unpaused
 signal unpaused()
@@ -30,8 +33,13 @@ signal quit_to_menu()
 
 # ENCOUNTER LIFECYCLE
 
-## Emitted when the user left clicks on a cryptograph
-signal cryptograph_discarded(cryptograph_scene : Cryptograph)
+## Emitted when the user left clicks on a cryptograph.
+## Pass with an object matching this signature: { "cryptograph_scene": Cryptograph }
+signal cryptograph_discarded(params : Dictionary[StringName, Cryptograph])
+
+## Emitted on each letter of the scored word in sequence.
+## Pass with an object matching this signature: { "letter": StringName }
+signal letter_scored(params : Dictionary[StringName, StringName])
 
 # DEBUG COMMANDS
 

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://p8phbl4h0ed4"]
+
+[ext_resource type="Script" uid="uid://dgm8u3kfmd6cq" path="res://resources/triggers/play_triggers/on_letter_triggers/on_letter_trigger.gd" id="1_qyfww"]
+
+[node name="OnUTrigger" type="Node"]
+script = ExtResource("1_qyfww")
+metadata/_custom_type_script = "uid://dgm8u3kfmd6cq"
