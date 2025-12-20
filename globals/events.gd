@@ -34,12 +34,16 @@ signal quit_to_menu()
 # ENCOUNTER LIFECYCLE
 
 ## Emitted when the user left clicks on a cryptograph.
-## Pass with an object matching this signature: { "cryptograph_scene": Cryptograph }
+## Pass with an object matching this signature: { "cryptograph_scene": Cryptograph, "remaining_discards": int, "letter": String }
 signal cryptograph_discarded(params : Dictionary[StringName, Cryptograph])
 
 ## Emitted on each letter of the scored word in sequence.
 ## Pass with an object matching this signature: { "letter": StringName }
 signal letter_scored(params : Dictionary[StringName, StringName])
+
+## Emitted when a valid word is scored.
+## Pass with an object matching this signature: { "word": String, "types": Dictionary[StringName, float], "attempts_left": int }
+signal word_scored(params : Dictionary)
 
 # DEBUG COMMANDS
 

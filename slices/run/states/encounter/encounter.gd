@@ -23,9 +23,6 @@ var _attempts := 4
 @onready var _score_preview := %ScorePreview
 
 func _ready():
-	var on_e_trigger = OnLetterTrigger.new("E")
-
-	# Events.cryptograph_right_clicked.connect(_on_cryptograph_right_clicked)
 	Events.command_win.connect(func (_params): _win())
 	Events.command_lose.connect(func (_params): _lose())
 
@@ -95,6 +92,7 @@ func _enter_word() -> void:
 		for letter in _word.text:
 			DebugNode.print(letter)
 			Events.letter_scored.emit({ "letter": letter })
+		Events.word_scored.emit({ "word": _word.text, "types": _scoring.score_object.additional_mults, "attempts_remaining": _attempts - 1})
 		if DebugNode.instawin:
 			_win()
 			return
@@ -133,7 +131,7 @@ func _input_character(event) -> void:
 
 func _on_hand_discarded(cryptograph : Cryptograph):
 	if _discards > 0:
-		Events.cryptograph_discarded.emit({ "cryptograph_scene": cryptograph })
+		Events.cryptograph_discarded.emit({ "cryptograph_scene": cryptograph, "remaining_discards": _discards - 1, "letter": cryptograph.resource.letter.character })
 		_hand.discard(cryptograph)
 		_word.clear()
 		_scoring.update_score_object(_word.text, _hand)
