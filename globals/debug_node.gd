@@ -23,6 +23,10 @@ extends Node
 ## Force a particular starter stack for testing purposes.
 @export var force_stack : StarterStack
 
+@export_category("Logging")
+## Degree of frequency of console logging.
+@export_enum("NONE", "NORMAL", "HIGH") var log_level := 0
+
 ## the game's debug console.
 var debug_console : DebugConsole
 ## Preloaded debug ui packed scene for initialization.
@@ -47,7 +51,19 @@ func print(message):
 		debug_console.log(message)
 
 
-## 
+## Prints the message only if log level is NORMAL or higher.
+func print_n(message):
+	if log_level > 0:
+		DebugNode.print(message)
+
+
+## Prints the message only if log level is HIGH.
+func print_h(message):
+	if log_level > 1:
+		DebugNode.print(message)
+
+
+## Factory function for creating printable format of complex objects.
 func make_to_printable_method(entity, params := []) -> Callable:
 	return func(expand_children := false) -> Dictionary:
 		var result := {}

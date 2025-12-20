@@ -1,5 +1,6 @@
 class_name OnLetterTrigger
 extends Trigger
+## Play trigger activated whenever a specific letter is played and scored.
 
 ## The letter this Trigger listens for.
 var letter := "A"

@@ -28,15 +28,15 @@ func _ready():
 
 	_discards = Player.discards
 	if "--debug-encounter" in OS.get_cmdline_args():
-		DebugNode.print('ENCOUNTER accessed directly')
+		DebugNode.print_n('ENCOUNTER accessed directly')
 		var debug_encounter = EncounterRes.new("MATCH", 0, null, 0, 0, 0)
 		encounter = debug_encounter
 		if DebugNode.force_stack:
 			Player.initialize_stack(DebugNode.force_stack)
-			DebugNode.print('Initializing FORCED stack from Debug Node')
+			DebugNode.print_n('Initializing FORCED stack from Debug Node')
 		else:
 			var CLASSIC_STACK = load("res://resources/starter_decks/the_classic.tres")
-			DebugNode.print('Initializing CLASSIC stack')
+			DebugNode.print_n('Initializing CLASSIC stack')
 			Player.initialize_stack(CLASSIC_STACK)
 	_deck = DeckModule.new(true)
 	_hand.add_to_hand(_deck.draw())
@@ -65,7 +65,6 @@ func _unhandled_input(event):
 
 ## Signals that the encounter was won to trigger the run UISwitcher back to the map.
 func _win() -> void:
-	DebugNode.print("YOU WON")
 	Player.current_stack = Player.stack
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
@@ -76,7 +75,7 @@ func _win() -> void:
 
 ## Signals that the encounter was lost, and ends the run.
 func _lose() -> void:
-	DebugNode.print("YOU LOSE")
+	DebugNode.print_n("YOU LOSE")
 	Player.current_stack = Player.stack
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
@@ -90,7 +89,6 @@ func _enter_word() -> void:
 	if _scoring.score_object.valid:
 		Player.add_anagram(_word.text)
 		for letter in _word.text:
-			DebugNode.print(letter)
 			Events.emit_letter_scored(letter)
 		Events.emit_word_scored(_word.text, _scoring.score_object.additional_mults, _attempts - 1)
 		# Events.word_scored.emit({ "word": _word.text, "types": _scoring.score_object.additional_mults, "attempts_remaining": _attempts - 1})

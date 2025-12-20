@@ -1,6 +1,8 @@
 class_name OnDiscardLetterTrigger
 extends Trigger
+## Discard trigger activated when a specified letter is discarded.
 
+## The letter that activates this trigger when discarded.
 var letter : String
 
 func _init(trigger_letter):

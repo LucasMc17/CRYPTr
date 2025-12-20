@@ -39,7 +39,7 @@ func _on_run_paused(params : Events.PausedParams) -> void:
 	get_tree().paused = true
 
 
-func _on_run_unpaused() -> void:
+func _on_run_unpaused(_params) -> void:
 	_pause_switcher.clear()
 	paused = false
 	get_tree().paused = false

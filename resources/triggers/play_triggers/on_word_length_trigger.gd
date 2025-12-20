@@ -1,7 +1,10 @@
 class_name OnWordLengthTrigger
 extends Trigger
+## Play trigger activated whenever a word is played with sufficiently few or many total characters.
 
+## If `true`, the number of letters must be greater than the `length` in order to activate the trigger. Else must be fewer.
 var greater : bool
+## The target number, which the count of letters in the word must be larger or smaller than, depending on the value of `greater`.
 var length : int
 
 func _init(trigger_greater : bool, trigger_length : int):

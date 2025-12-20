@@ -1,7 +1,10 @@
 class_name OnDistinctLetterTrigger
 extends Trigger
+## Play trigger activated whenever a word is played with sufficiently few or many distinct letters.
 
+## If `true`, the number of distinct letters must be greater than the `distinct_target` in order to activate the trigger. Else must be fewer.
 var greater : bool
+## The target number, which the count of distinct letters in the word must be larger or smaller than, depending on the value of `greater`.
 var distinct_target : int
 
 func _init(trigger_greater : bool, trigger_distinct_target : int):
@@ -11,6 +14,7 @@ func _init(trigger_greater : bool, trigger_distinct_target : int):
 	super()
 
 
+## Utility function which returns the number of distinct letters in the played word.
 func _get_distinct(word : String) -> int:
 	var result = ""
 	for letter in word:

@@ -1,16 +1,15 @@
 extends UISwitcher
 
 func _ready():
-	OnEncounterTrigger.new()
 	Events.new_run_started.connect(_on_new_run_started)
 	Events.quit_to_menu.connect(_on_quit_to_menu)
 	super()
 
 
-func _on_new_run_started() -> void:
+func _on_new_run_started(_params) -> void:
 	transition('RunScreen')
 
 
-func _on_quit_to_menu() -> void:
+func _on_quit_to_menu(_params) -> void:
 	transition('StartScreen')
 	Player.reset_run()
