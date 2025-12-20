@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Events="*res://globals/events.gd"
 Player="*res://globals/player.gd"
 DebugNode="*res://globals/debug_node.tscn"
+Constants="*res://globals/constants.gd"
 
 [display]
 

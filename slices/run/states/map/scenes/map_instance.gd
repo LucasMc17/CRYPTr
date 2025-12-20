@@ -46,7 +46,7 @@ func _on_encounter_clicked(map_node : MapNode) -> void:
 				branch.bypass()
 	
 	Player.current_encounter = map_node.encounter_resource
-	Events.match_started.emit(map_node.encounter_resource)
+	Events.emit_match_started(map_node.encounter_resource)
 	_root_node.update_colors()
 
 

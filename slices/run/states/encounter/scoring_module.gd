@@ -65,7 +65,7 @@ class ScoringObject:
 	## Name describing inputted word, based on word length.
 	var word_name : String
 	## Other multipliers based on special criteria.
-	var additional_mults : Dictionary[String, float] = {}
+	var additional_mults : Dictionary[StringName, float] = {}
 	## Final score after all multipliers are applied.
 	var total_score : float
 	## Utility Callable to convert the entity to a Dictionary for printing purposes.

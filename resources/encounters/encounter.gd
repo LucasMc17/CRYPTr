@@ -5,9 +5,6 @@ extends Resource
 ## Contains relevant information about it's type, position, special characteristics, and references to it's branches (child EncounterRes instances).
 ## Also contains helper functions to determine the physicaly position of its scene within the map_instance.tscn file
 
-## Utility string of all possible characters for random string generation.
-static var _alphabet := "abcdefghijklmnopqrstuvwxyz0123456789"
-
 @export_group("Encounter Info")
 ## The locally unique name of the encounter, consisting of its `security_level`, index among its sibling branches, and a randomized string
 @export var name : String = '0_0_TEST'
@@ -57,7 +54,7 @@ func _init(
 	):
 	var enc_name = str(enc_security_level) + '_' + str(enc_sibling_index) + '_'
 	for i in range(5):
-		var letter = _alphabet[randi_range(0, _alphabet.length() -1)]
+		var letter = Constants.ALPHANUMERIC[randi_range(0, Constants.ALPHANUMERIC.length() -1)]
 		enc_name += letter
 	self.name = enc_name
 	self.type = enc_type

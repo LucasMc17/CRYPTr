@@ -23,21 +23,20 @@ var _attempts := 4
 @onready var _score_preview := %ScorePreview
 
 func _ready():
-	# Events.cryptograph_right_clicked.connect(_on_cryptograph_right_clicked)
 	Events.command_win.connect(func (_params): _win())
 	Events.command_lose.connect(func (_params): _lose())
 
 	_discards = Player.discards
 	if "--debug-encounter" in OS.get_cmdline_args():
-		DebugNode.print('ENCOUNTER accessed directly')
+		DebugNode.print_n('ENCOUNTER accessed directly')
 		var debug_encounter = EncounterRes.new("MATCH", 0, null, 0, 0, 0)
 		encounter = debug_encounter
 		if DebugNode.force_stack:
 			Player.initialize_stack(DebugNode.force_stack)
-			DebugNode.print('Initializing FORCED stack from Debug Node')
+			DebugNode.print_n('Initializing FORCED stack from Debug Node')
 		else:
 			var CLASSIC_STACK = load("res://resources/starter_decks/the_classic.tres")
-			DebugNode.print('Initializing CLASSIC stack')
+			DebugNode.print_n('Initializing CLASSIC stack')
 			Player.initialize_stack(CLASSIC_STACK)
 	_deck = DeckModule.new(true)
 	_hand.add_to_hand(_deck.draw())
@@ -66,30 +65,33 @@ func _unhandled_input(event):
 
 ## Signals that the encounter was won to trigger the run UISwitcher back to the map.
 func _win() -> void:
-	DebugNode.print("YOU WON")
 	Player.current_stack = Player.stack
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
 	else:
-		Events.match_won.emit()
-		Events.return_to_map.emit(false)
+		Events.emit_match_won()
+		Events.emit_return_to_map(false)
 
 
 ## Signals that the encounter was lost, and ends the run.
 func _lose() -> void:
-	DebugNode.print("YOU LOSE")
+	DebugNode.print_n("YOU LOSE")
 	Player.current_stack = Player.stack
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
 	else:
-		Events.run_lost.emit()
+		Events.emit_run_lost()
 
 
+# TODO: A lot of this is going to change so we can iterate through a scored word with animations and sound effects. The score preview too.
 ## Enters the currently inputted word, assuming it is valid.
 func _enter_word() -> void:
 	if _scoring.score_object.valid:
 		Player.add_anagram(_word.text)
-		DebugNode.print(Player.anagrams)
+		for letter in _word.text:
+			Events.emit_letter_scored(letter)
+		Events.emit_word_scored(_word.text, _scoring.score_object.additional_mults, _attempts - 1)
+		# Events.word_scored.emit({ "word": _word.text, "types": _scoring.score_object.additional_mults, "attempts_remaining": _attempts - 1})
 		if DebugNode.instawin:
 			_win()
 			return
@@ -128,7 +130,7 @@ func _input_character(event) -> void:
 
 func _on_hand_discarded(cryptograph : Cryptograph):
 	if _discards > 0:
-		Events.cryptograph_discarded.emit(cryptograph)
+		Events.emit_cryptograph_discarded(cryptograph, _discards - 1, cryptograph.resource.letter.character)
 		_hand.discard(cryptograph)
 		_word.clear()
 		_scoring.update_score_object(_word.text, _hand)
