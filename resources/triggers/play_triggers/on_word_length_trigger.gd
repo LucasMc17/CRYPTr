@@ -11,10 +11,8 @@ func _init(trigger_greater : bool, trigger_length : int):
 	super()
 
 
-func filter(params : Dictionary) -> bool:
-	if params.has("word"):
-		if greater:
-			return len(params.word) > length
-		else:
-			return len(params.word) < length
-	return false
+func filter(params : Events.ParamsObject) -> bool:
+	if greater:
+		return len(params.word) > length
+	else:
+		return len(params.word) < length

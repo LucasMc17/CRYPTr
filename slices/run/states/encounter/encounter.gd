@@ -70,8 +70,8 @@ func _win() -> void:
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
 	else:
-		Events.match_won.emit()
-		Events.return_to_map.emit({"new_map": false})
+		Events.emit_match_won()
+		Events.emit_return_to_map(false)
 
 
 ## Signals that the encounter was lost, and ends the run.
@@ -81,7 +81,7 @@ func _lose() -> void:
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
 	else:
-		Events.run_lost.emit()
+		Events.emit_run_lost()
 
 
 # TODO: A lot of this is going to change so we can iterate through a scored word with animations and sound effects. The score preview too.
@@ -91,8 +91,9 @@ func _enter_word() -> void:
 		Player.add_anagram(_word.text)
 		for letter in _word.text:
 			DebugNode.print(letter)
-			Events.letter_scored.emit({ "letter": letter })
-		Events.word_scored.emit({ "word": _word.text, "types": _scoring.score_object.additional_mults, "attempts_remaining": _attempts - 1})
+			Events.emit_letter_scored(letter)
+		Events.emit_word_scored(_word.text, _scoring.score_object.additional_mults, _attempts - 1)
+		# Events.word_scored.emit({ "word": _word.text, "types": _scoring.score_object.additional_mults, "attempts_remaining": _attempts - 1})
 		if DebugNode.instawin:
 			_win()
 			return
@@ -131,7 +132,7 @@ func _input_character(event) -> void:
 
 func _on_hand_discarded(cryptograph : Cryptograph):
 	if _discards > 0:
-		Events.cryptograph_discarded.emit({ "cryptograph_scene": cryptograph, "remaining_discards": _discards - 1, "letter": cryptograph.resource.letter.character })
+		Events.emit_cryptograph_discarded(cryptograph, _discards - 1, cryptograph.resource.letter.character)
 		_hand.discard(cryptograph)
 		_word.clear()
 		_scoring.update_score_object(_word.text, _hand)

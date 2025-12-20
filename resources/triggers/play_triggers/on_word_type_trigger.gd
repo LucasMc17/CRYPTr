@@ -8,7 +8,5 @@ func _init(trigger_word_type : String):
 	events_signal = "word_scored"
 	super()
 
-func filter(params : Dictionary) -> bool:
-	if params.has("types") and params.types.has(word_type):
-		return true
-	return false
+func filter(params : Events.ParamsObject) -> bool:
+	return params.types.has(word_type)

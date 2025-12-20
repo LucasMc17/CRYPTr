@@ -1,6 +1,7 @@
 extends UISwitcher
 
 func _ready():
+	OnEncounterTrigger.new()
 	Events.new_run_started.connect(_on_new_run_started)
 	Events.quit_to_menu.connect(_on_quit_to_menu)
 	super()

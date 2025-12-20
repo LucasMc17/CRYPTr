@@ -19,11 +19,11 @@ func _init():
 
 ## Called whenever the designated signal (events_signal) is received to determine if the effects should be triggered.
 ## Returns true if effects should fire.
-@abstract func filter(params : Dictionary) -> bool
+@abstract func filter(params : Events.ParamsObject) -> bool
 
 
 ## Signal listener function that runs when the triggers designated signal is received.
-func _on_triggered(params : Dictionary) -> void:
+func _on_triggered(params : Events.ParamsObject) -> void:
 	if !filter(params):
 		return
-	DebugNode.print('triggered!')
+	DebugNode.print('triggered! ')

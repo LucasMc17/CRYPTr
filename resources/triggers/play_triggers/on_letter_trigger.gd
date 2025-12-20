@@ -10,7 +10,5 @@ func _init(trigger_letter):
 	super()
 
 
-func filter(params : Dictionary) -> bool:
-	if params.has("letter") and params.letter == letter:
-		return true
-	return false
+func filter(params : Events.ParamsObject) -> bool:
+	return params.letter == letter

@@ -6,7 +6,5 @@ func _init():
 	super()
 
 
-func filter(params : Dictionary) -> bool:
-	if params.has("letter") and "AEIOU".contains(params.letter):
-		return true
-	return false
+func filter(params : Events.ParamsObject) -> bool:
+	return "AEIOU".contains(params.letter)

@@ -6,7 +6,5 @@ func _init():
 	super()
 
 
-func filter(params : Dictionary) -> bool:
-	if params.has("attempts_remaining"):
-		return params.attempts_remaining == 0
-	return false
+func filter(params : Events.ParamsObject) -> bool:
+	return params.attempts_remaining == 0

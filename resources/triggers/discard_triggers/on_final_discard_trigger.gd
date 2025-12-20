@@ -6,7 +6,5 @@ func _init():
 	super()
 
 
-func filter(params : Dictionary) -> bool:
-	if params.has("remaining_discards"):
-		return params.remaining_discards == 0
-	return false
+func filter(params : Events.ParamsObject) -> bool:
+	return params.remaining_discards == 0

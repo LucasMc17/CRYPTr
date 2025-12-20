@@ -19,11 +19,9 @@ func _get_distinct(word : String) -> int:
 	return len(result)
 
 
-func filter(params : Dictionary) -> bool:
-	if params.has("word"):
-		var distinct = _get_distinct(params.word)
-		if greater:
-			return distinct > distinct_target
-		else:
-			return distinct < distinct_target
-	return false
+func filter(params : Events.ParamsObject) -> bool:
+	var distinct = _get_distinct(params.word)
+	if greater:
+		return distinct > distinct_target
+	else:
+		return distinct < distinct_target

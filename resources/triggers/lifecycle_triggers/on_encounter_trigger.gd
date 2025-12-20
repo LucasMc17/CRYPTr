@@ -6,5 +6,5 @@ func _init():
 	super()
 
 
-func filter(_params : Dictionary) -> bool:
+func filter(_params) -> bool:
 	return true
