@@ -8,4 +8,4 @@ func _init():
 
 
 func filter(params : Events.ParamsObject) -> bool:
-	return "BCDFGHJKLMNPQRSTVWXYZ".contains(params.letter)
+	return Constants.CONSONANTS.contains(params.letter)

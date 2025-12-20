@@ -8,4 +8,4 @@ func _init():
 
 
 func filter(params : Events.ParamsObject) -> bool:
-	return "AEIOU".contains(params.letter)
+	return Constants.VOWELS.contains(params.letter)
