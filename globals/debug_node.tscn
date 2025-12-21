@@ -4,3 +4,4 @@
 
 [node name="DebugNode" type="Node"]
 script = ExtResource("1_pgr0f")
+log_level = 1

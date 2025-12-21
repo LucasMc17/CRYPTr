@@ -13,12 +13,33 @@ var score_object : ScoringObject
 
 ## Updates the score_object with a new object based on word and hand.
 func update_score_object(word : String, hand : Hand) -> void:
+	DebugNode.print('hi')
 	score_object = ScoringObject.new(word, hand)
+	DebugNode.print(score_object.to_dictionary.call())
 
 
 ## Compares target score and current score to determine if the player has won.
 func check_win() -> bool: 
 	return current_score >= target_score
+
+
+## Scores the word based on the cryptographs in hand.
+func score_word(hand : Array[Cryptograph]) -> void:
+	if score_object.valid:
+		var total := 0.0
+		Player.add_anagram(score_object.word)
+		# TODO: There will be even more to do with this when the animation queue is set up. yeesh
+		for character in score_object.word:
+			var applicable = hand.filter(func(cryptograph): return cryptograph.resource.letter.character == character)
+			for cryptograph in applicable:
+				total += cryptograph.resource.letter.points
+				## TODO: getting the character is cumbersome. Should make a read only virtual var on the cryptograph
+				Events.emit_letter_scored(cryptograph.resource.letter.character)
+		total *= score_object.length_mult
+		for multiplier in score_object.additional_mults:
+			total *= score_object.additional_mults[multiplier]
+		current_score += total
+			
 
 # NOTE: Review this later. Does this really have to be a class?
 ## Custom class representing the scoring information for a word. This class is generally used exclusively within this scoring module, to update the `score_object` variable.
@@ -58,16 +79,14 @@ class ScoringObject:
 		}
 	## Boolean representing inputted word validity accordng to in-game dictionary.
 	var valid : bool
-	## Score before multipliers, calculated from word and point values of relevant cryptographs in hand.
-	var base_score : float
 	## Multiplier based on length of inputted word.
 	var length_mult : float
 	## Name describing inputted word, based on word length.
 	var word_name : String
+	## The word being assessed for valid multipliers.
+	var word : String
 	## Other multipliers based on special criteria.
 	var additional_mults : Dictionary[StringName, float] = {}
-	## Final score after all multipliers are applied.
-	var total_score : float
 	## Utility Callable to convert the entity to a Dictionary for printing purposes.
 	var to_dictionary : Callable = DebugNode.make_to_printable_method(self, [
 			"valid",
@@ -78,13 +97,12 @@ class ScoringObject:
 			"total_score"
 	])
 
-	func _init(word : String, hand : Hand):
+	func _init(input_word : String, hand : Hand):
+		word = input_word
 		valid = is_valid(word)
 		if !valid:
 			return
-		var cryptographs = hand.cryptographs
 		var letters = hand.letters
-		base_score = get_base_score(word, cryptographs)
 		length_mult = get_length_mult(word)
 		word_name = get_word_name(word)
 
@@ -117,14 +135,10 @@ class ScoringObject:
 			elif is_valid(flipped):
 				additional_mults.ambigram = Player.ambigram_mult
 
-		total_score = base_score * length_mult
-		for mult in additional_mults:
-			total_score *= additional_mults[mult]
-
 
 	## Creates the word name.
-	static func get_word_name(word : String):
-		var length = word.length()
+	static func get_word_name(input_word : String):
+		var length = input_word.length()
 		if length < Player.MINIMUM_WORD_LENGTH:
 			return
 		if length < 21:
@@ -134,8 +148,8 @@ class ScoringObject:
 
 
 	## Rotates a word 180 degrees for checking ambigrams and gyrograms
-	static func flip_word(word : String) -> Variant:
-		var flipped = word.reverse()
+	static func flip_word(input_word : String) -> Variant:
+		var flipped = input_word.reverse()
 		for i in range(flipped.length()):
 			if !GYRO_MAP.has(flipped[i]):
 				return false
@@ -144,34 +158,34 @@ class ScoringObject:
 
 
 	## Checks a word's validity.
-	static func is_valid(word : String) -> bool:
-		# Word is in dictionary
-		if word.length() < Player.MINIMUM_WORD_LENGTH:
+	static func is_valid(input_word : String) -> bool:
+		if input_word.length() < Player.MINIMUM_WORD_LENGTH:
 			return false
 		if DebugNode.accept_all_words:
 			return true
-		var first_letter = word[0]
+		var first_letter = input_word[0]
 		var words = FileAccess.open('res://words/' + first_letter + '.txt', FileAccess.READ).get_as_text().split('\n')
-		return words.has(word)
+		return words.has(input_word)
 
 	
 	## Checks for a palindrome by reversing the word and comparing it to the original word.
-	static func is_palindrogram(word : String) -> bool:
+	static func is_palindrogram(input_word : String) -> bool:
 		# Word is the same forward and backward
-		return word.reverse() == word
+		return input_word.reverse() == input_word
 
 
 	## Checks for a semordnilap by reversing the word.
-	static func is_semordnigram(word : String) -> bool:
+	static func is_semordnigram(input_word : String) -> bool:
 		# Word is still valid when reversed
-		return is_valid(word.reverse())
+		return is_valid(input_word.reverse())
 
 
 	## Checks for an equigram by comparing the word's vowel count to consonant count.
-	static func is_equigram(word : String) -> bool:
+	static func is_equigram(input_word : String) -> bool:
 		var vowels = 0
 		var cons = 0
-		for letter in word:
+		for letter in input_word:
+			# NOTE: use contants vowels
 			if ['A', 'E', 'I', 'O', 'U'].has(letter):
 				vowels += 1
 			else:
@@ -180,25 +194,25 @@ class ScoringObject:
 
 
 	## Checks for a pangram by first checking the word's length, then checking if all cryptographs are represented within it.
-	static func is_pangram(word : String, letters : Array) -> bool:
-		if word.length() < Player.HAND_SIZE:
+	static func is_pangram(input_word : String, letters : Array) -> bool:
+		if input_word.length() < Player.HAND_SIZE:
 			return false
 		for character in letters:
-			if !word.contains(character):
+			if !input_word.contains(character):
 				return false
 		return true
 
 
 	## Checks for a perfect pangram by confirming that the length of the word is the player's hand size (assumes word has already passed pangram check).
-	static func is_perfectigram(word : String) -> bool:
+	static func is_perfectigram(input_word : String) -> bool:
 		# NOTE: logic here might be too simplistic. Just scored a perfectigram with "DROLLY" because by current hand was D L R O Y L.
-		return word.length() == Player.HAND_SIZE
+		return input_word.length() == Player.HAND_SIZE
 
 
 	## Checks if the word uses each of its letters exactly once.
-	static func is_isogram(word : String) -> bool:
+	static func is_isogram(input_word : String) -> bool:
 		var map = []
-		for letter in word:
+		for letter in input_word:
 			if map.has(letter):
 				return false
 			else:
@@ -207,8 +221,8 @@ class ScoringObject:
 
 
 	## Checks if the word is an anagram of a previously played word.
-	static func is_anagram(word) -> bool:
-		var alpha = word.split()
+	static func is_anagram(input_word : String) -> bool:
+		var alpha = input_word.split()
 		alpha.sort()
 		alpha = "".join(alpha)
 		
@@ -219,18 +233,18 @@ class ScoringObject:
 
 
 	## Checks if the word consists of two or three repeated sections, e.g. CANCAN, TUTU.
-	static func is_redupligram(word : String) -> bool:
+	static func is_redupligram(input_word : String) -> bool:
 		@warning_ignore_start("integer_division")
-		var length = word.length()
+		var length = input_word.length()
 		if length % 2 == 0:
-			var one = word.left(-1 * (length / 2))
-			var two = word.right(-1 * (length / 2))
+			var one = input_word.left(-1 * (length / 2))
+			var two = input_word.right(-1 * (length / 2))
 			if one == two:
 				return true
 		if length % 3 == 0:
-			var one = word.left(-1 * (length / 3 * 2))
-			var two = word.left(-1 * (length / 3)).right(-1 * (length / 3))
-			var three = word.right(-1 * (length / 3 * 2))
+			var one = input_word.left(-1 * (length / 3 * 2))
+			var two = input_word.left(-1 * (length / 3)).right(-1 * (length / 3))
+			var three = input_word.right(-1 * (length / 3 * 2))
 			if one == two and two == three:
 				return true
 		@warning_ignore_restore("integer_division")
@@ -238,14 +252,14 @@ class ScoringObject:
 
 	
 	## Calculate the base score by adding the points of each applicable cryptograph from the hand, letter by letter.
-	static func get_base_score(word : String, hand : Array[Cryptograph]) -> float:
-		var score = 0.0
-		for character in word:
-			var applicable = hand.filter(func(cryptograph): return cryptograph.resource.letter.character == character)
-			score += applicable.reduce(func(accum, cryptograph): return accum + cryptograph.resource.letter.points, 0.0)
-		return score
+	# static func get_base_score(word : String, hand : Array[Cryptograph]) -> float:
+	# 	var score = 0.0
+	# 	for character in word:
+	# 		var applicable = hand.filter(func(cryptograph): return cryptograph.resource.letter.character == character)
+	# 		score += applicable.reduce(func(accum, cryptograph): return accum + cryptograph.resource.letter.points, 0.0)
+	# 	return score
 
 
 	## Calculates length multiplier based on word length.
-	static func get_length_mult(word : String) -> float:
-		return 1 + Player.LENGTH_MULTIPLIER * word.length()
+	static func get_length_mult(input_word : String) -> float:
+		return 1 + Player.LENGTH_MULTIPLIER * input_word.length()

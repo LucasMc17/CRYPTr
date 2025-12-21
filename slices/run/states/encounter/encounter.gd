@@ -66,10 +66,10 @@ func _unhandled_input(event):
 ## Signals that the encounter was won to trigger the run UISwitcher back to the map.
 func _win() -> void:
 	Player.current_stack = Player.stack
+	Events.emit_match_won()
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
 	else:
-		Events.emit_match_won()
 		Events.emit_return_to_map(false)
 
 
@@ -88,15 +88,16 @@ func _lose() -> void:
 func _enter_word() -> void:
 	if _scoring.score_object.valid:
 		Player.add_anagram(_word.text)
-		for letter in _word.text:
-			Events.emit_letter_scored(letter)
-		Events.emit_word_scored(_word.text, _scoring.score_object.additional_mults, _attempts - 1)
+		# for letter in _word.text:
+		# 	Events.emit_letter_scored(letter)
 		# Events.word_scored.emit({ "word": _word.text, "types": _scoring.score_object.additional_mults, "attempts_remaining": _attempts - 1})
+		
+		_scoring.score_word(_hand.cryptographs)
+		Events.emit_word_scored(_word.text, _scoring.score_object.additional_mults, _attempts - 1)
 		if DebugNode.instawin:
 			_win()
 			return
 		
-		_scoring.current_score += _scoring.score_object.total_score
 		_score_preview.update_score(_scoring.current_score, _scoring.target_score)
 
 		_hand.discard_by_letters(_word.text)

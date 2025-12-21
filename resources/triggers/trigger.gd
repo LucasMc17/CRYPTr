@@ -26,4 +26,4 @@ func _init():
 func _on_triggered(params : Events.ParamsObject) -> void:
 	if !filter(params):
 		return
-	DebugNode.print('triggered! ')
+	DebugNode.print_n(name + ' triggered! ')
