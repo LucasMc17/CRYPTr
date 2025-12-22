@@ -13,9 +13,7 @@ var score_object : ScoringObject
 
 ## Updates the score_object with a new object based on word and hand.
 func update_score_object(word : String, hand : Hand) -> void:
-	DebugNode.print('hi')
 	score_object = ScoringObject.new(word, hand)
-	DebugNode.print(score_object.to_dictionary.call())
 
 
 ## Compares target score and current score to determine if the player has won.
@@ -25,20 +23,19 @@ func check_win() -> bool:
 
 ## Scores the word based on the cryptographs in hand.
 func score_word(hand : Array[Cryptograph]) -> void:
-	if score_object.valid:
-		var total := 0.0
-		Player.add_anagram(score_object.word)
-		# TODO: There will be even more to do with this when the animation queue is set up. yeesh
-		for character in score_object.word:
-			var applicable = hand.filter(func(cryptograph): return cryptograph.resource.letter.character == character)
-			for cryptograph in applicable:
-				total += cryptograph.resource.letter.points
-				## TODO: getting the character is cumbersome. Should make a read only virtual var on the cryptograph
-				Events.emit_letter_scored(cryptograph.resource.letter.character)
-		total *= score_object.length_mult
-		for multiplier in score_object.additional_mults:
-			total *= score_object.additional_mults[multiplier]
-		current_score += total
+	var total := 0.0
+	Player.add_anagram(score_object.word)
+	# TODO: There will be even more to do with this when the animation queue is set up. yeesh
+	for character in score_object.word:
+		var applicable = hand.filter(func(cryptograph): return cryptograph.resource.letter.character == character)
+		for cryptograph in applicable:
+			total += cryptograph.resource.letter.points
+			## TODO: getting the character is cumbersome. Should make a read only virtual var on the cryptograph
+			Events.emit_letter_scored(cryptograph.resource.letter.character)
+	total *= score_object.length_mult
+	for multiplier in score_object.additional_mults:
+		total *= score_object.additional_mults[multiplier]
+	current_score += total
 			
 
 # NOTE: Review this later. Does this really have to be a class?
@@ -249,15 +246,6 @@ class ScoringObject:
 				return true
 		@warning_ignore_restore("integer_division")
 		return false
-
-	
-	## Calculate the base score by adding the points of each applicable cryptograph from the hand, letter by letter.
-	# static func get_base_score(word : String, hand : Array[Cryptograph]) -> float:
-	# 	var score = 0.0
-	# 	for character in word:
-	# 		var applicable = hand.filter(func(cryptograph): return cryptograph.resource.letter.character == character)
-	# 		score += applicable.reduce(func(accum, cryptograph): return accum + cryptograph.resource.letter.points, 0.0)
-	# 	return score
 
 
 	## Calculates length multiplier based on word length.

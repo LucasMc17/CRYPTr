@@ -51,6 +51,11 @@ func print(message):
 		debug_console.log(message)
 
 
+## Method for arbitrarily logging for debug purposes.
+func p(message):
+	DebugNode.print(message)
+
+
 ## Prints the message only if log level is NORMAL or higher.
 func print_n(message):
 	if log_level > 0:
