@@ -1,5 +1,5 @@
 class_name CommandModule
-extends Node
+extends Resource
 ## Logic module designed to manage all processes and information related to running
 ## commands through the debug terminal.
 ##

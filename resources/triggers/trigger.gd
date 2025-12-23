@@ -1,5 +1,5 @@
 @abstract class_name Trigger
-extends Node
+extends Resource
 ## Custom resource representing a trigger to be paired with at least one Effect to create a SubRoutine.
 ##
 ## Represents only the event that should activate the trigger (exact signal name form global Events file)
@@ -26,4 +26,4 @@ func _init():
 func _on_triggered(params : Events.ParamsObject) -> void:
 	if !filter(params):
 		return
-	DebugNode.print_n(name + ' triggered! ')
+	DebugNode.p(trigger_name + ' triggered!')

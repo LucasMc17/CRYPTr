@@ -1,5 +1,5 @@
 class_name ScoringModule
-extends Node
+extends Resource
 ## Logic module for determining validity of word and scoring it if valid.
 ##
 ## Also manages current and target scores, and compares them to check for a win.
@@ -8,8 +8,20 @@ extends Node
 var current_score := 0.0
 ## Current encounter's target score for comparison with player's score.
 var target_score := 0.0
+## The tally of points earned by the current word, as it is evaluated. Increases as each letter is scored/muliplier applied, then is added to `current_score`, then reset to zero.
+var evaluating_score := 0.0:
+	set(val):
+		DebugNode.p(val)
+		evaluating_score = val
+## Whether a word is actively scoring.
+var is_evaluating := false
 ## ScoringObject represenging the multipliers and total score of the current word before entry.
 var score_object : ScoringObject
+
+func _init():
+	Events.subprocess_addition.connect(_on_subprocess_addition)
+	Events.subprocess_multiplication.connect(_on_subprocess_multiplication)
+
 
 ## Updates the score_object with a new object based on word and hand.
 func update_score_object(word : String, hand : Hand) -> void:
@@ -23,22 +35,36 @@ func check_win() -> bool:
 
 ## Scores the word based on the cryptographs in hand.
 func score_word(hand : Array[Cryptograph]) -> void:
-	var total := 0.0
+	is_evaluating = true
 	Player.add_anagram(score_object.word)
 	# TODO: There will be even more to do with this when the animation queue is set up. yeesh
 	for character in score_object.word:
 		var applicable = hand.filter(func(cryptograph): return cryptograph.resource.letter.character == character)
 		for cryptograph in applicable:
-			total += cryptograph.resource.letter.points
+			evaluating_score += cryptograph.resource.letter.points
 			## TODO: getting the character is cumbersome. Should make a read only virtual var on the cryptograph
 			Events.emit_letter_scored(cryptograph.resource.letter.character)
-	total *= score_object.length_mult
+	evaluating_score *= score_object.length_mult
 	for multiplier in score_object.additional_mults:
-		total *= score_object.additional_mults[multiplier]
-	current_score += total
+		evaluating_score *= score_object.additional_mults[multiplier]
+	current_score += evaluating_score
+	evaluating_score = 0.0
+	is_evaluating = false
+
+
+func _on_subprocess_addition(adder : int) -> void:
+	if !is_evaluating:
+		DebugNode.print("WARNING: Subprocess Addition triggered outside of scoring")
+	else:
+		evaluating_score += adder
+
+func _on_subprocess_multiplication(multiplier : float) -> void:
+	if !is_evaluating:
+		DebugNode.print("WARNING: Subprocess Multiplication triggered outside of scoring")
+	else:
+		evaluating_score *= multiplier
 			
 
-# NOTE: Review this later. Does this really have to be a class?
 ## Custom class representing the scoring information for a word. This class is generally used exclusively within this scoring module, to update the `score_object` variable.
 class ScoringObject:
 	## Dictionary of prefix names based on word length.

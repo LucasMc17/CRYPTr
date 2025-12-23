@@ -16,6 +16,8 @@ var _discards : int
 var _attempts := 4
 ## Boolean controlling whether the player can interact with the encounter currently.
 var is_input_ready := true
+## NOTE: Test variable for holding temporary forced triggers. Delete this later.
+var test_trigger
 
 ## The player's current hand of cryptographs. Not a logic module like the deck or scorer, since the hand has a visual component in the encounter.
 @onready var _hand := %Hand
@@ -25,6 +27,7 @@ var is_input_ready := true
 @onready var _score_preview := %ScorePreview
 
 func _ready():
+	# test_trigger = OnLetterTrigger.new('A')
 	Events.command_win.connect(func (_params): _win())
 	Events.command_lose.connect(func (_params): _lose())
 

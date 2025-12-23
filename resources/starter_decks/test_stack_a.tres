@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StarterStack" load_steps=2 format=3 uid="uid://ishbmpe8biuo"]
+
+[ext_resource type="Script" uid="uid://bvr1ce5aqw0k5" path="res://resources/starter_decks/starter_stack.gd" id="1_k4v1v"]
+
+[resource]
+script = ExtResource("1_k4v1v")
+total = 20
+a = 10
+g = 10
+metadata/_custom_type_script = "uid://bvr1ce5aqw0k5"

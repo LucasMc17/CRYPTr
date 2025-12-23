@@ -7,6 +7,7 @@ var letter := "A"
 
 func _init(trigger_letter):
 	letter = trigger_letter
+	trigger_name = "On '" + letter + "' Trigger"
 	events_signal = "letter_scored"
 	super()
 
