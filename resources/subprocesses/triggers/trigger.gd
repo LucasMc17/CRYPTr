@@ -5,6 +5,9 @@ extends Resource
 ## Represents only the event that should activate the trigger (exact signal name form global Events file)
 ## and the cost of activating.
 
+## Emitted when the trigger is activated, received by the owning subprocess to in turn activate its effects.
+signal triggered()
+
 ## The Trigger's name.
 var trigger_name : String
 ## The signal which this Trigger listens for.
@@ -27,3 +30,4 @@ func _on_triggered(params : Events.ParamsObject) -> void:
 	if !filter(params):
 		return
 	DebugNode.p(trigger_name + ' triggered!')
+	triggered.emit()
