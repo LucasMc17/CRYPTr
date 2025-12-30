@@ -1,6 +1,6 @@
-class_name OnFinalWordTrigger
-extends Trigger
-## Play trigger activated when the player's final word is scored.
+class_name OnFinalWordHook
+extends Hook
+## Play Hook activated when the player's final word is scored.
 
 func _init():
 	events_signal = "word_scored"

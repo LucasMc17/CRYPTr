@@ -16,8 +16,6 @@ var _discards : int
 var _attempts := 4
 ## Boolean controlling whether the player can interact with the encounter currently.
 var is_input_ready := true
-## NOTE: Test variable for holding temporary forced subprocesses. Delete this later.
-var subproc
 
 ## The player's current hand of cryptographs. Not a logic module like the deck or scorer, since the hand has a visual component in the encounter.
 @onready var _hand := %Hand
@@ -35,6 +33,8 @@ func _ready():
 		DebugNode.print_n('ENCOUNTER accessed directly')
 		var debug_encounter = EncounterRes.new("MATCH", 0, null, 0, 0, 0)
 		encounter = debug_encounter
+		Player.hooks = DebugNode.force_hooks.map(func(hook): return hook.duplicate())
+		Player.functions = DebugNode.force_functions.map(func(function): return function.duplicate())
 		if DebugNode.force_stack:
 			Player.initialize_stack(DebugNode.force_stack)
 			DebugNode.print_n('Initializing FORCED stack from Debug Node')

@@ -1,6 +1,6 @@
-class_name OnVowelTrigger
-extends Trigger
-## Play trigger activated whenever a vowel is played and scored.
+class_name OnVowelHook
+extends Hook
+## Play Hook activated whenever a vowel is played and scored.
 
 func _init():
 	events_signal = "letter_scored"

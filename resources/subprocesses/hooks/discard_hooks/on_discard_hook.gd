@@ -1,6 +1,6 @@
-class_name OnDiscardTrigger
-extends Trigger
-## Discard trigger activated whenever any letter is discarded.
+class_name OnDiscardHook
+extends Hook
+## Discard Hook activated whenever any letter is discarded.
 
 func _init():
 	events_signal = "cryptograph_discarded"

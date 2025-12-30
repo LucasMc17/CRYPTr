@@ -138,13 +138,13 @@ class WordScoredParams extends ParamsObject:
 func emit_word_scored(word : String, types : Dictionary[StringName, float], attempts_left : int):
 	word_scored.emit(WordScoredParams.new("WORD SCORED", word, types, attempts_left))
 
-# SUBPROCESS EFFECTS
+# HOOK FUNCTIONS
 
-## Emitted when a subprocess triggers a score addition.
-signal subprocess_addition(adder : int)
+## Emitted when a hook triggers a score addition.
+signal hook_addition(adder : int)
 
-## Emitted when a subprocess triggers a score multiplier.
-signal subprocess_multiplication(multiplier : float)
+## Emitted when a hook triggers a score multiplier.
+signal hook_multiplication(multiplier : float)
 
 # DEBUG COMMANDS
 

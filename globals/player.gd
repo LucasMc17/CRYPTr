@@ -9,6 +9,10 @@ const LENGTH_MULTIPLIER := 0.2
 const MINIMUM_WORD_LENGTH := 3
 ## Size of the player's hand at maximum.
 const HAND_SIZE := 6
+## The maximum Hooks which a player can have installed at a time.
+const MAX_HOOKS := 5
+## The maximum Functions which a player can have available to distribute to Functions.
+const MAX_FUNCTIONS := 10
 
 const BASE_DISCARDS := 10
 
@@ -48,6 +52,10 @@ var anagrams : Dictionary[String, Dictionary] = {}
 var encounter_map : EncounterRes = null
 ## The current encounter from the encounter map.
 var current_encounter : EncounterRes = null
+## The player's currently collected Hooks.
+var hooks : Array[Hook] = []
+## The player's currently collected Functions.
+var functions : Array[Function] = []
 
 ## Resets all the run variables to their default value so that a new run can begin from a clean slate.
 func reset_run() -> void:

@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Events="*res://globals/events.gd"
-Player="*res://globals/player.gd"
 DebugNode="*res://globals/debug_node.tscn"
+Player="*res://globals/player.gd"
 Constants="*res://globals/constants.gd"
 
 [display]

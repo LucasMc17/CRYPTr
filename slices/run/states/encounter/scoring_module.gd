@@ -19,8 +19,8 @@ var is_evaluating := false
 var score_object : ScoringObject
 
 func _init():
-	Events.subprocess_addition.connect(_on_subprocess_addition)
-	Events.subprocess_multiplication.connect(_on_subprocess_multiplication)
+	Events.hook_addition.connect(_on_hook_addition)
+	Events.hook_multiplication.connect(_on_hook_multiplication)
 
 
 ## Updates the score_object with a new object based on word and hand.
@@ -52,15 +52,15 @@ func score_word(hand : Array[Cryptograph]) -> void:
 	is_evaluating = false
 
 
-func _on_subprocess_addition(adder : int) -> void:
+func _on_hook_addition(adder : int) -> void:
 	if !is_evaluating:
-		DebugNode.print("WARNING: Subprocess Addition triggered outside of scoring")
+		DebugNode.print("WARNING: Hook Addition triggered outside of scoring")
 	else:
 		evaluating_score += adder
 
-func _on_subprocess_multiplication(multiplier : float) -> void:
+func _on_hook_multiplication(multiplier : float) -> void:
 	if !is_evaluating:
-		DebugNode.print("WARNING: Subprocess Multiplication triggered outside of scoring")
+		DebugNode.print("WARNING: Hook Multiplication triggered outside of scoring")
 	else:
 		evaluating_score *= multiplier
 			

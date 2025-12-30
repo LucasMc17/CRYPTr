@@ -1,6 +1,6 @@
-class_name OnConsonantTrigger
-extends Trigger
-## Play trigger activated whenever a consonant is played and scored.
+class_name OnConsonantHook
+extends Hook
+## Play Hook activated whenever a consonant is played and scored.
 
 func _init():
 	events_signal = "letter_scored"
