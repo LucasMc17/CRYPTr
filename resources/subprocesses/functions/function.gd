@@ -5,9 +5,11 @@ extends Resource
 ## Has a memory cost which must be equal to or lesser than the Hook's remaining memory in order be installed.
 
 ## The Function's name, formatted as a function call. Should be descriptive of the Functions utility.
-var function_name : String
+@export var function_name : String
 ## The memory cost of installing this function
-var cost := 1
+@export var cost := 1
+## The rarity of the Function.
+@export_enum("COMMON", "RARE", "EPIC") var rarity = 0
 ## The Hook on which this Function is currently installed. Will return `null` if this Function is not currently in use anywhere.
 var owning_hook : Hook
 

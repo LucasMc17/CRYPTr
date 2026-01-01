@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OnLetterHook" load_steps=2 format=3 uid="uid://bxqhw1xajcbym"]
+
+[ext_resource type="Script" uid="uid://dgm8u3kfmd6cq" path="res://resources/subprocesses/hooks/play_hooks/on_letter_hook.gd" id="1_q22u8"]
+
+[resource]
+script = ExtResource("1_q22u8")
+letter = "M"
+hook_name = "on_m_scored.exe"
+memory_limit = 3
+rarity = 1
+metadata/_custom_type_script = "uid://dgm8u3kfmd6cq"

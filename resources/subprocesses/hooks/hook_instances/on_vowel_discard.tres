@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OnVowelDiscardHook" load_steps=2 format=3 uid="uid://dwjd6r2vt74sp"]
+
+[ext_resource type="Script" uid="uid://pij5elwha6jl" path="res://resources/subprocesses/hooks/discard_hooks/on_vowel_discard_hook.gd" id="1_x6ms4"]
+
+[resource]
+script = ExtResource("1_x6ms4")
+hook_name = "on_vowel_discard.exe"
+memory_limit = 3
+rarity = 2
+metadata/_custom_type_script = "uid://pij5elwha6jl"

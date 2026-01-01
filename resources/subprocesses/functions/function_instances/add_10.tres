@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AdditionFunction" load_steps=2 format=3 uid="uid://cq82athu71pdo"]
+
+[ext_resource type="Script" uid="uid://cyat8pm6ij7qx" path="res://resources/subprocesses/functions/play_functions/addition_function.gd" id="1_j61k2"]
+
+[resource]
+script = ExtResource("1_j61k2")
+adder = 10
+function_name = "add_to_score(10)"
+metadata/_custom_type_script = "uid://cyat8pm6ij7qx"

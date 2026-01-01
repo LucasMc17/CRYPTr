@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OnWordTypeHook" load_steps=2 format=3 uid="uid://dgfmjr24pnhx0"]
+
+[ext_resource type="Script" uid="uid://co6oso1hlx5dx" path="res://resources/subprocesses/hooks/play_hooks/on_word_type_hook.gd" id="1_ufxt5"]
+
+[resource]
+script = ExtResource("1_ufxt5")
+word_type = "equigram"
+hook_name = "on_equigram.exe"
+memory_limit = 3
+metadata/_custom_type_script = "uid://co6oso1hlx5dx"

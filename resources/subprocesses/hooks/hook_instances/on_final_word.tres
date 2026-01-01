@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="OnFinalWordHook" load_steps=2 format=3 uid="uid://h2yoxgjrbwr"]
+
+[ext_resource type="Script" uid="uid://bqiqyuomiwisv" path="res://resources/subprocesses/hooks/play_hooks/on_final_word_hook.gd" id="1_85snf"]
+
+[resource]
+script = ExtResource("1_85snf")
+hook_name = "on_final_word.exe"
+metadata/_custom_type_script = "uid://bqiqyuomiwisv"

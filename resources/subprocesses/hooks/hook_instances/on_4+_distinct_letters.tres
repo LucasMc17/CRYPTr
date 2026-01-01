@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OnDistinctLetterHook" load_steps=2 format=3 uid="uid://cy854oxekthd"]
+
+[ext_resource type="Script" uid="uid://dcgi53koyf532" path="res://resources/subprocesses/hooks/play_hooks/on_distinct_letter_hook.gd" id="1_05ksh"]
+
+[resource]
+script = ExtResource("1_05ksh")
+greater = true
+distinct_target = 4
+hook_name = "on_>4_distinct_letters.exe"
+memory_limit = 4
+metadata/_custom_type_script = "uid://dcgi53koyf532"

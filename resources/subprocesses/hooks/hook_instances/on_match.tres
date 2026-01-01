@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="OnMatchHook" load_steps=2 format=3 uid="uid://ceycwxja6ym8r"]
+
+[ext_resource type="Script" uid="uid://crt7pj0am8d0w" path="res://resources/subprocesses/hooks/lifecycle_hooks/on_encounter_hook.gd" id="1_gwr75"]
+
+[resource]
+script = ExtResource("1_gwr75")
+hook_name = "on_match.exe"
+metadata/_custom_type_script = "uid://crt7pj0am8d0w"

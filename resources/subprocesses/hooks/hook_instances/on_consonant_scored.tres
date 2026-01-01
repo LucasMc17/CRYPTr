@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OnConsonantHook" load_steps=2 format=3 uid="uid://smbi28vrla21"]
+
+[ext_resource type="Script" uid="uid://bp2q3dfl2hx6n" path="res://resources/subprocesses/hooks/play_hooks/on_consonant_hook.gd" id="1_dey6p"]
+
+[resource]
+script = ExtResource("1_dey6p")
+hook_name = "on_consonant_scored.exe"
+memory_limit = 2
+rarity = 1
+metadata/_custom_type_script = "uid://bp2q3dfl2hx6n"

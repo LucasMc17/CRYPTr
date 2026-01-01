@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr8n6ng13apt2"]
+[gd_scene load_steps=7 format=3 uid="uid://dr8n6ng13apt2"]
 
 [ext_resource type="Script" uid="uid://8utxeemfesmd" path="res://globals/debug_node.gd" id="1_pgr0f"]
+[ext_resource type="Script" uid="uid://dxctdton3xfcb" path="res://resources/subprocesses/hooks/hook.gd" id="2_wqi1e"]
+[ext_resource type="Resource" uid="uid://me33y24mpqf2" path="res://resources/subprocesses/hooks/hook_instances/on_discard.tres" id="3_wqi1e"]
+[ext_resource type="Resource" uid="uid://h2yoxgjrbwr" path="res://resources/subprocesses/hooks/hook_instances/on_final_word.tres" id="4_8tqhv"]
+[ext_resource type="Resource" uid="uid://dgfmjr24pnhx0" path="res://resources/subprocesses/hooks/hook_instances/on_equigram.tres" id="5_ec415"]
+[ext_resource type="Script" uid="uid://dukpgs8vyhfi7" path="res://resources/subprocesses/functions/function.gd" id="6_ec415"]
 
 [node name="DebugNode" type="Node"]
 script = ExtResource("1_pgr0f")
+force_hooks = Array[ExtResource("2_wqi1e")]([ExtResource("3_wqi1e"), ExtResource("4_8tqhv"), ExtResource("5_ec415")])
+force_functions = Array[ExtResource("6_ec415")]([null])

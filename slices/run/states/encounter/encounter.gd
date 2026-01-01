@@ -33,8 +33,10 @@ func _ready():
 		DebugNode.print_n('ENCOUNTER accessed directly')
 		var debug_encounter = EncounterRes.new("MATCH", 0, null, 0, 0, 0)
 		encounter = debug_encounter
-		Player.hooks = DebugNode.force_hooks.map(func(hook): return hook.duplicate())
-		Player.functions = DebugNode.force_functions.map(func(function): return function.duplicate())
+		for hook in DebugNode.force_hooks:
+			Player.hooks.append(hook.duplicate())
+		for function in DebugNode.force_functions:
+			Player.functions.append(function.duplicate())
 		if DebugNode.force_stack:
 			Player.initialize_stack(DebugNode.force_stack)
 			DebugNode.print_n('Initializing FORCED stack from Debug Node')

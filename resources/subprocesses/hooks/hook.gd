@@ -4,8 +4,12 @@ extends Resource
 ##
 ## Represents only the event that should activate the Hook (exact signal name form global Events file)
 
+## The Hook's name.
+@export var hook_name : String
 ## The maximum memory to be allocated to this Hook's Functions.
-var memory_limit := 5
+@export var memory_limit := 5
+## The rarity of the Hook.
+@export_enum("COMMON", "RARE", "EPIC") var rarity = 0
 ## The memory currently used by functions.
 var memory_in_use : int:
 	get():
@@ -14,14 +18,13 @@ var memory_in_use : int:
 var memory_available : int:
 	get():
 		return memory_limit - memory_in_use
-## The Hook's name.
-var hook_name : String
 ## The signal which this Hook listens for.
 var events_signal : String
 ## The Functions associated with the Hook.
 var functions : Array[Function] = []
+# NOTE: The below is not working because DebugNode is not ready at the time of initialization if we are using force hooks
 ## Debug print callable.
-var to_dictionary : Callable = DebugNode.make_to_printable_method(self, ["memory_limit", "memory_in_use", "functions", "hook_name", "events_signal", ])
+var to_dictionary : Callable = DebugNode.make_to_printable_method(self, ["memory_limit", "memory_in_use", "functions", "hook_name", "events_signal"]) if DebugNode else func(): return
 
 func _init():
 	if Events.has_signal(events_signal):

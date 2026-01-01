@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="OnWordTypeHook" load_steps=2 format=3 uid="uid://c8xhqqvi7fq1s"]
+
+[ext_resource type="Script" uid="uid://co6oso1hlx5dx" path="res://resources/subprocesses/hooks/play_hooks/on_word_type_hook.gd" id="1_2n6nw"]
+
+[resource]
+script = ExtResource("1_2n6nw")
+word_type = "palindrogram"
+hook_name = "on_palindrogram.exe"
+metadata/_custom_type_script = "uid://co6oso1hlx5dx"
