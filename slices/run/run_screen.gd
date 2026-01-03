@@ -47,10 +47,12 @@ func _on_run_unpaused(_params) -> void:
 
 func setup(init_obj := {}) -> void:
 	super(init_obj)
-	# for hook in DebugNode.force_hooks:
-	# 	Player.hooks.append(hook.duplicate())
-	# for function in DebugNode.force_functions:
-	# 	Player.functions.append(function.duplicate())
+	for hook in DebugNode.force_hooks:
+		Player.hooks.append(hook.duplicate())
+	DebugNode.force_hooks.clear()
+	for function in DebugNode.force_functions:
+		Player.functions.append(function.duplicate())
+	DebugNode.force_functions.clear()
 	if DebugNode.force_stack:
 		Player.initialize_stack(DebugNode.force_stack)
 	else:

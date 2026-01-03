@@ -9,6 +9,10 @@ func _on_stack_button_pressed():
 	parent_switcher.transition("Stack")
 
 
+func _on_hooks_button_pressed():
+	parent_switcher.transition("Hooks")
+
+
 func _on_quit_button_pressed():
 	Events.emit_unpaused()
 	Events.emit_quit_to_menu()

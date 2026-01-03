@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://b34qeo48ejocj"]
+
+[ext_resource type="Script" uid="uid://d3wxvfepcekt8" path="res://slices/run/player_status/hook_window/hook_preview.gd" id="1_fojoa"]
+[ext_resource type="PackedScene" uid="uid://d1pc18ju0vh77" path="res://slices/run/player_status/hook_window/hook_text/hook_text.tscn" id="2_bimx1"]
+
+[node name="HookPreview" type="Control"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fojoa")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 194.0
+offset_bottom = 23.0
+
+[node name="Index" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0:"
+
+[node name="HookName" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<No Hook Configured>"
+
+[node name="HookText" parent="." instance=ExtResource("2_bimx1")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = -166.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 173.011
+grow_vertical = 1
+
+[connection signal="mouse_entered" from="HBoxContainer" to="." method="_on_h_box_container_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer" to="." method="_on_h_box_container_mouse_exited"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bytwpluge1jqn"]
+
+[ext_resource type="Script" uid="uid://dkw3yyu0csg3k" path="res://slices/run/pause/screens/hook_menu/all_hooks.gd" id="1_8ai4t"]
+[ext_resource type="PackedScene" uid="uid://3udo8dgiycyi" path="res://slices/run/pause/screens/hook_menu/hook_option.tscn" id="1_jc5d5"]
+
+[node name="AllHooks" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8ai4t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HookOption0" parent="VBoxContainer" instance=ExtResource("1_jc5d5")]
+layout_mode = 2
+
+[node name="HookOption1" parent="VBoxContainer" instance=ExtResource("1_jc5d5")]
+layout_mode = 2
+index = 1
+
+[node name="HookOption2" parent="VBoxContainer" instance=ExtResource("1_jc5d5")]
+layout_mode = 2
+index = 2
+
+[node name="HookOption3" parent="VBoxContainer" instance=ExtResource("1_jc5d5")]
+layout_mode = 2
+index = 3
+
+[node name="HookOption4" parent="VBoxContainer" instance=ExtResource("1_jc5d5")]
+layout_mode = 2
+index = 4
+
+[connection signal="hook_selected" from="VBoxContainer/HookOption0" to="." method="_on_hook_selected"]
+[connection signal="hook_selected" from="VBoxContainer/HookOption1" to="." method="_on_hook_selected"]
+[connection signal="hook_selected" from="VBoxContainer/HookOption2" to="." method="_on_hook_selected"]
+[connection signal="hook_selected" from="VBoxContainer/HookOption3" to="." method="_on_hook_selected"]
+[connection signal="hook_selected" from="VBoxContainer/HookOption4" to="." method="_on_hook_selected"]

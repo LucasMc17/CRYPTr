@@ -23,9 +23,9 @@ extends Node
 ## Force a particular starter stack for testing purposes.
 @export var force_stack : StarterStack
 ## Force a collection of Hooks into starting inventory.
-@export var force_hooks : Array[Hook]
+@export var force_hooks : Array[Hook] = []
 ## Force a collection of Functions into starting inventory.
-@export var force_functions : Array[Function]
+@export var force_functions : Array[Function] = []
 
 @export_category("Logging")
 ## Degree of frequency of console logging.

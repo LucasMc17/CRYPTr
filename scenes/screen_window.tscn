@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bjepf3drbn4ws"]
+
+[node name="ScreenWindow" type="NinePatchRect"]
