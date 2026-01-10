@@ -146,6 +146,11 @@ signal hook_addition(adder : int)
 ## Emitted when a hook triggers a score multiplier.
 signal hook_multiplication(multiplier : float)
 
+# GLOBAL UI UPDATES
+
+## Emitted when a change is made to a hook's Function list, or a new function is acquired, requiring all realted UI fields to update.
+signal refresh_hooks()
+
 # DEBUG COMMANDS
 
 ## Emitted when the help command is issued

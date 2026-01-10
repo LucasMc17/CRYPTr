@@ -1,0 +1,57 @@
+extends PanelContainer
+
+## The Function this summary represents.
+var function : Function
+## The currently examined hook for pairing with this Function.
+var current_hook : Hook
+## Whether the Function is currently in use by another Hook.
+var in_use : bool:
+	get():
+		return function.owning_hook != null
+## Whether the Function is currently installed on the current Hook.
+var already_installed : bool:
+	get():
+		return function.owning_hook == current_hook
+## Whether the current hook has enough memory to install the Function.
+var affordable : bool:
+	get():
+		return function.cost <= current_hook.memory_available
+## Whether or not the function is ultimately installable based on the factors above.
+var usable : bool:
+	get():
+		return !in_use && !already_installed && affordable
+
+@onready var function_name := %Name
+@onready var function_cost := %Cost
+@onready var function_description := %Description
+
+func _ready():
+	if function:
+		function_cost.text = str(function.cost)
+		function_name.text = function.function_name
+		# function_description.text = function.description
+
+
+## Updates the color of the Function summary based on its availability
+func update_color():
+	if already_installed:
+		self_modulate = '#5affff'
+	elif in_use:
+		self_modulate = '#999999'
+	elif !affordable:
+		self_modulate = '#FF0000'
+	else:
+		self_modulate = "#FFFFFF"
+
+
+## Updates the currently accessed Hook, and updates the colors of the Functions based on their availability.
+func populate(h : Hook):
+	current_hook = h
+
+	update_color()
+
+
+func _gui_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and usable:
+		current_hook.add_function(function)
+		Events.refresh_hooks.emit()
