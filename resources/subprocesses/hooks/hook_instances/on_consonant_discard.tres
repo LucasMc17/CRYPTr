@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OnConsonantDiscardHook" load_steps=2 format=3 uid="uid://dusupklvaksnf"]
+
+[ext_resource type="Script" uid="uid://0qvs4uduatv8" path="res://resources/subprocesses/hooks/discard_hooks/on_consonant_discard_hook.gd" id="1_vg38e"]
+
+[resource]
+script = ExtResource("1_vg38e")
+hook_name = "on_consonant_discard.exe"
+memory_limit = 3
+rarity = 2
+metadata/_custom_type_script = "uid://0qvs4uduatv8"

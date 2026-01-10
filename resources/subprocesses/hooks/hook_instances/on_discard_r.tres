@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OnDiscardLetterHook" load_steps=2 format=3 uid="uid://l8stvgbgm2q2"]
+
+[ext_resource type="Script" uid="uid://cewaxqubxd0u" path="res://resources/subprocesses/hooks/discard_hooks/on_discard_letter_hook.gd" id="1_jvgg8"]
+
+[resource]
+script = ExtResource("1_jvgg8")
+letter = "R"
+hook_name = "on_discard_r.exe"
+memory_limit = 3
+rarity = 1
+metadata/_custom_type_script = "uid://cewaxqubxd0u"

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="OnFinalDiscardHook" load_steps=2 format=3 uid="uid://1jfs3vnmg4ev"]
+
+[ext_resource type="Script" uid="uid://cnv1syvv7juxv" path="res://resources/subprocesses/hooks/discard_hooks/on_final_discard_hook.gd" id="1_ixe2w"]
+
+[resource]
+script = ExtResource("1_ixe2w")
+hook_name = "on_final_discard.exe"
+metadata/_custom_type_script = "uid://cnv1syvv7juxv"

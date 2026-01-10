@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OnWordLengthHook" load_steps=2 format=3 uid="uid://bhksuhi8vygau"]
+
+[ext_resource type="Script" uid="uid://bi2l1sfcl1mta" path="res://resources/subprocesses/hooks/play_hooks/on_word_length_hook.gd" id="1_vvged"]
+
+[resource]
+script = ExtResource("1_vvged")
+greater = false
+length = 4
+hook_name = "on_3_letter_word.exe"
+memory_limit = 3
+metadata/_custom_type_script = "uid://bi2l1sfcl1mta"

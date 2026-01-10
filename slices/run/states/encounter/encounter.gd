@@ -14,6 +14,8 @@ var _scoring = ScoringModule.new()
 var _discards : int
 ## The player's remaining attempts, instantiated in the `_ready` function
 var _attempts := 4
+## Boolean controlling whether the player can interact with the encounter currently.
+var is_input_ready := true
 
 ## The player's current hand of cryptographs. Not a logic module like the deck or scorer, since the hand has a visual component in the encounter.
 @onready var _hand := %Hand
@@ -28,9 +30,16 @@ func _ready():
 
 	_discards = Player.discards
 	if "--debug-encounter" in OS.get_cmdline_args():
+		# TODO: Refactor the encounter debug to force the encounter slice of the run screen
 		DebugNode.print_n('ENCOUNTER accessed directly')
 		var debug_encounter = EncounterRes.new("MATCH", 0, null, 0, 0, 0)
 		encounter = debug_encounter
+		for hook in DebugNode.force_hooks:
+			Player.hooks.append(hook.duplicate())
+		DebugNode.force_hooks.clear()
+		for function in DebugNode.force_functions:
+			Player.functions.append(function.duplicate())
+		DebugNode.force_functions.clear()
 		if DebugNode.force_stack:
 			Player.initialize_stack(DebugNode.force_stack)
 			DebugNode.print_n('Initializing FORCED stack from Debug Node')
@@ -51,54 +60,54 @@ func _ready():
 
 
 func _unhandled_input(event):
-	if Input.is_action_just_pressed("enter"):
-		_enter_word()
-	
-	if Input.is_action_just_pressed("backspace"):
-		_word.backspace()
-		_scoring.update_score_object(_word.text, _hand)
-		_score_preview.update_potential_score(_scoring.score_object)
+	if is_input_ready:
+		if Input.is_action_just_pressed("enter"):
+			_enter_word()
+		
+		if Input.is_action_just_pressed("backspace"):
+			_word.backspace()
+			_scoring.update_score_object(_word.text, _hand)
+			_score_preview.update_potential_score(_scoring.score_object)
 
-	if event is InputEventKey and event.pressed == true:
-		_input_character(event)
+		if event is InputEventKey and event.pressed == true:
+			_input_character(event)
 
 
 ## Signals that the encounter was won to trigger the run UISwitcher back to the map.
 func _win() -> void:
 	Player.current_stack = Player.stack
+	Events.emit_match_won()
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
 	else:
-		Events.emit_match_won()
 		Events.emit_return_to_map(false)
 
 
 ## Signals that the encounter was lost, and ends the run.
 func _lose() -> void:
-	DebugNode.print_n("YOU LOSE")
 	Player.current_stack = Player.stack
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
 	else:
+		is_input_ready = false
 		Events.emit_run_lost()
 
 
-# TODO: A lot of this is going to change so we can iterate through a scored word with animations and sound effects. The score preview too.
 ## Enters the currently inputted word, assuming it is valid.
 func _enter_word() -> void:
 	if _scoring.score_object.valid:
-		Player.add_anagram(_word.text)
-		for letter in _word.text:
-			Events.emit_letter_scored(letter)
-		Events.emit_word_scored(_word.text, _scoring.score_object.additional_mults, _attempts - 1)
-		# Events.word_scored.emit({ "word": _word.text, "types": _scoring.score_object.additional_mults, "attempts_remaining": _attempts - 1})
-		if DebugNode.instawin:
-			_win()
-			return
-		
-		_scoring.current_score += _scoring.score_object.total_score
+		_attempts -= 1
+		_scoring.score_word(_hand.cryptographs, _attempts)
+		# Events.emit_word_scored(_word.text, _scoring.score_object.additional_mults, _attempts)
 		_score_preview.update_score(_scoring.current_score, _scoring.target_score)
 
+		if _scoring.check_win() || DebugNode.instawin:
+			_win()
+			return
+		if _attempts < 1 || _deck.all.is_empty():
+			_lose()
+			return
+		
 		_hand.discard_by_letters(_word.text)
 		_hand.add_to_hand(_deck.draw(Player.HAND_SIZE - _hand.count))
 
@@ -107,14 +116,6 @@ func _enter_word() -> void:
 		_scoring.update_score_object(_word.text, _hand)
 		_score_preview.update_potential_score(_scoring.score_object)
 
-		_attempts -= 1
-
-		if _scoring.check_win():
-			_win()
-			return
-		if _attempts < 1 || _deck.all.is_empty():
-			_lose()
-			return
 
 
 ## Adds a character to the words when the corresponding key is pressed, assuming the `_hand` contains that character.

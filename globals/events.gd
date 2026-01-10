@@ -53,6 +53,7 @@ signal match_won(params: ParamsObject)
 func emit_match_won():
 	match_won.emit(ParamsObject.new("MATCH WON"))
 
+
 ## Emitted when the player leaves an encounter and returns to the map.
 signal return_to_map(params : ReturnToMapParams)
 class ReturnToMapParams extends ParamsObject:
@@ -64,10 +65,12 @@ class ReturnToMapParams extends ParamsObject:
 func emit_return_to_map(new_map : bool):
 	return_to_map.emit(ReturnToMapParams.new("RETURN TO MAP", new_map))
 
+
 ## Emitted when a match is lost, forfeiting the run
 signal run_lost(params : ParamsObject)
 func emit_run_lost():
 	run_lost.emit(ParamsObject.new("RUN LOST"))
+
 
 ## Emitted when a run is paused.
 signal paused(params : PausedParams)
@@ -80,10 +83,12 @@ class PausedParams extends ParamsObject:
 func emit_paused(menu_screen : StringName = "Menu"):
 	paused.emit(PausedParams.new("PAUSED", menu_screen))
 
+
 ## Emitted when a run is unpaused
 signal unpaused(params: ParamsObject)
 func emit_unpaused():
 	unpaused.emit(ParamsObject.new("UNPAUSED"))
+
 
 ## Emitted when the user elects to quit to the main menu of the game.
 signal quit_to_menu(params : ParamsObject)
@@ -132,6 +137,19 @@ class WordScoredParams extends ParamsObject:
 		super(param_event)
 func emit_word_scored(word : String, types : Dictionary[StringName, float], attempts_left : int):
 	word_scored.emit(WordScoredParams.new("WORD SCORED", word, types, attempts_left))
+
+# HOOK FUNCTIONS
+
+## Emitted when a hook triggers a score addition.
+signal hook_addition(adder : int)
+
+## Emitted when a hook triggers a score multiplier.
+signal hook_multiplication(multiplier : float)
+
+# GLOBAL UI UPDATES
+
+## Emitted when a change is made to a hook's Function list, or a new function is acquired, requiring all realted UI fields to update.
+signal refresh_hooks()
 
 # DEBUG COMMANDS
 

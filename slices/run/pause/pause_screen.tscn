@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcrnr05jvfxc7"]
+[gd_scene load_steps=6 format=3 uid="uid://dcrnr05jvfxc7"]
 
 [ext_resource type="Script" uid="uid://dqgsbm0cflt0i" path="res://slices/run/pause/pause_screen.gd" id="1_vfrww"]
 [ext_resource type="Script" uid="uid://dgjbmlg6wlice" path="res://ui_states/ui_switcher.gd" id="2_di67i"]
 [ext_resource type="PackedScene" uid="uid://bbijp713lja3a" path="res://slices/run/pause/screens/pause_menu/pause_menu.tscn" id="3_vfrww"]
 [ext_resource type="PackedScene" uid="uid://ht6y2dr3y6ki" path="res://slices/run/pause/screens/stack_menu/stack_menu.tscn" id="4_egxy4"]
+[ext_resource type="PackedScene" uid="uid://bidj852l8qnd2" path="res://slices/run/pause/screens/hook_menu/hook_menu.tscn" id="5_p6p20"]
 
 [node name="PauseScreen" type="PanelContainer"]
 z_index = 100
@@ -42,6 +43,7 @@ layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_di67i")
 _scenes = Dictionary[String, PackedScene]({
+"Hooks": ExtResource("5_p6p20"),
 "Menu": ExtResource("3_vfrww"),
 "Stack": ExtResource("4_egxy4")
 })

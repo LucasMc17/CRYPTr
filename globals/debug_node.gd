@@ -22,6 +22,10 @@ extends Node
 @export_category("Inventory")
 ## Force a particular starter stack for testing purposes.
 @export var force_stack : StarterStack
+## Force a collection of Hooks into starting inventory.
+@export var force_hooks : Array[Hook] = []
+## Force a collection of Functions into starting inventory.
+@export var force_functions : Array[Function] = []
 
 @export_category("Logging")
 ## Degree of frequency of console logging.
@@ -49,6 +53,11 @@ func _check_overrides(value):
 func print(message):
 	if debug_console:
 		debug_console.log(message)
+
+
+## Method for arbitrarily logging for debug purposes.
+func p(message):
+	DebugNode.print(message)
 
 
 ## Prints the message only if log level is NORMAL or higher.

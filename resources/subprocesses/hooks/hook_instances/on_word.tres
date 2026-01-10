@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OnWordHook" load_steps=2 format=3 uid="uid://du3msawy6uiku"]
+
+[ext_resource type="Script" uid="uid://dru04k3w1nb1c" path="res://resources/subprocesses/hooks/play_hooks/on_word_hook.gd" id="1_nunkn"]
+
+[resource]
+script = ExtResource("1_nunkn")
+hook_name = "on_word.exe"
+memory_limit = 4
+rarity = 1
+metadata/_custom_type_script = "uid://dru04k3w1nb1c"

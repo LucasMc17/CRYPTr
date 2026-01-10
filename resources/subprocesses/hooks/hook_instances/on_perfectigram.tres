@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="OnWordTypeHook" load_steps=2 format=3 uid="uid://debn7th16lmxb"]
+
+[ext_resource type="Script" uid="uid://co6oso1hlx5dx" path="res://resources/subprocesses/hooks/play_hooks/on_word_type_hook.gd" id="1_53h6o"]
+
+[resource]
+script = ExtResource("1_53h6o")
+word_type = "perfectigram"
+hook_name = "on_perfectigram.exe"
+metadata/_custom_type_script = "uid://co6oso1hlx5dx"

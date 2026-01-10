@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2nsdchx12kle"]
+
+[ext_resource type="Script" uid="uid://v6jhxn284h4f" path="res://slices/run/player_status/hook_window/hook_text/hook_function_label.gd" id="1_80q4n"]
+
+[node name="HookFunctionLabel" type="HBoxContainer"]
+script = ExtResource("1_80q4n")
+
+[node name="FunctionLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "    add_to_score(10)"
+
+[node name="MoveButtons" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="UpButton" type="Button" parent="MoveButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+disabled = true
+text = "/\\"
+
+[node name="DownButton" type="Button" parent="MoveButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+disabled = true
+text = "\\/"
+
+[connection signal="pressed" from="MoveButtons/UpButton" to="." method="_on_up_button_pressed"]
+[connection signal="pressed" from="MoveButtons/DownButton" to="." method="_on_down_button_pressed"]

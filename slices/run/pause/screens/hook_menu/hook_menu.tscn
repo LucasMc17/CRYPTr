@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://bidj852l8qnd2"]
+
+[ext_resource type="Script" uid="uid://u1t41het351c" path="res://slices/run/pause/screens/hook_menu/hook_menu.gd" id="1_6gl6t"]
+[ext_resource type="PackedScene" uid="uid://bytwpluge1jqn" path="res://slices/run/pause/screens/hook_menu/all_hooks.tscn" id="2_vmlmu"]
+[ext_resource type="PackedScene" uid="uid://d1pc18ju0vh77" path="res://slices/run/player_status/hook_window/hook_text/hook_text.tscn" id="3_6gl6t"]
+[ext_resource type="PackedScene" uid="uid://c84y7cu4brl8x" path="res://slices/run/pause/screens/hook_menu/function_window/function_window.tscn" id="3_m1q1j"]
+
+[node name="HookMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6gl6t")
+metadata/_custom_type_script = "uid://di8k3ed6nq64j"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AllHooks" parent="HBoxContainer" instance=ExtResource("2_vmlmu")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.33
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.66
+
+[node name="NoneSelectedLabel" type="Label" parent="HBoxContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Click on a Hook to see its
+Active Functions"
+horizontal_alignment = 1
+
+[node name="HookConfigWindows" type="HBoxContainer" parent="HBoxContainer/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FunctionWindow" parent="HBoxContainer/Control/HookConfigWindows" instance=ExtResource("3_m1q1j")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HookText" parent="HBoxContainer/Control/HookConfigWindows" instance=ExtResource("3_6gl6t")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+allow_config = true
+
+[connection signal="hook_selected" from="HBoxContainer/AllHooks" to="." method="_on_hook_selected"]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="OnWordTypeHook" load_steps=2 format=3 uid="uid://c05xp4o10123t"]
+
+[ext_resource type="Script" uid="uid://co6oso1hlx5dx" path="res://resources/subprocesses/hooks/play_hooks/on_word_type_hook.gd" id="1_vxix2"]
+
+[resource]
+script = ExtResource("1_vxix2")
+word_type = "pangram"
+hook_name = "on_pangram.exe"
+metadata/_custom_type_script = "uid://co6oso1hlx5dx"

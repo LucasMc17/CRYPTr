@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxcguf0ft6xoy"]
+
+[ext_resource type="Script" uid="uid://ctkgrvx5thiko" path="res://slices/run/pause/screens/hook_menu/function_window/function_summary.gd" id="1_e2hax"]
+
+[node name="FunctionSummary" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e2hax")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CostLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cost"
+horizontal_alignment = 1
+
+[node name="Cost" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Function Name"
+
+[node name="Description" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Function Description"
+
+[node name="Control" type="CenterContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="InUseLabel" type="Label" parent="HBoxContainer/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "! IN USE !"
+horizontal_alignment = 1
+
+[node name="InstalledLabel" type="Label" parent="HBoxContainer/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "! INSTALLED !"
+horizontal_alignment = 1
+
+[node name="InsufficientMemoryLabel" type="Label" parent="HBoxContainer/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "! INSUFFICIENT MEMORY !"
+horizontal_alignment = 1

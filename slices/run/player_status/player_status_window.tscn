@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpvshbd8guiuu"]
+
+[ext_resource type="PackedScene" uid="uid://behxboi5x3aem" path="res://slices/run/player_status/hook_window/hook_window.tscn" id="1_xyagf"]
+
+[node name="PlayerStatusWindow" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="HookWindow" parent="." instance=ExtResource("1_xyagf")]
+custom_minimum_size = Vector2(0, 230)
+layout_mode = 2

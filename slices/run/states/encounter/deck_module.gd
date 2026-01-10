@@ -1,4 +1,5 @@
-class_name DeckModule extends Node
+class_name DeckModule
+extends Resource
 ## Logic module simulating a shuffled instance of a Stack, for an encounter or other event requiring a full, shuffled copy of the player's stack.
 ##
 ## Contains logic for drawing from the stack as well as shuffling.

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OnVowelHook" load_steps=2 format=3 uid="uid://b8t1uay5v112n"]
+
+[ext_resource type="Script" uid="uid://dsr4ej07i3pgg" path="res://resources/subprocesses/hooks/play_hooks/on_vowel_hook.gd" id="1_ey7ml"]
+
+[resource]
+script = ExtResource("1_ey7ml")
+hook_name = "on_vowel_scored.exe"
+memory_limit = 2
+rarity = 1
+metadata/_custom_type_script = "uid://dsr4ej07i3pgg"
