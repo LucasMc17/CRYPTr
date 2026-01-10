@@ -21,24 +21,33 @@ var usable : bool:
 	get():
 		return !in_use && !already_installed && affordable
 
-@onready var function_name := %Name
-@onready var function_cost := %Cost
-@onready var function_description := %Description
+@onready var _function_name := %Name
+@onready var _function_cost := %Cost
+# @onready var _function_description := %Description
+@onready var _in_use_label := %InUseLabel
+@onready var _installed_label := %InstalledLabel
+@onready var _insufficient_memory_label := %InsufficientMemoryLabel
 
 func _ready():
 	if function:
-		function_cost.text = str(function.cost)
-		function_name.text = function.function_name
-		# function_description.text = function.description
+		_function_cost.text = str(function.cost)
+		_function_name.text = function.function_name
+		# _function_description.text = function.description
 
 
 ## Updates the color of the Function summary based on its availability
 func update_color():
+	_in_use_label.visible = false
+	_installed_label.visible = false
+	_insufficient_memory_label.visible = false
 	if already_installed:
+		_installed_label.visible = true
 		self_modulate = '#5affff'
 	elif in_use:
+		_in_use_label.visible = true
 		self_modulate = '#999999'
 	elif !affordable:
+		_insufficient_memory_label.visible = true
 		self_modulate = '#FF0000'
 	else:
 		self_modulate = "#FFFFFF"

@@ -13,6 +13,7 @@ var _hook : Hook
 @onready var memory_label := %MemoryLabel
 
 func _ready():
+	Events.refresh_hooks.connect(update_hook)
 	if Player.hooks.size() > index:
 		_hook = Player.hooks[index]
 	else:

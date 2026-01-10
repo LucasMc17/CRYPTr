@@ -34,7 +34,7 @@ func check_win() -> bool:
 
 
 ## Scores the word based on the cryptographs in hand.
-func score_word(hand : Array[Cryptograph]) -> void:
+func score_word(hand : Array[Cryptograph], attempts_remaining : int) -> void:
 	is_evaluating = true
 	Player.add_anagram(score_object.word)
 	# TODO: There will be even more to do with this when the animation queue is set up. yeesh
@@ -47,6 +47,7 @@ func score_word(hand : Array[Cryptograph]) -> void:
 	evaluating_score *= score_object.length_mult
 	for multiplier in score_object.additional_mults:
 		evaluating_score *= score_object.additional_mults[multiplier]
+	Events.emit_word_scored(score_object.word, score_object.additional_mults, attempts_remaining)
 	current_score += evaluating_score
 	evaluating_score = 0.0
 	is_evaluating = false

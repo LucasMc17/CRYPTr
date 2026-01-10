@@ -6,8 +6,10 @@ var allow_config := false
 ## The function within the hook which this label represents.
 @export var function : Function
 
-@onready var move_buttons = %MoveButtons
+@onready var _move_buttons = %MoveButtons
+@onready var _function_label = %FunctionLabel
 
 func _ready():
+	_function_label.text = '    ' + function.function_name
 	if allow_config:
-		move_buttons.visible = true
+		_move_buttons.visible = true

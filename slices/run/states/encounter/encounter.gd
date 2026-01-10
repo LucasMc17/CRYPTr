@@ -96,9 +96,9 @@ func _lose() -> void:
 ## Enters the currently inputted word, assuming it is valid.
 func _enter_word() -> void:
 	if _scoring.score_object.valid:
-		_scoring.score_word(_hand.cryptographs)
 		_attempts -= 1
-		Events.emit_word_scored(_word.text, _scoring.score_object.additional_mults, _attempts)
+		_scoring.score_word(_hand.cryptographs, _attempts)
+		# Events.emit_word_scored(_word.text, _scoring.score_object.additional_mults, _attempts)
 		_score_preview.update_score(_scoring.current_score, _scoring.target_score)
 
 		if _scoring.check_win() || DebugNode.instawin:
