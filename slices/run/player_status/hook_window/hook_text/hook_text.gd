@@ -6,7 +6,7 @@ extends PanelContainer
 @export var hook : Hook
 
 ## The Function Label scene for instantiation during refresh.
-var function_label_scene = preload('./hook_function_label.tscn')
+static var function_label_scene = preload('./hook_function_label.tscn')
 
 @onready var hook_name := %HookName
 @onready var no_func_label := %NoFuncLabel
@@ -27,14 +27,23 @@ func refresh_text() -> void:
 	else:
 		hook_name.text = hook.hook_name
 		if !hook.functions.is_empty():
+			var index = 0
 			for function in hook.functions:
 				var label = function_label_scene.instantiate()
+				label.function_shifted.connect(_on_function_shifted)
+				label.index = index
 				label.function = function
 				label.allow_config = allow_config
 				function_holder.add_child(label)
+				index += 1
 		else:
 			no_func_label.visible = true
 
 
 func _on_hooks_updated():
 	refresh_text()
+
+
+func _on_function_shifted(index : int, up : bool):
+	hook.shift_function(index, up)
+	Events.refresh_hooks.emit()

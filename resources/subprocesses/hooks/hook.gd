@@ -47,6 +47,22 @@ func add_function(function : Function) -> void:
 		DebugNode.print("WARNING: attempted to add Function of cost " + str(function.cost) + ", but only " + str(memory_available) + " memory remaining.")
 
 
+## Move a function up or down in priority inside of this hook.
+func shift_function(hook_index : int, up : bool) -> void:
+	if up:
+		if hook_index == 0:
+			DebugNode.print("WARNING: Attempted to increase priority of Function whose index was already 0")
+			return
+		var shifted_func = functions.pop_at(hook_index)
+		functions.insert(hook_index - 1, shifted_func)
+	else:
+		if hook_index == functions.size() - 1:
+			DebugNode.print("WARNING: Attempted to decrease priority of Function whose index was already last in functions array")
+			return
+		var shifted_func = functions.pop_at(hook_index)
+		functions.insert(hook_index + 1, shifted_func)
+
+
 ## Remove a Function to the list of Functions for this Hook.
 func remove_function(function : Function) -> void:
 	functions = functions.filter(func(hook_function): return hook_function != function)
@@ -58,6 +74,7 @@ func clear_functions():
 	for function in functions:
 		function.owning_hook = null
 	functions.clear()
+
 
 ## Signal listener function that runs when the Hook's designated signal is received.
 func _on_triggered(params : Events.ParamsObject) -> void:
