@@ -1,3 +1,5 @@
+# FORMATTING GUIDE
+
 1.  @tool, @icon, @static_unload
 2.  class_name
 3.  extends
@@ -14,15 +16,23 @@
 12. \_static_init()
 13. remaining static methods
 14. overridden built-in virtual methods:
-    1.  \_init()
-    2.  \_enter_tree()
-    3.  \_ready()
-    4.  \_process()
-    5.  \_physics_process()
-    6.  remaining virtual methods
+	1.  \_init()
+	2.  \_enter_tree()
+	3.  \_ready()
+	4.  \_process()
+	5.  \_physics_process()
+	6.  remaining virtual methods
 15. overridden custom methods
 16. remaining methods
 17. subclasses
+
+# Z INDEX CONSTANTS
+
+Gameplay Layer - 0
+
+Menu Layer - 10
+
+Debug Layer - 20
 
 # IDEAS
 

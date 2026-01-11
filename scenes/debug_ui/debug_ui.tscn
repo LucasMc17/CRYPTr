@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dw2oqlv6djjwt" path="res://scenes/debug_ui/debug_blocks/debug_controls.tscn" id="2_pl34o"]
 
 [node name="DebugUi" type="VBoxContainer"]
+process_mode = 3
+z_index = 20
 anchors_preset = -1
 anchor_left = 0.75
 anchor_right = 1.0

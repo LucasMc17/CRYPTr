@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bidj852l8qnd2" path="res://slices/run/pause/screens/hook_menu/hook_menu.tscn" id="5_p6p20"]
 
 [node name="PauseScreen" type="PanelContainer"]
-z_index = 100
+z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
