@@ -12,12 +12,13 @@ script = ExtResource("1_g288y")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
+theme_type_variation = &"LabelBig"
 text = "Odds to draw a Vowel"
 horizontal_alignment = 1
 
 [node name="Odds" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
+theme_type_variation = &"LabelExtraBig"
 text = "10%"
 horizontal_alignment = 1

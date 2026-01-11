@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjepf3drbn4ws"]
-
-[ext_resource type="StyleBox" uid="uid://c6evhe8iy2il3" path="res://assets/themes/window_theme/window_stylebox.tres" id="1_21blo"]
+[gd_scene format=3 uid="uid://bjepf3drbn4ws"]
 
 [node name="ScreenWindow" type="PanelContainer"]
 anchors_preset = 15
@@ -9,4 +7,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = ExtResource("1_21blo")
+theme_type_variation = &"WindowPanel"

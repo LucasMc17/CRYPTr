@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://2512ic8p2wa6"]
+
+[ext_resource type="StyleBox" uid="uid://d2ilsd4f4ld5d" path="res://assets/themes/function_theme/available_style_box.tres" id="1_y55sk"]
+[ext_resource type="StyleBox" uid="uid://c3tihit8pomxq" path="res://assets/themes/function_theme/in_use_style_box.tres" id="2_q5g8b"]
+[ext_resource type="StyleBox" uid="uid://1ncm6550hlk8" path="res://assets/themes/function_theme/insufficient_memory_style_box.tres" id="3_20qus"]
+[ext_resource type="StyleBox" uid="uid://jp21si8dqcbr" path="res://assets/themes/function_theme/installed_style_box.tres" id="3_cqv37"]
+
+[resource]
+Available/base_type = &"PanelContainer"
+Available/styles/panel = ExtResource("1_y55sk")
+InUse/base_type = &"PanelContainer"
+InUse/styles/panel = ExtResource("2_q5g8b")
+Installed/base_type = &"PanelContainer"
+Installed/styles/panel = ExtResource("3_cqv37")
+InsufficientMemory/base_type = &"PanelContainer"
+InsufficientMemory/styles/panel = ExtResource("3_20qus")
+PanelContainer/styles/panel = ExtResource("1_y55sk")

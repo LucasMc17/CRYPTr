@@ -12,5 +12,5 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 
 [node name="HookWindow" parent="." instance=ExtResource("1_xyagf")]
-custom_minimum_size = Vector2(0, 230)
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 2

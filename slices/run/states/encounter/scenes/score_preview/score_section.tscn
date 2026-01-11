@@ -9,21 +9,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2cnvl")
-SIZE = "MEDIUM"
-NAME_INPUT = "Tetragram"
-MULT_INPUT = "x1.8"
 
 [node name="Name" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
+theme_type_variation = &"LabelBig"
 text = "Tetragram"
 
 [node name="Multiplier" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
+theme_type_variation = &"LabelBig"
 text = "x1.8"
 horizontal_alignment = 2

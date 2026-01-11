@@ -42,15 +42,19 @@ func update_color():
 	_insufficient_memory_label.visible = false
 	if already_installed:
 		_installed_label.visible = true
-		self_modulate = '#5affff'
+		# self_modulate = '#5affff'
+		theme_type_variation = "Installed"
 	elif in_use:
 		_in_use_label.visible = true
-		self_modulate = '#999999'
+		theme_type_variation = "InUse"
+		# self_modulate = '#999999'
 	elif !affordable:
 		_insufficient_memory_label.visible = true
-		self_modulate = '#FF0000'
+		theme_type_variation = "InsufficientMemory"
+		# self_modulate = '#FF0000'
 	else:
-		self_modulate = "#FFFFFF"
+		theme_type_variation = "Available"
+		# self_modulate = "#FFFFFF"
 
 
 ## Updates the currently accessed Hook, and updates the colors of the Functions based on their availability.
@@ -61,6 +65,10 @@ func populate(h : Hook):
 
 
 func _gui_input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and usable:
-		current_hook.add_function(function)
-		Events.refresh_hooks.emit()
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if already_installed:
+			current_hook.remove_function(function)
+			Events.refresh_hooks.emit()
+		elif usable:
+			current_hook.add_function(function)
+			Events.refresh_hooks.emit()

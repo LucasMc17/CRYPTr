@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://o1vprt2bb7a5" path="res://slices/run/pause/screens/hook_menu/hook_option.gd" id="1_vnw0f"]
 
 [node name="HookOption" type="Button"]
-custom_minimum_size = Vector2(0, 22)
+custom_minimum_size = Vector2(0, 40)
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 8.0
@@ -22,9 +22,11 @@ grow_vertical = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"HeaderMedium"
 text = "<No Hook Installed>"
 clip_text = true
 
 [node name="MemoryLabel" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"HeaderMedium"

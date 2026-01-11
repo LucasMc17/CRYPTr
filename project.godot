@@ -27,6 +27,10 @@ Constants="*res://globals/constants.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[gui]
+
+theme/custom="uid://cup3yfhjrfjb2"
+
 [input]
 
 backspace={
