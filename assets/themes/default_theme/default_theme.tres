@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://cup3yfhjrfjb2"]
 
-[ext_resource type="StyleBox" uid="uid://c6evhe8iy2il3" path="res://assets/themes/window_theme/window_stylebox.tres" id="1_ukmxd"]
+[ext_resource type="StyleBox" uid="uid://c6evhe8iy2il3" path="res://assets/themes/default_theme/window_stylebox.tres" id="1_ukmxd"]
 [ext_resource type="FontFile" uid="uid://do185of0nycet" path="res://assets/fonts/Space_Mono/SpaceMono-Regular.ttf" id="1_x7nni"]
 
 [resource]
