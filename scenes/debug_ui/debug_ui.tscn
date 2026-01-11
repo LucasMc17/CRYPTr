@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3dvjcwrjq0u0"]
+[gd_scene load_steps=5 format=3 uid="uid://d3dvjcwrjq0u0"]
 
 [ext_resource type="PackedScene" uid="uid://ds8wxdro0xwht" path="res://scenes/debug_ui/debug_blocks/debug_stats.tscn" id="1_2m3es"]
+[ext_resource type="Script" uid="uid://rvm4afj3w44l" path="res://scenes/debug_ui/debug_ui.gd" id="1_3x4x8"]
 [ext_resource type="PackedScene" uid="uid://cjsi70w5ucfif" path="res://scenes/debug_ui/debug_blocks/debug_console.tscn" id="1_qk6j6"]
 [ext_resource type="PackedScene" uid="uid://dw2oqlv6djjwt" path="res://scenes/debug_ui/debug_blocks/debug_controls.tscn" id="2_pl34o"]
 
@@ -16,6 +17,7 @@ grow_vertical = 2
 focus_behavior_recursive = 1
 mouse_filter = 2
 alignment = 2
+script = ExtResource("1_3x4x8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
