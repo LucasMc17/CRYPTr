@@ -28,7 +28,7 @@ func _ready():
 	Events.command_win.connect(func (_params): _win())
 	Events.command_lose.connect(func (_params): _lose())
 
-	if DebugNode.is_debug_encounter():
+	if DebugNode.command_args.is_debug_encounter:
 		DebugNode.print_n('ENCOUNTER accessed directly')
 
 	_discards = Player.discards
@@ -63,7 +63,7 @@ func _win() -> void:
 	Player.current_stack = Player.stack
 	Events.refresh_stack.emit()
 	Events.emit_match_won()
-	if DebugNode.is_debug_encounter():
+	if DebugNode.command_args.is_debug_encounter:
 		get_tree().quit(0)
 	else:
 		Events.emit_return_to_map(false)
@@ -73,7 +73,7 @@ func _win() -> void:
 func _lose() -> void:
 	Player.current_stack = Player.stack
 	Events.refresh_stack.emit()
-	if DebugNode.is_debug_encounter():
+	if DebugNode.command_args.is_debug_encounter:
 		get_tree().quit(0)
 	else:
 		is_input_ready = false
