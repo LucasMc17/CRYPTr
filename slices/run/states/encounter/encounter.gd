@@ -76,6 +76,7 @@ func _unhandled_input(event):
 ## Signals that the encounter was won to trigger the run UISwitcher back to the map.
 func _win() -> void:
 	Player.current_stack = Player.stack
+	Events.refresh_stack.emit()
 	Events.emit_match_won()
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
@@ -86,6 +87,7 @@ func _win() -> void:
 ## Signals that the encounter was lost, and ends the run.
 func _lose() -> void:
 	Player.current_stack = Player.stack
+	Events.refresh_stack.emit()
 	if "--debug-encounter" in OS.get_cmdline_args():
 		get_tree().quit(0)
 	else:

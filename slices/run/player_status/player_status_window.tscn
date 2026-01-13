@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpvshbd8guiuu"]
+[gd_scene load_steps=4 format=3 uid="uid://dpvshbd8guiuu"]
 
 [ext_resource type="PackedScene" uid="uid://behxboi5x3aem" path="res://slices/run/player_status/hook_window/hook_window.tscn" id="1_xyagf"]
+[ext_resource type="PackedScene" uid="uid://bak3l75x1r3yb" path="res://slices/run/player_status/money_window/money_window.tscn" id="2_v015j"]
+[ext_resource type="PackedScene" uid="uid://cmofmda1oepst" path="res://slices/run/player_status/stack_window/stack_window.tscn" id="3_0t5h1"]
 
 [node name="PlayerStatusWindow" type="VBoxContainer"]
 anchors_preset = 15
@@ -13,4 +15,10 @@ size_flags_stretch_ratio = 0.25
 
 [node name="HookWindow" parent="." instance=ExtResource("1_xyagf")]
 custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="MoneyWindow" parent="." instance=ExtResource("2_v015j")]
+layout_mode = 2
+
+[node name="StackWindow" parent="." instance=ExtResource("3_0t5h1")]
 layout_mode = 2

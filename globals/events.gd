@@ -151,7 +151,10 @@ signal hook_multiplication(multiplier : float)
 ## Emitted when a change is made to a hook's Function list, or a new function is acquired, requiring all realted UI fields to update.
 signal refresh_hooks()
 
+## Emitted any time the stack amount changes, such as when Cryptographs are drawn from the Stack, or when new Cryptographs are acquired.
+
 # DEBUG COMMANDS
+signal refresh_stack()
 
 ## Emitted when the help command is issued
 signal command_help(params : Array[String])

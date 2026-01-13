@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmofmda1oepst"]
+
+[ext_resource type="Script" uid="uid://ccrxjlflqx40l" path="res://slices/run/player_status/stack_window/stack_window.gd" id="1_b8302"]
+
+[node name="StackWindow" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"WindowPanel"
+script = ExtResource("1_b8302")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="StackLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"LabelBig"
+text = "STACK"
+horizontal_alignment = 1
+
+[node name="StackAmounts" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"LabelExtraBig"
+text = "50 / 50"
+horizontal_alignment = 1

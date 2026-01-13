@@ -28,7 +28,7 @@ grow_vertical = 2
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.75
+size_flags_stretch_ratio = 0.85
 theme_type_variation = &"WindowPanel"
 
 [node name="RunSwitcher" type="Control" parent="HBoxContainer/PanelContainer"]
@@ -47,6 +47,7 @@ metadata/_custom_type_script = "uid://dgjbmlg6wlice"
 
 [node name="PlayerStatusWindow" parent="HBoxContainer" instance=ExtResource("5_52nl0")]
 layout_mode = 2
+size_flags_stretch_ratio = 0.15
 
 [node name="PauseSwitcher" type="Control" parent="."]
 unique_name_in_owner = true
