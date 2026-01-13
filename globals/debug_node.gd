@@ -35,6 +35,8 @@ extends Node
 var debug_console : DebugConsole
 ## Preloaded debug ui packed scene for initialization.
 var _debug_ui = preload('res://scenes/debug_ui/debug_ui.tscn')
+## Queue of print commands which were executed before the Debug Console had loaded, to be ran as soon as it finishes.
+var print_queue : Array
 
 var command_args := CommandArgumentModule.new()
 
@@ -55,6 +57,8 @@ func _check_overrides(value):
 func print(message):
 	if debug_console:
 		debug_console.log(message)
+	else:
+		print_queue.append(message)
 
 
 ## Method for arbitrarily logging for debug purposes.
