@@ -84,3 +84,26 @@ func make_to_printable_method(entity, params := []) -> Callable:
 					result[param] = entity[param]
 		
 		return result
+
+# DEBUG PROCESS FUNCS
+
+var cmdline_args : PackedStringArray
+
+## Returns true if a debug process which forces a specific state has launched the program, such as `Debug Encounter` or `Debug Map`.
+func is_debug_instance() -> bool:
+	if not cmdline_args:
+		cmdline_args = OS.get_cmdline_args()
+	return '--debug-slice' in cmdline_args
+
+
+## Returns true if process was started via `Debug Encounter` command.
+func is_debug_encounter() -> bool:
+	if not cmdline_args:
+		cmdline_args = OS.get_cmdline_args()
+	return '--debug-encounter' in cmdline_args
+
+## Returns true if process was started via `Debug Map` command.
+func is_debug_map() -> bool:
+	if not cmdline_args:
+		cmdline_args = OS.get_cmdline_args()
+	return '--debug-map' in cmdline_args

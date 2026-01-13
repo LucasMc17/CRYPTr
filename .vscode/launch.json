@@ -15,15 +15,15 @@
       "name": "Debug Encounter",
       "type": "godot",
       "request": "launch",
-      "scene": "res://slices/run/states/encounter/encounter.tscn",
-      "additional_options": "-f --debug-encounter"
+      "scene": "main",
+      "additional_options": "-f --debug-slice --debug-encounter"
     },
     {
       "name": "Debug Map",
       "type": "godot",
       "request": "launch",
-      "scene": "res://slices/run/states/map/map.tscn",
-      "additional_options": "-f --debug-map"
+      "scene": "main",
+      "additional_options": "-f --debug-slice --debug-map"
     },
     {
       "name": "Debug Current",

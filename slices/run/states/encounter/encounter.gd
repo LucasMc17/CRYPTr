@@ -28,25 +28,10 @@ func _ready():
 	Events.command_win.connect(func (_params): _win())
 	Events.command_lose.connect(func (_params): _lose())
 
-	_discards = Player.discards
-	if "--debug-encounter" in OS.get_cmdline_args():
-		# TODO: Refactor the encounter debug to force the encounter slice of the run screen
+	if DebugNode.is_debug_encounter():
 		DebugNode.print_n('ENCOUNTER accessed directly')
-		var debug_encounter = EncounterRes.new("MATCH", 0, null, 0, 0, 0)
-		encounter = debug_encounter
-		for hook in DebugNode.force_hooks:
-			Player.hooks.append(hook.duplicate())
-		DebugNode.force_hooks.clear()
-		for function in DebugNode.force_functions:
-			Player.functions.append(function.duplicate())
-		DebugNode.force_functions.clear()
-		if DebugNode.force_stack:
-			Player.initialize_stack(DebugNode.force_stack)
-			DebugNode.print_n('Initializing FORCED stack from Debug Node')
-		else:
-			var CLASSIC_STACK = load("res://resources/starter_decks/the_classic.tres")
-			DebugNode.print_n('Initializing CLASSIC stack')
-			Player.initialize_stack(CLASSIC_STACK)
+
+	_discards = Player.discards
 	_deck = DeckModule.new(true)
 	_hand.add_to_hand(_deck.draw())
 
@@ -78,7 +63,7 @@ func _win() -> void:
 	Player.current_stack = Player.stack
 	Events.refresh_stack.emit()
 	Events.emit_match_won()
-	if "--debug-encounter" in OS.get_cmdline_args():
+	if DebugNode.is_debug_encounter():
 		get_tree().quit(0)
 	else:
 		Events.emit_return_to_map(false)
@@ -88,7 +73,7 @@ func _win() -> void:
 func _lose() -> void:
 	Player.current_stack = Player.stack
 	Events.refresh_stack.emit()
-	if "--debug-encounter" in OS.get_cmdline_args():
+	if DebugNode.is_debug_encounter():
 		get_tree().quit(0)
 	else:
 		is_input_ready = false
