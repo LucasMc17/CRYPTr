@@ -80,6 +80,6 @@ func clear_functions():
 func _on_triggered(params : Events.ParamsObject) -> void:
 	if !filter(params):
 		return
-	DebugNode.p(hook_name + ' triggered!')
+	DebugNode.print(hook_name + ' triggered!')
 	for function in functions:
 		function.run()

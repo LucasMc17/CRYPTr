@@ -29,7 +29,7 @@ func _ready():
 	Events.command_lose.connect(func (_params): _lose())
 
 	if DebugNode.command_args.is_debug_encounter:
-		DebugNode.print_n('ENCOUNTER accessed directly')
+		DebugNode.print('ENCOUNTER accessed directly', 1)
 
 	_discards = Player.discards
 	_deck = DeckModule.new(true)

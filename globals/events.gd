@@ -25,8 +25,8 @@ class ParamsObject:
 	func _init(param_event : String):
 		time = Time.get_time_string_from_system()
 		event = param_event
-		DebugNode.print_n(event)
-		DebugNode.print_h(to_dictionary.call())
+		DebugNode.print(event, 1)
+		DebugNode.print(to_dictionary.call(), 2)
 
 # RUN LIFECYCLE
 

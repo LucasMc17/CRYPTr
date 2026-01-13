@@ -12,4 +12,4 @@ func _ready():
 	else:
 		map_instance.resume_map()
 	if DebugNode.command_args.is_debug_map:
-		DebugNode.print_n('MAP accessed directly')
+		DebugNode.print('MAP accessed directly', 1)
