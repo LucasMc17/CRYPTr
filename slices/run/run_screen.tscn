@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3ennndecf56b"]
+[gd_scene load_steps=7 format=3 uid="uid://b3ennndecf56b"]
 
 [ext_resource type="Script" uid="uid://en1uhxivcuk7" path="res://slices/run/run_screen.gd" id="1_lcpi4"]
-[ext_resource type="PackedScene" uid="uid://bjepf3drbn4ws" path="res://scenes/screen_window.tscn" id="2_52nl0"]
 [ext_resource type="PackedScene" uid="uid://hsul0q167iju" path="res://slices/run/states/encounter/encounter.tscn" id="4_lcpi4"]
 [ext_resource type="PackedScene" uid="uid://d3pg22dsctbb0" path="res://slices/run/states/map/map.tscn" id="4_o8dxk"]
 [ext_resource type="PackedScene" uid="uid://dpvshbd8guiuu" path="res://slices/run/player_status/player_status_window.tscn" id="5_52nl0"]
@@ -26,12 +25,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScreenWindow" parent="HBoxContainer" instance=ExtResource("2_52nl0")]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.75
+size_flags_stretch_ratio = 0.85
+theme_type_variation = &"WindowPanel"
 
-[node name="RunSwitcher" type="Control" parent="HBoxContainer/ScreenWindow"]
+[node name="RunSwitcher" type="Control" parent="HBoxContainer/PanelContainer"]
 unique_name_in_owner = true
 process_mode = 1
 layout_mode = 2
@@ -47,6 +47,7 @@ metadata/_custom_type_script = "uid://dgjbmlg6wlice"
 
 [node name="PlayerStatusWindow" parent="HBoxContainer" instance=ExtResource("5_52nl0")]
 layout_mode = 2
+size_flags_stretch_ratio = 0.15
 
 [node name="PauseSwitcher" type="Control" parent="."]
 unique_name_in_owner = true

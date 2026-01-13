@@ -14,6 +14,7 @@ var all : Array[CryptographRes]:
 		push_warning("Cannot directly set cards in encounter stack")
 		pass
 
+
 func _init(should_shuffle := false):
 	_encounter_stack.clear()
 	_encounter_stack.append_array(Player.stack.duplicate())
@@ -28,4 +29,5 @@ func draw(count := Player.HAND_SIZE) -> Array[CryptographRes]:
 	while count > 0 && !_encounter_stack.is_empty():
 		cryptographs.append(_encounter_stack.pop_front())
 		count -= 1
+	Events.refresh_stack.emit()
 	return cryptographs

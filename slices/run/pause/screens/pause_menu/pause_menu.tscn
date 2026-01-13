@@ -29,35 +29,30 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 33
 text = "RESUME"
 
 [node name="StackButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 33
 text = "STACK"
 
 [node name="HooksButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 33
 text = "HOOKS"
 
 [node name="SettingsButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 33
 text = "SETTINGS"
 
 [node name="QuitButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 33
 text = "QUIT TO MAIN MENU"
 
 [node name="Control" type="Control" parent="HBoxContainer"]

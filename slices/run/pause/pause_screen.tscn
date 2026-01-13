@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bidj852l8qnd2" path="res://slices/run/pause/screens/hook_menu/hook_menu.tscn" id="5_p6p20"]
 
 [node name="PauseScreen" type="PanelContainer"]
-z_index = 100
+z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -27,13 +27,13 @@ layout_mode = 2
 
 [node name="CryptrLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_type_variation = &"LabelExtraBig"
 text = "CRYPTr"
 horizontal_alignment = 1
 
 [node name="RunPausedLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
+theme_type_variation = &"LabelBig"
 text = "RUN_PAUSED"
 horizontal_alignment = 1
 

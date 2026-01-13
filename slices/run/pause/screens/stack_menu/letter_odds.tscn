@@ -13,6 +13,7 @@ script = ExtResource("1_vf760")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"HeaderMedium"
 text = "A"
 horizontal_alignment = 1
 
@@ -20,6 +21,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"HeaderMedium"
 text = "1"
 horizontal_alignment = 1
 
@@ -27,5 +29,6 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"HeaderMedium"
 text = "10%"
 horizontal_alignment = 1

@@ -13,6 +13,7 @@ script = ExtResource("1_87r5k")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
+theme_type_variation = &"LabelBig"
 text = "Odds to draw by Letter"
 horizontal_alignment = 1
 
@@ -22,18 +23,21 @@ layout_mode = 2
 [node name="Label" type="Label" parent="GridHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"LabelMedium"
 text = "Letter"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="GridHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"LabelMedium"
 text = "Count"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="GridHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"LabelMedium"
 text = "Draw Chance"
 horizontal_alignment = 1
 

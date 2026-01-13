@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxcguf0ft6xoy"]
+[gd_scene load_steps=3 format=3 uid="uid://cxcguf0ft6xoy"]
 
 [ext_resource type="Script" uid="uid://ctkgrvx5thiko" path="res://slices/run/pause/screens/hook_menu/function_window/function_summary.gd" id="1_e2hax"]
+[ext_resource type="Theme" uid="uid://2512ic8p2wa6" path="res://assets/themes/function_theme/function_theme.tres" id="1_sgtcv"]
 
 [node name="FunctionSummary" type="PanelContainer"]
 anchors_preset = 15
@@ -8,59 +9,74 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_sgtcv")
+theme_type_variation = &"Available"
 script = ExtResource("1_e2hax")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="CostLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CostLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"LabelBig"
 text = "Cost"
 horizontal_alignment = 1
 
-[node name="Cost" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="Cost" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"LabelExtraBig"
 text = "1"
 horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="Name" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="Name" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"LabelBig"
 text = "Function Name"
 
-[node name="Description" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="Description" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"LabelMedium"
 text = "Function Description"
 
-[node name="Control" type="CenterContainer" parent="HBoxContainer"]
+[node name="Control" type="CenterContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="InUseLabel" type="Label" parent="HBoxContainer/Control"]
+[node name="InUseLabel" type="Label" parent="VBoxContainer/Control"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_type_variation = &"LabelMedium"
 text = "! IN USE !"
 horizontal_alignment = 1
 
-[node name="InstalledLabel" type="Label" parent="HBoxContainer/Control"]
+[node name="InstalledLabel" type="Label" parent="VBoxContainer/Control"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_type_variation = &"LabelMedium"
 text = "! INSTALLED !"
 horizontal_alignment = 1
 
-[node name="InsufficientMemoryLabel" type="Label" parent="HBoxContainer/Control"]
+[node name="InsufficientMemoryLabel" type="Label" parent="VBoxContainer/Control"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_type_variation = &"LabelMedium"
 text = "! INSUFFICIENT MEMORY !"
 horizontal_alignment = 1
