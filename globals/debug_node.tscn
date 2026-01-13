@@ -14,3 +14,4 @@
 script = ExtResource("1_pgr0f")
 force_hooks = Array[ExtResource("2_wqi1e")]([ExtResource("3_wqi1e"), ExtResource("4_8tqhv"), ExtResource("5_ec415")])
 force_functions = Array[ExtResource("6_6q663")]([ExtResource("7_3injj"), ExtResource("8_v3iya"), ExtResource("9_mwsy6")])
+log_level = 1

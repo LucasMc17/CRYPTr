@@ -11,3 +11,5 @@ func _ready():
 		map_instance.init_map(0, 3)
 	else:
 		map_instance.resume_map()
+	if DebugNode.command_args.is_debug_map:
+		DebugNode.print('MAP accessed directly', 1)

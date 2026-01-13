@@ -15,6 +15,9 @@ var commands = CommandModule.new()
 
 func _ready():
 	DebugNode.debug_console = self
+	for command in DebugNode.print_queue:
+		DebugNode.print(command.message, command.min_log_level)
+	DebugNode.print_queue.clear()
 	Events.command_help.connect(func (_params): commands.help())
 	Events.command_clear.connect(func (_params): clear())
 	Events.command_echo.connect(func (params): DebugNode.print(' '.join(params)))

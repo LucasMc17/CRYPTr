@@ -35,6 +35,10 @@ extends Node
 var debug_console : DebugConsole
 ## Preloaded debug ui packed scene for initialization.
 var _debug_ui = preload('res://scenes/debug_ui/debug_ui.tscn')
+## Queue of print commands which were executed before the Debug Console had loaded, to be ran as soon as it finishes.
+var print_queue : Array
+
+var command_args := CommandArgumentModule.new()
 
 func _ready():
 	var root = get_tree().current_scene
@@ -50,26 +54,12 @@ func _check_overrides(value):
 
 
 ## Print method for logging information to the debug console from this global node.
-func print(message):
+func print(message, min_log_level := 0):
 	if debug_console:
-		debug_console.log(message)
-
-
-## Method for arbitrarily logging for debug purposes.
-func p(message):
-	DebugNode.print(message)
-
-
-## Prints the message only if log level is NORMAL or higher.
-func print_n(message):
-	if log_level > 0:
-		DebugNode.print(message)
-
-
-## Prints the message only if log level is HIGH.
-func print_h(message):
-	if log_level > 1:
-		DebugNode.print(message)
+		if log_level >= min_log_level:
+			debug_console.log(message)
+	else:
+		print_queue.append({"message": message, "min_log_level": min_log_level})
 
 
 ## Factory function for creating printable format of complex objects.
