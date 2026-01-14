@@ -63,6 +63,7 @@ func _win() -> void:
 	Player.current_stack = Player.stack
 	Events.refresh_stack.emit()
 	Events.emit_match_won()
+	Player.change_money(encounter.reward)
 	if DebugNode.command_args.is_debug_encounter:
 		get_tree().quit(0)
 	else:

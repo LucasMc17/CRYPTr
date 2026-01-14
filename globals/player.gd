@@ -56,6 +56,8 @@ var current_encounter : EncounterRes = null
 var hooks : Array[Hook] = []
 ## The player's currently collected Functions.
 var functions : Array[Function] = []
+## THe player's money.
+var money := 0
 
 ## Resets all the run variables to their default value so that a new run can begin from a clean slate.
 func reset_run() -> void:
@@ -102,3 +104,9 @@ func initialize_stack(starter_stack : StarterStack):
 				result.append(cryptograph.duplicate())
 	stack = result
 	current_stack = stack
+
+
+## Change the player's money by a set amount, positive or negative, and fire global event to update UI.
+func change_money(amount : int):
+	money += amount
+	Events.emit_money_changed(amount)

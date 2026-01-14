@@ -19,7 +19,8 @@ class ParamsObject:
 			"remaining_discards",
 			"word",
 			"types",
-			"attempts_remaining"
+			"attempts_remaining",
+			"amount"
 	])
 
 	func _init(param_event : String):
@@ -70,6 +71,18 @@ func emit_return_to_map(new_map : bool):
 signal run_lost(params : ParamsObject)
 func emit_run_lost():
 	run_lost.emit(ParamsObject.new("RUN LOST"))
+
+
+## Emitted when the player receives or loses money. Amount can be positive or negative.
+signal money_changed(params : MoneyChangedParams)
+class MoneyChangedParams extends ParamsObject:
+	var amount : int
+
+	func _init(param_event : String, param_amount : int):
+		amount = param_amount
+		super(param_event)
+func emit_money_changed(amount : int):
+	money_changed.emit(MoneyChangedParams.new("MONEY CHANGED", amount))
 
 
 ## Emitted when a run is paused.
