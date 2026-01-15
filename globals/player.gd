@@ -42,6 +42,9 @@ var redupligram_mult := BASE_REDUPLIGRAM_MULT
 var ambigram_mult := BASE_AMBIGRAM_MULT
 var gyrogram_mult := BASE_GYROGRAM_MULT
 
+## The current state of the game, as in map, encounter, shop, etc.
+var game_state : String
+
 ## The Deck/Stack for the current run.
 var stack : Array[CryptographRes] = []
 ## The stack as currently initted, shuffled and drawn from in the current encounter.

@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkhh5jxxjbgj4"]
+[gd_scene load_steps=3 format=3 uid="uid://dkhh5jxxjbgj4"]
 
 [ext_resource type="Script" uid="uid://4133383nn0yq" path="res://slices/run/player_status/executable_window/executable_preview.gd" id="1_kdddn"]
+[ext_resource type="Theme" uid="uid://bg2k5cvj3vbsr" path="res://assets/themes/executable_theme/executable_theme.tres" id="2_kdddn"]
 
 [node name="ExecutablePreview" type="Control"]
-custom_minimum_size = Vector2(0, 90)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 3
 anchors_preset = 14
 anchor_top = 0.5
@@ -35,19 +36,31 @@ size_flags_horizontal = 3
 theme_type_variation = &"HeaderMedium"
 text = "<No Executable Available>"
 
-[node name="RunButton" type="Button" parent="HBoxContainer"]
+[node name="ButtonHolder" type="CenterContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="HBoxContainer/ButtonHolder"]
+layout_mode = 2
+
+[node name="RunButton" type="Button" parent="HBoxContainer/ButtonHolder/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_kdddn")
+theme_type_variation = &"RunButton"
+disabled = true
 text = "RUN"
 
-[node name="DiscardButton" type="Button" parent="HBoxContainer"]
+[node name="DiscardButton" type="Button" parent="HBoxContainer/ButtonHolder/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_kdddn")
+theme_type_variation = &"DiscardButton"
 text = "DISCARD"
 
 [node name="SummaryPanel" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
-anchors_preset = -1
+layout_mode = 0
 anchor_left = -0.00033068782
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -74,4 +87,5 @@ autowrap_mode = 2
 
 [connection signal="mouse_entered" from="HBoxContainer" to="." method="_on_h_box_container_mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer" to="." method="_on_h_box_container_mouse_exited"]
-[connection signal="pressed" from="HBoxContainer/RunButton" to="." method="_on_run_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ButtonHolder/VBoxContainer/RunButton" to="." method="_on_run_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ButtonHolder/VBoxContainer/DiscardButton" to="." method="_on_discard_button_pressed"]

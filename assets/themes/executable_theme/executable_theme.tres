@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bg2k5cvj3vbsr"]
+
+[ext_resource type="StyleBox" uid="uid://b2fq1stfvpcon" path="res://assets/themes/executable_theme/discard_button_stylebox.tres" id="1_1g02u"]
+[ext_resource type="StyleBox" uid="uid://dlnqqjg8kq4i5" path="res://assets/themes/executable_theme/run_button_disabled_stylebox.tres" id="1_ijt2j"]
+[ext_resource type="StyleBox" uid="uid://ciqwyg6ae4o72" path="res://assets/themes/executable_theme/discard_button_disabled_stylebox.tres" id="1_rwiva"]
+[ext_resource type="StyleBox" uid="uid://dog3egg567hfj" path="res://assets/themes/executable_theme/run_button_stylebox.tres" id="1_tx6u4"]
+
+[resource]
+DiscardButton/base_type = &"Button"
+DiscardButton/colors/font_color = Color(1, 1, 1, 1)
+DiscardButton/font_sizes/font_size = 25
+DiscardButton/styles/disabled = ExtResource("1_rwiva")
+DiscardButton/styles/focus = ExtResource("1_1g02u")
+DiscardButton/styles/hover = ExtResource("1_1g02u")
+DiscardButton/styles/hover_pressed = ExtResource("1_1g02u")
+DiscardButton/styles/normal = ExtResource("1_1g02u")
+DiscardButton/styles/pressed = ExtResource("1_1g02u")
+RunButton/base_type = &"Button"
+RunButton/colors/font_color = Color(1, 1, 1, 1)
+RunButton/font_sizes/font_size = 25
+RunButton/styles/disabled = ExtResource("1_ijt2j")
+RunButton/styles/focus = ExtResource("1_tx6u4")
+RunButton/styles/hover = ExtResource("1_tx6u4")
+RunButton/styles/hover_pressed = ExtResource("1_tx6u4")
+RunButton/styles/normal = ExtResource("1_tx6u4")
+RunButton/styles/pressed = ExtResource("1_tx6u4")

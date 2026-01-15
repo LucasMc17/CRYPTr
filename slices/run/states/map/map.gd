@@ -1,4 +1,4 @@
-extends Switchable
+extends GameStateSwitchable
 ## Switchable representing the map view on the current run.
 
 @onready var map_instance := %MapInstance

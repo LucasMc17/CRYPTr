@@ -170,6 +170,9 @@ signal refresh_stack()
 ## Emitted any time the player's executable list changes, requiring a global UI update.
 signal refresh_executables()
 
+## Emitted when the game state changes 
+signal refresh_executable_access()
+
 # EXECUTABLES
 
 ## Emitted when the dot_dot executable is used.

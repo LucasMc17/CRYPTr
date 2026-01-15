@@ -38,7 +38,8 @@ func _execute() -> void:
 
 ## Returns true if the Executable can currently be ran.
 func get_applicability() -> bool:
-	return true and applicability_map[executable_name].call()
+	var variable_name = "applicable_to_" + Player.game_state
+	return self[variable_name] and applicability_map[executable_name].call()
 
 
 ## Run the executable, if able.

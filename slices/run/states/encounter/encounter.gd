@@ -1,4 +1,4 @@
-extends Switchable
+extends GameStateSwitchable
 ## Encounter instance within a run. Handles all logic related to drawing cards to hand, discarding, inputting characters and entering words.
 ##
 ## All variables and functions are private, this scene is not meant to be interacted with from a higher level, but handle all of its inputs
