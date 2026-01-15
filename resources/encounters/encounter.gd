@@ -92,3 +92,9 @@ func bypass() -> void:
 	bypassed = true
 	for branch in branches:
 		branch.bypass()
+
+
+func unbypass() -> void:
+	bypassed = false
+	for branch in branches:
+		branch.unbypass()

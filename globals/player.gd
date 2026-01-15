@@ -56,7 +56,9 @@ var current_encounter : EncounterRes = null
 var hooks : Array[Hook] = []
 ## The player's currently collected Functions.
 var functions : Array[Function] = []
-## THe player's money.
+## The player's currently collected Executables.
+var executables : Array[Executable] = []
+## The player's money.
 var money := 0
 
 ## Resets all the run variables to their default value so that a new run can begin from a clean slate.
@@ -110,3 +112,10 @@ func initialize_stack(starter_stack : StarterStack):
 func change_money(amount : int):
 	money += amount
 	Events.emit_money_changed(amount)
+
+
+## Remove an Executable from player inventory.
+func remove_executable(exe : Executable):
+	executables = executables.filter(func (executable): return executable != exe)
+	DebugNode.log(executables)
+	Events.refresh_executables.emit()

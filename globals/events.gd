@@ -165,27 +165,38 @@ signal hook_multiplication(multiplier : float)
 signal refresh_hooks()
 
 ## Emitted any time the stack amount changes, such as when Cryptographs are drawn from the Stack, or when new Cryptographs are acquired.
-
-# DEBUG COMMANDS
 signal refresh_stack()
 
-## Emitted when the help command is issued
+## Emitted any time the player's executable list changes, requiring a global UI update.
+signal refresh_executables()
+
+# EXECUTABLES
+
+## Emitted when the dot_dot executable is used.
+signal dot_dot_executed()
+
+# DEBUG COMMANDS
+
+## Emitted when the help command is issued.
 signal command_help(params : Array[String])
 
-## Emitted when the echo command is issued
+## Emitted when the echo command is issued.
 signal command_echo(params : Array[String])
 
-## Emitted when the win command is issued
+## Emitted when the win command is issued.
 signal command_win(params : Array[String])
 
-## Emitted when the lose command is issued
+## Emitted when the lose command is issued.
 signal command_lose(params : Array[String])
 
-## Emitted when the clear command is issued
+## Emitted when the clear command is issued.
 signal command_clear(params : Array[String])
 
-## Emitted when the exit command is issued
+## Emitted when the exit command is issued.
 signal command_exit(params : Array[String])
 
-## Emitted when the restart command is issued
+## Emitted when the restart command is issued.
 signal command_restart(params : Array[String])
+
+## Emitted when the give_money command is issued.
+signal command_give_money(params : Array[String])

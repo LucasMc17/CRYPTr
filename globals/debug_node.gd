@@ -18,6 +18,13 @@ extends Node
 @export var instawin := false:
 	get():
 		return _check_overrides(instawin)
+## Unlimited money.
+@export var infinite_money := false:
+	get():
+		return _check_overrides(infinite_money)
+	set(val):
+		infinite_money = val
+		Events.emit_money_changed(0)
 
 @export_category("Inventory")
 ## Force a particular starter stack for testing purposes.
@@ -26,6 +33,8 @@ extends Node
 @export var force_hooks : Array[Hook] = []
 ## Force a collection of Functions into starting inventory.
 @export var force_functions : Array[Function] = []
+## Force a collection of Executables into starting inventory.
+@export var force_executables : Array[Executable] = []
 
 @export_category("Logging")
 ## Degree of frequency of console logging.
@@ -51,6 +60,24 @@ func _check_overrides(value):
 		return true
 	else:
 		return value
+
+
+## Arbitrary print method, separate from main print method so as to be easiy removed.
+func log(message) -> void:
+	push_warning('Arbitrary print left in code.')
+	DebugNode.print(message)
+
+
+## Push a warning to the godot terminal AND the in game console.
+func warn(message) -> void:
+	push_warning(message)
+	DebugNode.print(message)
+
+
+## Push an error to the godot terminal AND the in game console.
+func error(message) -> void:
+	push_error(message)
+	DebugNode.print(message)
 
 
 ## Print method for logging information to the debug console from this global node.

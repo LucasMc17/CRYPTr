@@ -47,6 +47,14 @@ size_flags_stretch_ratio = 0.3
 text = "Instant Win"
 alignment = 1
 
+[node name="InfiniteMoneyToggle" type="CheckButton" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+text = "Infinite Money"
+alignment = 1
+
 [node name="LogLevelDropdown" type="OptionButton" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -62,4 +70,5 @@ popup/item_2/id = 2
 [connection signal="toggled" from="VBoxContainer/AcceptAllLettersToggle" to="." method="_on_accept_all_letters_toggle_toggled"]
 [connection signal="toggled" from="VBoxContainer/AcceptAllWordsToggle" to="." method="_on_accept_all_words_toggle_toggled"]
 [connection signal="toggled" from="VBoxContainer/InstawinToggle" to="." method="_on_instawin_toggle_toggled"]
+[connection signal="toggled" from="VBoxContainer/InfiniteMoneyToggle" to="." method="_on_infinite_money_toggle_toggled"]
 [connection signal="item_selected" from="VBoxContainer/LogLevelDropdown" to="." method="_on_log_level_dropdown_item_selected"]

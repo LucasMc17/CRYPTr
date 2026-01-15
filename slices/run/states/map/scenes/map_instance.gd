@@ -15,6 +15,9 @@ const _MAP_CELL := preload('./map_cell.tscn')
 ## Root MapNode scene of the current map instance.
 var _root_node : MapNode
 
+func _ready():
+	Events.dot_dot_executed.connect(_on_dot_dot_executed)
+
 ## Main function to create a NEW encounter map and populate it onto the grid.
 func init_map(session_depth : int, length_limit : int) -> void:
 	# First, create the encounter resources
@@ -81,3 +84,11 @@ func _build_grid_map():
 
 func _on_resized():
 	map_resized.emit(size.x / columns)
+
+
+func _on_dot_dot_executed():
+	Player.current_encounter.visited = false
+	Player.current_encounter = Player.current_encounter.parent
+	for branch in Player.current_encounter.branches:
+		branch.unbypass()
+	_root_node.update_colors.call_deferred()

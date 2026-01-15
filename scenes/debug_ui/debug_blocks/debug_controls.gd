@@ -5,6 +5,7 @@ extends PanelContainer
 @onready var accept_all_letters_toggle := %AcceptAllLettersToggle
 @onready var accept_all_words_toggle := %AcceptAllWordsToggle
 @onready var instawin_toggle := %InstawinToggle
+@onready var infinite_money_toggle := %InfiniteMoneyToggle
 
 @onready var log_level_dropdown := %LogLevelDropdown
 
@@ -44,6 +45,10 @@ func _on_accept_all_words_toggle_toggled(is_on : bool) -> void:
 
 func _on_instawin_toggle_toggled(is_on : bool) -> void:
 	DebugNode.instawin = is_on
+
+
+func _on_infinite_money_toggle_toggled(is_on : bool) -> void:
+	DebugNode.infinite_money = is_on
 
 
 func _on_log_level_dropdown_item_selected(index : int) -> void:

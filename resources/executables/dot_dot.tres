@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Executable" load_steps=2 format=3 uid="uid://blrw50pxcf0d5"]
+
+[ext_resource type="Script" uid="uid://cgy31op6tai8t" path="res://resources/executables/executable.gd" id="1_w8aog"]
+
+[resource]
+script = ExtResource("1_w8aog")
+executable_name = "dot_dot"
+description = "Immediately move back up one level in the Map, from the current directory to it's parent directory."
+applicable_to_encounter = false
+applicable_to_shop = false
+metadata/_custom_type_script = "uid://cgy31op6tai8t"

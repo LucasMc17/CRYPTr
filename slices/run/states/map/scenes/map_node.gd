@@ -67,5 +67,7 @@ func update_colors() -> void:
 		parent_line.z_index = 10
 	elif encounter_resource.bypassed:
 		modulate = "#999999"
+	else:
+		modulate = "#FFFFFF"
 	for branch in branches:
 		branch.update_colors()

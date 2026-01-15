@@ -44,20 +44,20 @@ func add_function(function : Function) -> void:
 		function.owning_hook = self
 		functions.append(function)
 	else:
-		DebugNode.print("WARNING: attempted to add Function of cost " + str(function.cost) + ", but only " + str(memory_available) + " memory remaining.")
+		DebugNode.warn("WARNING: attempted to add Function of cost " + str(function.cost) + ", but only " + str(memory_available) + " memory remaining.")
 
 
 ## Move a function up or down in priority inside of this hook.
 func shift_function(hook_index : int, up : bool) -> void:
 	if up:
 		if hook_index == 0:
-			DebugNode.print("WARNING: Attempted to increase priority of Function whose index was already 0")
+			DebugNode.warn("WARNING: Attempted to increase priority of Function whose index was already 0")
 			return
 		var shifted_func = functions.pop_at(hook_index)
 		functions.insert(hook_index - 1, shifted_func)
 	else:
 		if hook_index == functions.size() - 1:
-			DebugNode.print("WARNING: Attempted to decrease priority of Function whose index was already last in functions array")
+			DebugNode.warn("WARNING: Attempted to decrease priority of Function whose index was already last in functions array")
 			return
 		var shifted_func = functions.pop_at(hook_index)
 		functions.insert(hook_index + 1, shifted_func)
@@ -80,6 +80,6 @@ func clear_functions():
 func _on_triggered(params : Events.ParamsObject) -> void:
 	if !filter(params):
 		return
-	DebugNode.print(hook_name + ' triggered!')
+	DebugNode.log(hook_name + ' triggered!')
 	for function in functions:
 		function.run()
