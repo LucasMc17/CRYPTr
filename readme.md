@@ -30,6 +30,8 @@
 
 Gameplay Layer - 0
 
+Tooltip Layer - 5
+
 Menu Layer - 10
 
 Debug Layer - 20

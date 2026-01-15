@@ -60,6 +60,7 @@ text = "DISCARD"
 [node name="SummaryPanel" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 visible = false
+z_index = 5
 layout_mode = 0
 anchor_left = -0.00033068782
 anchor_top = 0.5
