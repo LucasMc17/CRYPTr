@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Executable" load_steps=2 format=3 uid="uid://bslpwp5khmvbd"]
+
+[ext_resource type="Script" uid="uid://cgy31op6tai8t" path="res://resources/executables/executable.gd" id="1_n3je6"]
+
+[resource]
+script = ExtResource("1_n3je6")
+executable_name = "cache_buster"
+description = "Discard and redraw entire hand of Cryptographs, without using up any of your discards."
+applicable_to_map = false
+applicable_to_shop = false
+metadata/_custom_type_script = "uid://cgy31op6tai8t"

@@ -15,6 +15,8 @@ extends Resource
 ## The level of the current encounter within its encounter tree. The root of an encounter tree will always have a security level of 0, whereas
 ## it's branches will have a level of 1, their branches a level of 2, etc.
 @export var security_level := 0
+## The monetary reward for completing the encounter.
+@export var reward : int
 
 @export_group("Branches")
 ## The parent encounter instance of the current encounter instance. This encounter resource will be included in the `branches` array of its parent.
@@ -61,6 +63,7 @@ func _init(
 	self.distance_from_end = enc_distance_from_end
 	self.parent = enc_parent_node
 	self.session_depth = enc_session_depth
+	reward = enc_security_level + 3 - randi_range(0, 2)
 	if !enc_parent_node:
 		self.relative_y = 0
 	else:
@@ -89,3 +92,9 @@ func bypass() -> void:
 	bypassed = true
 	for branch in branches:
 		branch.bypass()
+
+
+func unbypass() -> void:
+	bypassed = false
+	for branch in branches:
+		branch.unbypass()

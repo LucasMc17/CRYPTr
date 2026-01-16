@@ -41,6 +41,11 @@ var commands : Dictionary[StringName, CommandConfig] = {
 			"Restarts the game and clears all global variables",
 			"None",
 			["restart"]
+	),
+	"give_money": CommandConfig.new(
+			"Gives the player a specified amount of money",
+			"Pass any number immediately following the command to specify the amount of money to give.",
+			["give_money 100", "give_money 6000"]
 	)
 }
 
@@ -53,7 +58,7 @@ func run(full_command : String) -> void:
 		DebugNode.print(full_command)
 		Events[signal_name].emit(params)
 	else:
-		DebugNode.print("ERROR: Command '" + command_name + "' Not found. Run 'help' for a list of commands")
+		DebugNode.error("ERROR: Command '" + command_name + "' Not found. Run 'help' for a list of commands")
 
 
 # Function for logging the `commands` dictionary to the terminal in a human readable form, as the result of the `help` command.

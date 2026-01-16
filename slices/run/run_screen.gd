@@ -53,6 +53,9 @@ func setup(init_obj := {}) -> void:
 	for function in DebugNode.force_functions:
 		Player.functions.append(function.duplicate())
 	DebugNode.force_functions.clear()
+	for executable in DebugNode.force_executables:
+		Player.executables.append(executable.duplicate())
+	DebugNode.force_executables.clear()
 	if DebugNode.force_stack:
 		Player.initialize_stack(DebugNode.force_stack)
 	else:

@@ -11,7 +11,7 @@ var target_score := 0.0
 ## The tally of points earned by the current word, as it is evaluated. Increases as each letter is scored/muliplier applied, then is added to `current_score`, then reset to zero.
 var evaluating_score := 0.0:
 	set(val):
-		DebugNode.print(val)
+		DebugNode.log(val)
 		evaluating_score = val
 ## Whether a word is actively scoring.
 var is_evaluating := false
@@ -55,13 +55,13 @@ func score_word(hand : Array[Cryptograph], attempts_remaining : int) -> void:
 
 func _on_hook_addition(adder : int) -> void:
 	if !is_evaluating:
-		DebugNode.print("WARNING: Hook Addition triggered outside of scoring")
+		DebugNode.warn("WARNING: Hook Addition triggered outside of scoring")
 	else:
 		evaluating_score += adder
 
 func _on_hook_multiplication(multiplier : float) -> void:
 	if !is_evaluating:
-		DebugNode.print("WARNING: Hook Multiplication triggered outside of scoring")
+		DebugNode.warn("WARNING: Hook Multiplication triggered outside of scoring")
 	else:
 		evaluating_score *= multiplier
 			

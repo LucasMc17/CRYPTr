@@ -1,0 +1,92 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkhh5jxxjbgj4"]
+
+[ext_resource type="Script" uid="uid://4133383nn0yq" path="res://slices/run/player_status/executable_window/executable_preview.gd" id="1_kdddn"]
+[ext_resource type="Theme" uid="uid://bg2k5cvj3vbsr" path="res://assets/themes/executable_theme/executable_theme.tres" id="2_kdddn"]
+
+[node name="ExecutablePreview" type="Control"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_kdddn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 194.0
+offset_bottom = 23.0
+
+[node name="Index" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "0:"
+
+[node name="ExecutableName" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderMedium"
+text = "<No Executable Available>"
+
+[node name="ButtonHolder" type="CenterContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="HBoxContainer/ButtonHolder"]
+layout_mode = 2
+
+[node name="RunButton" type="Button" parent="HBoxContainer/ButtonHolder/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_kdddn")
+theme_type_variation = &"RunButton"
+disabled = true
+text = "RUN"
+
+[node name="DiscardButton" type="Button" parent="HBoxContainer/ButtonHolder/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_kdddn")
+theme_type_variation = &"DiscardButton"
+text = "DISCARD"
+
+[node name="SummaryPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 5
+layout_mode = 0
+anchor_left = -0.00033068782
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = 1.0
+offset_right = -0.99999994
+offset_bottom = 51.74
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SummaryPanel"]
+layout_mode = 2
+
+[node name="ReadMeLabel" type="Label" parent="SummaryPanel/VBoxContainer"]
+layout_mode = 2
+text = "README"
+horizontal_alignment = 1
+
+[node name="Summary" type="Label" parent="SummaryPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "# This is where the summary of the exe will go."
+autowrap_mode = 2
+
+[connection signal="mouse_entered" from="HBoxContainer" to="." method="_on_h_box_container_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer" to="." method="_on_h_box_container_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/ButtonHolder/VBoxContainer/RunButton" to="." method="_on_run_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ButtonHolder/VBoxContainer/DiscardButton" to="." method="_on_discard_button_pressed"]

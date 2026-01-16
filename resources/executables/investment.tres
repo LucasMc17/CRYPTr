@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Executable" load_steps=2 format=3 uid="uid://ceven0yiexd42"]
+
+[ext_resource type="Script" uid="uid://cgy31op6tai8t" path="res://resources/executables/executable.gd" id="1_vnlr0"]
+
+[resource]
+script = ExtResource("1_vnlr0")
+executable_name = "investment"
+description = "Value starts at $0 and increases by $2 after every directory visited, to a maximum of $10. Run the executable to cash out.
+
+Current value: $%s"
+metadata/_custom_type_script = "uid://cgy31op6tai8t"

@@ -1,4 +1,4 @@
-extends Switchable
+extends GameStateSwitchable
 ## Encounter instance within a run. Handles all logic related to drawing cards to hand, discarding, inputting characters and entering words.
 ##
 ## All variables and functions are private, this scene is not meant to be interacted with from a higher level, but handle all of its inputs
@@ -18,7 +18,7 @@ var _attempts := 4
 var is_input_ready := true
 
 ## The player's current hand of cryptographs. Not a logic module like the deck or scorer, since the hand has a visual component in the encounter.
-@onready var _hand := %Hand
+@onready var _hand : Hand = %Hand
 ## The player's current word entry. Not a logic module like the deck or scorer, since the word has a visual component in the encounter.
 @onready var _word := %Word
 ## The score preview, utilizing the current ScoringObject to show a base score, multipliers, and total score for the typed word before entering.
@@ -27,6 +27,8 @@ var is_input_ready := true
 func _ready():
 	Events.command_win.connect(func (_params): _win())
 	Events.command_lose.connect(func (_params): _lose())
+
+	Events.cache_buster_executed.connect(_on_cache_buster_used)
 
 	if DebugNode.command_args.is_debug_encounter:
 		DebugNode.print('ENCOUNTER accessed directly', 1)
@@ -63,6 +65,7 @@ func _win() -> void:
 	Player.current_stack = Player.stack
 	Events.refresh_stack.emit()
 	Events.emit_match_won()
+	Player.change_money(encounter.reward)
 	if DebugNode.command_args.is_debug_encounter:
 		get_tree().quit(0)
 	else:
@@ -102,6 +105,7 @@ func _enter_word() -> void:
 
 		_scoring.update_score_object(_word.text, _hand)
 		_score_preview.update_potential_score(_scoring.score_object)
+		Events.refresh_executable_access.emit()
 
 
 
@@ -127,3 +131,13 @@ func _on_hand_discarded(cryptograph : Cryptograph):
 			_lose()
 		_hand.add_to_hand(_deck.draw(1))
 		_discards -= 1
+
+
+func _on_cache_buster_used():
+	for cryptograph in _hand.cryptographs:
+		Events.emit_cryptograph_discarded(cryptograph, 1, cryptograph.resource.letter.character)
+		_hand.discard(cryptograph)
+	_word.clear()
+	_scoring.update_score_object(_word.text, _hand)
+	_score_preview.update_potential_score(_scoring.score_object)
+	_hand.add_to_hand(_deck.draw())

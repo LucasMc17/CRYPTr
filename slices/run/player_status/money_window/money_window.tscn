@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bak3l75x1r3yb"]
+[gd_scene load_steps=2 format=3 uid="uid://bak3l75x1r3yb"]
+
+[ext_resource type="Script" uid="uid://c1221tarmmvi4" path="res://slices/run/player_status/money_window/money_window.gd" id="1_wmwk4"]
 
 [node name="MoneyWindow" type="PanelContainer"]
 anchors_preset = 15
@@ -7,8 +9,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"WindowPanel"
+script = ExtResource("1_wmwk4")
 
-[node name="Label" type="Label" parent="."]
+[node name="MoneyLabel" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"LabelExtraBig"
 text = "$0"

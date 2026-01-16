@@ -19,7 +19,8 @@ class ParamsObject:
 			"remaining_discards",
 			"word",
 			"types",
-			"attempts_remaining"
+			"attempts_remaining",
+			"amount"
 	])
 
 	func _init(param_event : String):
@@ -70,6 +71,18 @@ func emit_return_to_map(new_map : bool):
 signal run_lost(params : ParamsObject)
 func emit_run_lost():
 	run_lost.emit(ParamsObject.new("RUN LOST"))
+
+
+## Emitted when the player receives or loses money. Amount can be positive or negative.
+signal money_changed(params : MoneyChangedParams)
+class MoneyChangedParams extends ParamsObject:
+	var amount : int
+
+	func _init(param_event : String, param_amount : int):
+		amount = param_amount
+		super(param_event)
+func emit_money_changed(amount : int):
+	money_changed.emit(MoneyChangedParams.new("MONEY CHANGED", amount))
 
 
 ## Emitted when a run is paused.
@@ -152,27 +165,53 @@ signal hook_multiplication(multiplier : float)
 signal refresh_hooks()
 
 ## Emitted any time the stack amount changes, such as when Cryptographs are drawn from the Stack, or when new Cryptographs are acquired.
-
-# DEBUG COMMANDS
 signal refresh_stack()
 
-## Emitted when the help command is issued
+## Emitted any time the player's executable list changes, requiring a global UI update.
+signal refresh_executables()
+
+## Emitted whenever the game state changes or the player takes an action which should cause their executables to check for applicability.
+signal refresh_executable_access()
+
+# EXECUTABLES
+
+## Emitted when the dot_dot executable is used.
+signal dot_dot_executed()
+
+## Emitted when the pluralize executable is used.
+signal pluralize_executed()
+
+## Emitted when the cache_buster executable is used.
+signal cache_buster_executed()
+
+## Emitted when the grab_bag executable is used.
+signal grab_bag_executed()
+
+## Emitted when the investment executable is used.
+signal investment_executed(amount : int)
+
+# DEBUG COMMANDS
+
+## Emitted when the help command is issued.
 signal command_help(params : Array[String])
 
-## Emitted when the echo command is issued
+## Emitted when the echo command is issued.
 signal command_echo(params : Array[String])
 
-## Emitted when the win command is issued
+## Emitted when the win command is issued.
 signal command_win(params : Array[String])
 
-## Emitted when the lose command is issued
+## Emitted when the lose command is issued.
 signal command_lose(params : Array[String])
 
-## Emitted when the clear command is issued
+## Emitted when the clear command is issued.
 signal command_clear(params : Array[String])
 
-## Emitted when the exit command is issued
+## Emitted when the exit command is issued.
 signal command_exit(params : Array[String])
 
-## Emitted when the restart command is issued
+## Emitted when the restart command is issued.
 signal command_restart(params : Array[String])
+
+## Emitted when the give_money command is issued.
+signal command_give_money(params : Array[String])

@@ -54,10 +54,10 @@ func _gui_input(event):
 
 
 ## Method for resizing the parent lines when the map's dimensions change. Takes in the new x dimension of the cell.
-func resize_lines(x : float) -> void:
+func resize_lines(new_x : float) -> void:
 	if parent_line.points:
-		parent_line.points[1].x = -x + 20
-		parent_line.points[2].x = -x + 20
+		parent_line.points[1].x = -new_x + 20
+		parent_line.points[2].x = -new_x + 20
 
 
 ## Method for updaying the color of the node and it's parent line.
@@ -67,5 +67,9 @@ func update_colors() -> void:
 		parent_line.z_index = 10
 	elif encounter_resource.bypassed:
 		modulate = "#999999"
+		parent_line.z_index = 0
+	else:
+		modulate = "#FFFFFF"
+		parent_line.z_index = 0
 	for branch in branches:
 		branch.update_colors()

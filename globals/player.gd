@@ -42,6 +42,9 @@ var redupligram_mult := BASE_REDUPLIGRAM_MULT
 var ambigram_mult := BASE_AMBIGRAM_MULT
 var gyrogram_mult := BASE_GYROGRAM_MULT
 
+## The current state of the game, as in map, encounter, shop, etc.
+var game_state : String
+
 ## The Deck/Stack for the current run.
 var stack : Array[CryptographRes] = []
 ## The stack as currently initted, shuffled and drawn from in the current encounter.
@@ -56,6 +59,10 @@ var current_encounter : EncounterRes = null
 var hooks : Array[Hook] = []
 ## The player's currently collected Functions.
 var functions : Array[Function] = []
+## The player's currently collected Executables.
+var executables : Array[Executable] = []
+## The player's money.
+var money := 0
 
 ## Resets all the run variables to their default value so that a new run can begin from a clean slate.
 func reset_run() -> void:
@@ -102,3 +109,15 @@ func initialize_stack(starter_stack : StarterStack):
 				result.append(cryptograph.duplicate())
 	stack = result
 	current_stack = stack
+
+
+## Change the player's money by a set amount, positive or negative, and fire global event to update UI.
+func change_money(amount : int):
+	money += amount
+	Events.emit_money_changed(amount)
+
+
+## Remove an Executable from player inventory.
+func remove_executable(exe : Executable):
+	executables = executables.filter(func (executable): return executable != exe)
+	Events.refresh_executables.emit()
