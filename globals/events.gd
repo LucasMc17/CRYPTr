@@ -170,13 +170,25 @@ signal refresh_stack()
 ## Emitted any time the player's executable list changes, requiring a global UI update.
 signal refresh_executables()
 
-## Emitted when the game state changes 
+## Emitted whenever the game state changes or the player takes an action which should cause their executables to check for applicability.
 signal refresh_executable_access()
 
 # EXECUTABLES
 
 ## Emitted when the dot_dot executable is used.
 signal dot_dot_executed()
+
+## Emitted when the pluralize executable is used.
+signal pluralize_executed()
+
+## Emitted when the cache_buster executable is used.
+signal cache_buster_executed()
+
+## Emitted when the grab_bag executable is used.
+signal grab_bag_executed()
+
+## Emitted when the investment executable is used.
+signal investment_executed(amount : int)
 
 # DEBUG COMMANDS
 

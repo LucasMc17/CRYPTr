@@ -120,5 +120,4 @@ func change_money(amount : int):
 ## Remove an Executable from player inventory.
 func remove_executable(exe : Executable):
 	executables = executables.filter(func (executable): return executable != exe)
-	DebugNode.log(executables)
 	Events.refresh_executables.emit()

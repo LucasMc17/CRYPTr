@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Executable" load_steps=2 format=3 uid="uid://bll1iaktr3122"]
+
+[ext_resource type="Script" uid="uid://cgy31op6tai8t" path="res://resources/executables/executable.gd" id="1_cfieu"]
+
+[resource]
+script = ExtResource("1_cfieu")
+executable_name = "grab_bag"
+description = "Gain a random Executable (grab_bag.exe excluded)."
+metadata/_custom_type_script = "uid://cgy31op6tai8t"

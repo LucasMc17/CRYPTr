@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Executable" load_steps=2 format=3 uid="uid://dpptgi3weovf"]
+
+[ext_resource type="Script" uid="uid://cgy31op6tai8t" path="res://resources/executables/executable.gd" id="1_axite"]
+
+[resource]
+script = ExtResource("1_axite")
+executable_name = "pluralize"
+description = "Create an S Cryptograph, which cannot be discarded and will last the duration of the encounter. The new Cryptograph is not added to the Stack, it is exclusively for use in the current encounter."
+applicable_to_map = false
+applicable_to_shop = false
+metadata/_custom_type_script = "uid://cgy31op6tai8t"

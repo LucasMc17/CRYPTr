@@ -9,5 +9,5 @@ extends Switchable
 
 func setup(init_obj := {}) -> void:
 	Player.game_state = state_name
-	Events.refresh_executable_access.emit()
+	Events.refresh_executable_access.emit.call_deferred()
 	super(init_obj)

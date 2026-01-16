@@ -12,7 +12,10 @@ var executable : Executable:
 			if name_label:
 				name_label.text = val.executable_name
 			if summary:
-				summary.text = "# " + val.description
+				if val.executable_name == "investment":
+					summary.text = "# " + val.description % [val.value]
+				else:
+					summary.text = "# " + val.description
 		else:
 			if button_holder:
 				button_holder.visible = false
@@ -30,6 +33,10 @@ var executable : Executable:
 func _ready():
 	Events.refresh_executables.connect(populate)
 	Events.refresh_executable_access.connect(change_applicability)
+
+	# NOTE: This won't be a good enough signal forever.
+	Events.match_started.connect(_on_match_started)
+
 	index_label.text = str(index) + ":"
 	populate()
 
@@ -46,6 +53,11 @@ func populate():
 func change_applicability():
 	if executable:
 		run_button.disabled = !executable.get_applicability()
+
+
+## If the executable has properties that update and are exposed to the player, this function updates the description with them.
+func _update_description(place_holders : Array[String] = []) -> void:
+	summary.text = "# " + executable.description % place_holders
 
 
 func _on_h_box_container_mouse_entered():
@@ -65,3 +77,8 @@ func _on_run_button_pressed():
 func _on_discard_button_pressed():
 	if executable:
 		Player.remove_executable(executable)
+
+func _on_match_started(_params):
+	if executable and executable.executable_name == "investment" and executable.value < 10:
+		executable.value += 2
+		_update_description([str(executable.value)])

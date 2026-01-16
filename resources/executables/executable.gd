@@ -20,26 +20,38 @@ extends Resource
 ## if True, usable from Shop state.
 @export var applicable_to_shop := true
 
+## Dollar value of executable (only relevant for investment.exe)
+var value := 0
+
 static var applicability_map = {
 	"dot_dot": func () -> bool:
-		return !!Player.current_encounter and !!Player.current_encounter.parent
+		return !!Player.current_encounter and !!Player.current_encounter.parent,
+	"cache_buster": func () -> bool:
+		return !Player.current_stack.is_empty()
 }
 
 ## Executes the function.
 func _execute() -> void:
 	Player.remove_executable(self)
 	Events.refresh_hooks.emit()
-	var signal_name = executable_name + "_executed"
-	if Events.has_signal(signal_name):
-		Events[signal_name].emit()
+	if executable_name == "investment":
+		Events.investment_executed.emit(value)
 	else:
-		push_warning("WARNING: No signal for executable with name " + executable_name)
+		var signal_name = executable_name + "_executed"
+		if Events.has_signal(signal_name):
+			Events[signal_name].emit()
+		else:
+			push_warning("WARNING: No signal for executable with name " + executable_name)
 
 
 ## Returns true if the Executable can currently be ran.
 func get_applicability() -> bool:
 	var variable_name = "applicable_to_" + Player.game_state
-	return self[variable_name] and applicability_map[executable_name].call()
+	if !self[variable_name]:
+		return false
+	if !executable_name in applicability_map:
+		return true
+	return applicability_map[executable_name].call()
 
 
 ## Run the executable, if able.
