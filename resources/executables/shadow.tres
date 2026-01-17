@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Executable" load_steps=2 format=3 uid="uid://cy2w1i7ci8aq0"]
+
+[ext_resource type="Script" uid="uid://cgy31op6tai8t" path="res://resources/executables/executable.gd" id="1_yqxiq"]
+
+[resource]
+script = ExtResource("1_yqxiq")
+executable_name = "shadow"
+rarity = 1
+description = "# Copy a random Executable from your current loadout (this one excluded)."
+metadata/_custom_type_script = "uid://cgy31op6tai8t"

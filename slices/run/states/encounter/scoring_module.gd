@@ -11,7 +11,7 @@ var target_score := 0.0
 ## The tally of points earned by the current word, as it is evaluated. Increases as each letter is scored/muliplier applied, then is added to `current_score`, then reset to zero.
 var evaluating_score := 0.0:
 	set(val):
-		DebugNode.log(val)
+		DebugNode.print(['current_score: ', val], 1)
 		evaluating_score = val
 ## Whether a word is actively scoring.
 var is_evaluating := false

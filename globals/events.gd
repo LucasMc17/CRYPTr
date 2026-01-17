@@ -190,6 +190,9 @@ signal grab_bag_executed()
 ## Emitted when the investment executable is used.
 signal investment_executed(amount : int)
 
+## Emitted when the shadow executable is used.
+signal shadow_executed(shadow_exe : Executable)
+
 # DEBUG COMMANDS
 
 ## Emitted when the help command is issued.

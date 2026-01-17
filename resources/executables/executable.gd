@@ -21,21 +21,26 @@ extends Resource
 @export var applicable_to_shop := true
 
 ## Dollar value of executable (only relevant for investment.exe)
-var value := 0
+@export var value := 0
 
 static var applicability_map = {
 	"dot_dot": func () -> bool:
 		return !!Player.current_encounter and !!Player.current_encounter.parent,
 	"cache_buster": func () -> bool:
-		return !Player.current_stack.is_empty()
+		return !Player.current_stack.is_empty(),
+	"shadow": func () -> bool:
+		return Player.executables.size() > 1
 }
 
 ## Executes the function.
 func _execute() -> void:
 	Player.remove_executable(self)
 	Events.refresh_hooks.emit()
+	Events.refresh_executable_access.emit()
 	if executable_name == "investment":
 		Events.investment_executed.emit(value)
+	elif executable_name == "shadow":
+		Events.shadow_executed.emit(self)
 	else:
 		var signal_name = executable_name + "_executed"
 		if Events.has_signal(signal_name):

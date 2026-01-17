@@ -64,6 +64,9 @@ var executables : Array[Executable] = []
 ## The player's money.
 var money := 0
 
+func _ready():
+	Events.shadow_executed.connect(_on_shadow_used)
+
 ## Resets all the run variables to their default value so that a new run can begin from a clean slate.
 func reset_run() -> void:
 	palindrogram_mult = BASE_PALINDROGRAM_MULT
@@ -99,7 +102,7 @@ func add_anagram(word : String) -> void:
 
 
 ## Initializes the stack from a StarterStack resource. Effectively converts it to an array of cryptograph resources.
-func initialize_stack(starter_stack : StarterStack):
+func initialize_stack(starter_stack : StarterStack) -> void:
 	var alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 	var result : Array[CryptographRes] = []
 	for character in alpha:
@@ -112,12 +115,24 @@ func initialize_stack(starter_stack : StarterStack):
 
 
 ## Change the player's money by a set amount, positive or negative, and fire global event to update UI.
-func change_money(amount : int):
+func change_money(amount : int) -> void:
 	money += amount
 	Events.emit_money_changed(amount)
 
 
 ## Remove an Executable from player inventory.
-func remove_executable(exe : Executable):
+func remove_executable(exe : Executable) -> void:
 	executables = executables.filter(func (executable): return executable != exe)
 	Events.refresh_executables.emit()
+	Events.refresh_executable_access.emit()
+
+func add_executable(exe : Executable) -> void:
+	executables.append(exe)
+	Events.refresh_executables.emit()
+	Events.refresh_executable_access.emit()
+
+func _on_shadow_used(shadow : Executable):
+	var candidates = executables.filter(func (exe): return exe != shadow)
+	var index = randi_range(0, candidates.size() - 1)
+	var copy = candidates[index].duplicate()
+	add_executable(copy)

@@ -23,6 +23,7 @@ var is_input_ready := true
 @onready var _word := %Word
 ## The score preview, utilizing the current ScoringObject to show a base score, multipliers, and total score for the typed word before entering.
 @onready var _score_preview := %ScorePreview
+@onready var _bonus_hand := %BonusHand
 
 func _ready():
 	Events.command_win.connect(func (_params): _win())
@@ -114,7 +115,7 @@ func _input_character(event) -> void:
 	var keycode = event.keycode
 	if keycode >= KEY_A && keycode <= KEY_Z:
 		var character = OS.get_keycode_string(event.key_label)
-		if DebugNode.accept_all_letters or _hand.letters.has(character):
+		if DebugNode.accept_all_letters or _hand.letters.has(character) or _bonus_hand.letters.has(character):
 			_word.add_character(character)
 			_scoring.update_score_object(_word.text, _hand)
 			_score_preview.update_potential_score(_scoring.score_object)

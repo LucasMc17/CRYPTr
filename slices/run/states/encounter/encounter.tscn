@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://hsul0q167iju"]
+[gd_scene load_steps=6 format=3 uid="uid://hsul0q167iju"]
 
 [ext_resource type="Script" uid="uid://gotxdw81pjm2" path="res://slices/run/states/encounter/encounter.gd" id="1_g3ww7"]
 [ext_resource type="PackedScene" uid="uid://b1mgm185hngcy" path="res://slices/run/states/encounter/scenes/word.tscn" id="2_1bdjk"]
 [ext_resource type="PackedScene" uid="uid://dham4s68n2ph8" path="res://slices/run/states/encounter/scenes/hand.tscn" id="3_1bdjk"]
+[ext_resource type="PackedScene" uid="uid://c7g64ku52qtj0" path="res://slices/run/states/encounter/scenes/bonus_hand.tscn" id="4_m0dpk"]
 [ext_resource type="PackedScene" uid="uid://bt1ys0vxsfnr4" path="res://slices/run/states/encounter/scenes/score_preview/score_preview.tscn" id="4_rcu84"]
 
 [node name="Encounter" type="Control"]
@@ -41,11 +42,21 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="Hand" parent="HBoxContainer/PlayArea/VBoxContainer" instance=ExtResource("3_1bdjk")]
+[node name="HandHolder" type="HBoxContainer" parent="HBoxContainer/PlayArea/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 30
+
+[node name="Hand" parent="HBoxContainer/PlayArea/VBoxContainer/HandHolder" instance=ExtResource("3_1bdjk")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+
+[node name="BonusHand" parent="HBoxContainer/PlayArea/VBoxContainer/HandHolder" instance=ExtResource("4_m0dpk")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="ScoreArea" type="Control" parent="HBoxContainer"]
 layout_mode = 2
@@ -55,4 +66,4 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 1
 
-[connection signal="discarded" from="HBoxContainer/PlayArea/VBoxContainer/Hand" to="." method="_on_hand_discarded"]
+[connection signal="discarded" from="HBoxContainer/PlayArea/VBoxContainer/HandHolder/Hand" to="." method="_on_hand_discarded"]

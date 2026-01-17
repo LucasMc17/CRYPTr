@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dr8n6ng13apt2"]
+[gd_scene load_steps=13 format=3 uid="uid://dr8n6ng13apt2"]
 
 [ext_resource type="Script" uid="uid://8utxeemfesmd" path="res://globals/debug_node.gd" id="1_pgr0f"]
 [ext_resource type="Script" uid="uid://dxctdton3xfcb" path="res://resources/subprocesses/hooks/hook.gd" id="2_wqi1e"]
@@ -10,13 +10,12 @@
 [ext_resource type="Resource" uid="uid://bjaw031pd0pby" path="res://resources/subprocesses/functions/function_instances/add_25.tres" id="8_v3iya"]
 [ext_resource type="Resource" uid="uid://bxihoxhpapie" path="res://resources/subprocesses/functions/function_instances/add_50.tres" id="9_mwsy6"]
 [ext_resource type="Script" uid="uid://cgy31op6tai8t" path="res://resources/executables/executable.gd" id="10_u1wik"]
-[ext_resource type="Resource" uid="uid://blrw50pxcf0d5" path="res://resources/executables/dot_dot.tres" id="11_ql0i0"]
-[ext_resource type="Resource" uid="uid://bslpwp5khmvbd" path="res://resources/executables/cache_buster.tres" id="12_ql0i0"]
+[ext_resource type="Resource" uid="uid://cy2w1i7ci8aq0" path="res://resources/executables/shadow.tres" id="12_ql0i0"]
 [ext_resource type="Resource" uid="uid://ceven0yiexd42" path="res://resources/executables/investment.tres" id="13_hyh7v"]
 
 [node name="DebugNode" type="Node"]
 script = ExtResource("1_pgr0f")
 force_hooks = Array[ExtResource("2_wqi1e")]([ExtResource("3_wqi1e"), ExtResource("4_8tqhv"), ExtResource("5_ec415")])
 force_functions = Array[ExtResource("6_6q663")]([ExtResource("7_3injj"), ExtResource("8_v3iya"), ExtResource("9_mwsy6")])
-force_executables = Array[ExtResource("10_u1wik")]([ExtResource("11_ql0i0"), ExtResource("12_ql0i0"), ExtResource("13_hyh7v")])
+force_executables = Array[ExtResource("10_u1wik")]([ExtResource("13_hyh7v"), ExtResource("12_ql0i0")])
 log_level = 1
