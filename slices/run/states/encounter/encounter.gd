@@ -88,7 +88,7 @@ func _lose() -> void:
 func _enter_word() -> void:
 	if _scoring.score_object.valid:
 		_attempts -= 1
-		_scoring.score_word(_hand.cryptographs, _attempts)
+		_scoring.score_word(_hand.cryptographs + _bonus_hand.cryptographs, _attempts)
 		# Events.emit_word_scored(_word.text, _scoring.score_object.additional_mults, _attempts)
 		_score_preview.update_score(_scoring.current_score, _scoring.target_score)
 

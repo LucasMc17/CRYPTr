@@ -10,7 +10,7 @@ var executable : Executable:
 			if button_holder:
 				button_holder.visible = true
 			if name_label:
-				name_label.text = val.executable_name
+				name_label.text = val.executable_name + '.exe'
 			if summary:
 				if val.executable_name == "investment":
 					summary.text = "# " + val.description % [val.value]
