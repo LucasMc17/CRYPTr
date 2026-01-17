@@ -6,6 +6,9 @@ extends Control
 ## method can be used to switch from the current child to another. This was designed to replace previous, more naive systems which only toggled the visibility of
 ## their children, instead of completely unloading them.
 
+## Emitted when the Switcher transitions to a new scene.
+signal transitioned(new_scene : String)
+
 ## The total list of `Switchable` scenes which this `UISwitcher` instance will be able to switch between.
 @export var _scenes : Dictionary[String, PackedScene]
 ## StringName representing the current `Switchable` to be rendered as the only child of the scene. Must correspond to a key in the `_scenes` dictionary or the transition function will not run.
@@ -29,6 +32,7 @@ func transition(new_scene_name: StringName, ext := {}) -> void:
 		for child in get_children():
 			child.queue_free()
 		add_child(scene)
+		transitioned.emit(new_scene_name)
 
 
 ## Removes the current switchable scene entirely, leaving no children under the ui switcher.

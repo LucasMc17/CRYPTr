@@ -37,6 +37,15 @@ theme_type_variation = &"LabelBig"
 text = "RUN_PAUSED"
 horizontal_alignment = 1
 
+[node name="BackButtonHolder" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/BackButtonHolder"]
+layout_mode = 2
+text = "Back to Menu"
+alignment = 0
+
 [node name="PauseMenuSwitcher" type="Control" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -49,3 +58,6 @@ _scenes = Dictionary[String, PackedScene]({
 })
 current_scene = &"Menu"
 metadata/_custom_type_script = "uid://dgjbmlg6wlice"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButtonHolder/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="transitioned" from="MarginContainer/VBoxContainer/PauseMenuSwitcher" to="." method="_on_pause_menu_switcher_transitioned"]
